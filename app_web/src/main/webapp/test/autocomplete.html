@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+.autocomplete-suggestions { border: 1px solid #CCC; background: #FFF; overflow: auto; width:200px;}
+.autocomplete-suggestion { padding: 2px 5px; white-space: nowrap; overflow: hidden; }
+.autocomplete-selected { background: #F0F0F0; }
+.autocomplete-suggestions strong { font-weight: normal; color: #3399FF; }
+.autocomplete-group { padding: 2px 5px; }
+.autocomplete-group strong { display: block; border-bottom: 1px solid #CCC; }	
+</style>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="jquery.autocomplete.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$("#text").autocomplete({
+	    serviceUrl: 'autocomplete.json',
+	    onSelect: function (suggestion) {
+	        alert('You selected: ' + suggestion.value + ', ' + suggestion.data);
+	    }
+	});
+});
+</script>
+</head>
+<body>
+
+<input id="text" type="text" />
+</body>
+</html>

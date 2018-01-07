@@ -1,0 +1,11 @@
+*.class
+*.MF
+*.jar
+*.war
+.classpath
+.project
+.settings
+*/target
+target
+*.iml
+.idea
