@@ -356,8 +356,8 @@
 		<module>app_model</module>
 		<module>app_common</module>
 		<module>app_core</module>
-		<module>app_commons</module>
 		<module>app_inter</module>
 		<module>app_manage</module>
+		<module>app_common</module>
 	</modules>
 </project>
