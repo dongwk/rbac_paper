@@ -1,13 +1,13 @@
-package com.app.model;
+package com.app.model.model;
 
 import java.util.Date;
 
-public class User {
+public class UserGroup {
     private Integer id;
 
-    private String username;
+    private String name;
 
-    private String password;
+    private Integer parentId;
 
     private Boolean status;
 
@@ -23,20 +23,20 @@ public class User {
         this.id = id;
     }
 
-    public String getUsername() {
-        return username;
+    public String getName() {
+        return name;
     }
 
-    public void setUsername(String username) {
-        this.username = username == null ? null : username.trim();
+    public void setName(String name) {
+        this.name = name == null ? null : name.trim();
     }
 
-    public String getPassword() {
-        return password;
+    public Integer getParentId() {
+        return parentId;
     }
 
-    public void setPassword(String password) {
-        this.password = password == null ? null : password.trim();
+    public void setParentId(Integer parentId) {
+        this.parentId = parentId;
     }
 
     public Boolean getStatus() {

@@ -1,15 +1,15 @@
-package com.app.mapper;
+package com.app.mapper.mapper;
 
-import com.app.model.User;
+import com.app.model.model.User;
 
 public interface UserMapper {
-    int deleteByPrimaryKey(Long uId);
+    int deleteByPrimaryKey(Integer id);
 
     int insert(User record);
 
     int insertSelective(User record);
 
-    User selectByPrimaryKey(Long uId);
+    User selectByPrimaryKey(Integer id);
 
     int updateByPrimaryKeySelective(User record);
 

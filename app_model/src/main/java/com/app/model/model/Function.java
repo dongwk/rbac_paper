@@ -1,13 +1,15 @@
-package com.app.model;
+package com.app.model.model;
 
 import java.util.Date;
 
-public class User {
+public class Function {
     private Integer id;
 
-    private String username;
+    private String name;
 
-    private String password;
+    private String code;
+
+    private String url;
 
     private Boolean status;
 
@@ -23,20 +25,28 @@ public class User {
         this.id = id;
     }
 
-    public String getUsername() {
-        return username;
+    public String getName() {
+        return name;
     }
 
-    public void setUsername(String username) {
-        this.username = username == null ? null : username.trim();
+    public void setName(String name) {
+        this.name = name == null ? null : name.trim();
     }
 
-    public String getPassword() {
-        return password;
+    public String getCode() {
+        return code;
     }
 
-    public void setPassword(String password) {
-        this.password = password == null ? null : password.trim();
+    public void setCode(String code) {
+        this.code = code == null ? null : code.trim();
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url == null ? null : url.trim();
     }
 
     public Boolean getStatus() {

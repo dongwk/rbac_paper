@@ -1,13 +1,11 @@
-package com.app.model;
+package com.app.model.model;
 
 import java.util.Date;
 
-public class User {
+public class Authority {
     private Integer id;
 
-    private String username;
-
-    private String password;
+    private String type;
 
     private Boolean status;
 
@@ -23,20 +21,12 @@ public class User {
         this.id = id;
     }
 
-    public String getUsername() {
-        return username;
+    public String getType() {
+        return type;
     }
 
-    public void setUsername(String username) {
-        this.username = username == null ? null : username.trim();
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password == null ? null : password.trim();
+    public void setType(String type) {
+        this.type = type == null ? null : type.trim();
     }
 
     public Boolean getStatus() {
