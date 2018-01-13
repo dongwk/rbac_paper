@@ -1,8 +1,14 @@
 package com.app.model.model;
 
+import com.baomidou.mybatisplus.annotations.TableId;
+import com.baomidou.mybatisplus.annotations.TableName;
+
 import java.util.Date;
 
+@TableName
 public class User {
+
+    @TableId
     private Integer id;
 
     private String username;

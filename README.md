@@ -59,8 +59,9 @@ url 用正则来考虑，有些是带*的要特殊处理，/user/id
 
 应该有个菜单表和页面元素表的应该有关系
 
-mybatis 可能会继承一个第三方类
+mybatis 可能会继承一个第三方类  mybatis-plus 文档类 http://baomidou.oschina.io/mybatis-plus-doc/#/
 service 也想继承一个第三方类
 controller 也想继承一个第三方类
 
+可能要用spring boot
 
