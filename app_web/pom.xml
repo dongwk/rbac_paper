@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>com.mycompany</groupId>
-		<artifactId>app_template</artifactId>
+		<artifactId>rbac_paper</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 	<artifactId>app_web</artifactId>
@@ -53,5 +53,12 @@
 		<filters>
 			<filter>src/test/resources/jdbc-${running.env}.properties</filter>
 		</filters>
+
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
 	</build>
 </project>
