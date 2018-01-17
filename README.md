@@ -65,3 +65,6 @@ controller 也想继承一个第三方类
 
 可能要用spring boot
 
+可能需要转变下思路，先看成熟的spring boot项目怎么搭建的，先参照搭建一般
+后期再优化
+
