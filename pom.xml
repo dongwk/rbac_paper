@@ -28,18 +28,32 @@
 
 	<dependencies>
 
-		<!-- mybatis -->
-		<dependency>
-			<groupId>org.mybatis</groupId>
-			<artifactId>mybatis</artifactId>
-			<version>${mybatis.version}</version>
-		</dependency>
+		<!-- mybatis mybatis 已经和 mybatis plus 集成不用导入 -->
+		<!--<dependency>-->
+			<!--<groupId>org.mybatis</groupId>-->
+			<!--<artifactId>mybatis</artifactId>-->
+			<!--<version>${mybatis.version}</version>-->
+		<!--</dependency>-->
 
-		<!-- mybatis-spring -->
+		<!-- mybatis-spring mybatis-spring 已经和 mybatis plus 集成不用导入 -->
+		<!--<dependency>-->
+			<!--<groupId>org.mybatis</groupId>-->
+			<!--<artifactId>mybatis-spring</artifactId>-->
+			<!--<version>${mybatis-spring.version}</version>-->
+		<!--</dependency>-->
+
+		<!-- 模板引擎 -->
 		<dependency>
-			<groupId>org.mybatis</groupId>
-			<artifactId>mybatis-spring</artifactId>
-			<version>${mybatis-spring.version}</version>
+            <groupId>org.apache.velocity</groupId>
+            <artifactId>velocity</artifactId>
+            <version>1.7</version>
+        </dependency>
+
+		<!-- 模板引擎，需要指定 mpg.setTemplateEngine(new FreemarkerTemplateEngine()); -->
+		<dependency>
+			<groupId>org.freemarker</groupId>
+			<artifactId>freemarker</artifactId>
+			<version>2.3.23</version>
 		</dependency>
 
 		<dependency>

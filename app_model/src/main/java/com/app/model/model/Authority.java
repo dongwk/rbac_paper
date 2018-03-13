@@ -1,8 +1,12 @@
 package com.app.model.model;
 
+import com.baomidou.mybatisplus.annotations.TableId;
+import com.baomidou.mybatisplus.annotations.TableName;
+
 import java.util.Date;
 
 public class Authority {
+
     private Integer id;
 
     private String type;

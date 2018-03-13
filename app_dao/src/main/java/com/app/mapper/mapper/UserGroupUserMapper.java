@@ -1,17 +1,7 @@
 package com.app.mapper.mapper;
 
+import com.app.mapper.base.BaseMapper;
 import com.app.model.model.UserGroupUser;
 
-public interface UserGroupUserMapper {
-    int deleteByPrimaryKey(Integer id);
-
-    int insert(UserGroupUser record);
-
-    int insertSelective(UserGroupUser record);
-
-    UserGroupUser selectByPrimaryKey(Integer id);
-
-    int updateByPrimaryKeySelective(UserGroupUser record);
-
-    int updateByPrimaryKey(UserGroupUser record);
+public interface UserGroupUserMapper extends BaseMapper<UserGroupUser> {
 }

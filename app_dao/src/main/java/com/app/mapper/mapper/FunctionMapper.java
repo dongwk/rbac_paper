@@ -1,17 +1,7 @@
 package com.app.mapper.mapper;
 
+import com.app.mapper.base.BaseMapper;
 import com.app.model.model.Function;
 
-public interface FunctionMapper {
-    int deleteByPrimaryKey(Integer id);
-
-    int insert(Function record);
-
-    int insertSelective(Function record);
-
-    Function selectByPrimaryKey(Integer id);
-
-    int updateByPrimaryKeySelective(Function record);
-
-    int updateByPrimaryKey(Function record);
+public interface FunctionMapper extends BaseMapper<Function> {
 }

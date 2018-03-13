@@ -1,17 +1,7 @@
 package com.app.mapper.mapper;
 
+import com.app.mapper.base.BaseMapper;
 import com.app.model.model.Authority;
 
-public interface AuthorityMapper {
-    int deleteByPrimaryKey(Integer id);
-
-    int insert(Authority record);
-
-    int insertSelective(Authority record);
-
-    Authority selectByPrimaryKey(Integer id);
-
-    int updateByPrimaryKeySelective(Authority record);
-
-    int updateByPrimaryKey(Authority record);
+public interface AuthorityMapper extends BaseMapper<Authority> {
 }

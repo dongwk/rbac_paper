@@ -53,7 +53,7 @@ http://blog.csdn.net/painsonline/article/details/7183613/
 角色-权限-合成一张表
 角色-合成一张表
 4、
-合成一张表肯定有类型的
+合成一张表肯定有类型的，类似菜单类型，元素
 
 url 用正则来考虑，有些是带*的要特殊处理，/user/id
 
@@ -68,3 +68,4 @@ controller 也想继承一个第三方类
 可能需要转变下思路，先看成熟的spring boot项目怎么搭建的，先参照搭建一般
 后期再优化
 
+20180313 使用 mybatis-plus 增加 mybatis 的使用
