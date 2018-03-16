@@ -69,3 +69,8 @@ controller 也想继承一个第三方类
 后期再优化
 
 20180313 使用 mybatis-plus 增加 mybatis 的使用
+
+jar 包先随便填，后期再整理清楚
+
+1、spring boot log4j2
+2、
