@@ -14,12 +14,14 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.core.io.ResourceLoader;
 
 import javax.sql.DataSource;
 
 @SpringBootApplication
 @EnableAutoConfiguration
+@ComponentScan("com.app.web.controller")
 public class Application {
 
     public static void main(String[] args) throws Exception {

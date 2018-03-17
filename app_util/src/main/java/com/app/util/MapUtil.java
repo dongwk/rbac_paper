@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.commons.beanutils.BeanUtils;
 
 /**
@@ -37,16 +38,16 @@ public class MapUtil {
 	 */
 	public static <T> List<T> toListBean(Class<T> clazz, List<Map<String, Object>> list) {
 		List<T> list2 = new ArrayList<>();
-		try {
 			T t = null;
-			for (Map<String, Object> map : list) {
-				t = clazz.newInstance();
-				BeanUtils.populate(t, map);
-				list2.add(t);
+			try {
+				for (Map<String, Object> map : list) {
+						t = clazz.newInstance();
+					BeanUtils.populate(t, map);
+					list2.add(t);
+				}
+			} catch (Exception e) {
+				throw new RuntimeException(e);
 			}
-		} catch (Exception e1) {
-			e1.printStackTrace();
-		}
 		return list2;
 	}
 	
@@ -59,11 +60,8 @@ public class MapUtil {
 	public static <T> Map<String, Object> toMap(T bean) {
 		Map<String, Object> map = null;
 		if (bean != null) {
-			try {
-				map = BeanUtils.describe(bean);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+			ObjectMapper objectMapper = new ObjectMapper();
+			map = objectMapper.convertValue(bean, Map.class);
 		}
 		return map;
 	}
