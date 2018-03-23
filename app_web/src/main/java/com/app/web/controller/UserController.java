@@ -11,9 +11,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/user")
 public class UserController extends BaseController{
-	
+
+	public UserController() {
+		System.out.println("--------");
+	}
+
 	@RequestMapping("/{id}")
 	public String get(@PathVariable long id){
+		System.out.println("============");
     	return "get "+id;
 	}
 }

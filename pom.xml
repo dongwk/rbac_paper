@@ -61,7 +61,6 @@
 			<artifactId>commons-codec</artifactId>
 			<version>${commons-codec.version}</version>
 		</dependency>
-
 		<!-- jackson -->
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
@@ -78,7 +77,6 @@
 			<artifactId>jackson-annotations</artifactId>
 			<version>${jackson.version}</version>
 		</dependency>
-
 		<!-- aspectj -->
 		<dependency>
 			<groupId>org.aspectj</groupId>
@@ -226,6 +224,13 @@
 			<version>2.1.9</version>
 		</dependency>
 
+
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>3.1.0</version>
+            <scope>provided</scope>
+        </dependency>
 	</dependencies>
 
 	<profiles>

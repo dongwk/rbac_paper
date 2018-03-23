@@ -1,68 +1,58 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<parent>
-		<groupId>com.mycompany</groupId>
-		<artifactId>rbac_paper</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
-	</parent>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>1.4.0.RELEASE</version>
+        <relativePath/>
+    </parent>
+
 	<artifactId>app_web</artifactId>
-	<packaging>war</packaging>
+    <packaging>jar</packaging>
 
-	<dependencies>
-		<dependency>
-			<groupId>com.mycompany</groupId>
-			<artifactId>app_util</artifactId>
-			<version>${project.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>com.mycompany</groupId>
-			<artifactId>app_service</artifactId>
-			<version>${project.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>com.mycompany</groupId>
-			<artifactId>app_core</artifactId>
-			<version>${project.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>com.mycompany</groupId>
-			<artifactId>app_model</artifactId>
-			<version>${project.version}</version>
-		</dependency>
-	</dependencies>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <spring.version>4.3.2.RELEASE</spring.version>
+        <spring-security.version>4.0.3.RELEASE</spring-security.version>
+        <mysql.version>5.1.25</mysql.version>
+        <commons-lang3.version>3.4</commons-lang3.version>
+        <slf4j.version>1.7.18</slf4j.version>
+        <servlet-api.version>3.1.0</servlet-api.version>
+        <aspectjrt.version>1.8.8</aspectjrt.version>
+        <jackson.version>2.7.2</jackson.version>
+        <commons-fileupload.version>1.3.1</commons-fileupload.version>
+        <log4j.version>2.8.2</log4j.version>
+        <commons-dbcp.version>1.4</commons-dbcp.version>
+        <mybatis-spring.version>1.2.4</mybatis-spring.version>
+        <mybatis.version>3.3.1</mybatis.version>
+        <json.version>20160212</json.version>
+        <commons-codec.version>1.10</commons-codec.version>
+    </properties>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
 
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
 
-	<build>
-		<resources>
-			<resource>
-				<directory>src/main/resources</directory>
-				<filtering>true</filtering>
-				<includes>
-					<include>jdbc.properties</include>
-					<include>**/*.xml</include>
-				</includes>
-			</resource>
-			<resource>
-				<directory>src/main/resources</directory>
-				<filtering>false</filtering>
-				<includes>
-					<include>*</include>
-				</includes>
-			</resource>
-		</resources>
-		<filters>
-			<filter>src/test/resources/jdbc-${running.env}.properties</filter>
-		</filters>
-
-		<plugins>
-
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-		</plugins>
-	</build>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>
