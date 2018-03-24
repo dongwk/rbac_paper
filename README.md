@@ -73,4 +73,4 @@ controller 也想继承一个第三方类
 jar 包先随便填，后期再整理清楚
 
 1、spring boot log4j2
-2、spring boot spring mvc 环境有问题，一直再调试
+2、spring boot spring mvc 环境有问题，一直再调试，搭建spring boot 1.4.0 现在的配置是可以的
