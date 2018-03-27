@@ -17,7 +17,6 @@ public class UserController extends BaseController{
 
 	@GetMapping(value = "/{id}")
 	public String get(@PathVariable long id){
-		System.out.println("============");
     	return "get "+id;
 	}
 }

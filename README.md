@@ -73,4 +73,10 @@ controller 也想继承一个第三方类
 jar 包先随便填，后期再整理清楚
 
 1、spring boot log4j2
-2、spring boot spring mvc 环境有问题，一直再调试，搭建spring boot 1.4.0 现在的配置是可以的
+2、spring boot spring mvc 环境有问题，一直再调试，搭建spring boot 1.4.0 现在的配置是可以的，其实根本问题已经查到了，
+不是默认的项目问题，是maven中默认增加了自定义properties，可能和一些开源jar包的问题，使用了公共的名称可能覆盖了原先的版本，
+比如在这个项目之前定义的 <spring.version>4.3.2.RELEASE</spring.version> ，虽然 spring boot 2 默认使用的是 spring 5 但加入这个后
+没有任何地方引用，但依赖关系还是变了
+3、去掉 properties 中的自定义属性就好了
+4、app_web spring boot log4j2
+5、完整的格式化 log4j2 的输出格式，除了高亮问题没解决
