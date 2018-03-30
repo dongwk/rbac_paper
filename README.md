@@ -80,3 +80,5 @@ jar 包先随便填，后期再整理清楚
 3、去掉 properties 中的自定义属性就好了
 4、app_web spring boot log4j2
 5、完整的格式化 log4j2 的输出格式，除了高亮问题没解决
+6、集成 druid mybatis MySQL
+7、集成 druid filter，durid filter解释

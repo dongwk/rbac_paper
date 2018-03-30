@@ -5,7 +5,7 @@ import com.baomidou.mybatisplus.annotations.TableName;
 
 import java.util.Date;
 
-@TableName
+@TableName("app_user")
 public class User {
 
     @TableId

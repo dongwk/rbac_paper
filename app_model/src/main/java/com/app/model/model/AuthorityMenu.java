@@ -1,5 +1,8 @@
 package com.app.model.model;
 
+import com.baomidou.mybatisplus.annotations.TableName;
+
+@TableName
 public class AuthorityMenu {
     private Integer id;
 

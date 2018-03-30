@@ -2,7 +2,6 @@
 <configuration>
     <properties>
         <!-- 文件输出格式 -->
-        <property name="CHARSET">UTF-8</property>
         <property name="PATTERN">%d{yyyy-MM-dd HH:mm:ss,SSS} %5p %5pid --- [%15.15t] %-40.40c{1.} %L: %m%n</property>
     </properties>
 
@@ -13,8 +12,7 @@
     </appenders>
 
     <loggers>
-        <logger name="com.roncoo.education" level="DEBUG" />
-        <root level="INFO">
+        <root level="DEBUG">
             <appenderref ref="CONSOLE" />
         </root>
     </loggers>
