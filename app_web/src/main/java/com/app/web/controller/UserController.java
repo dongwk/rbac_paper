@@ -33,6 +33,7 @@ public class UserController extends BaseController{
         List<User> list = userService.selectList(null);
         System.out.println(list);
         userService.get(id);
-    	return "get "+id;
+        System.out.println("333====1111112223333");
+    	return "";
 	}
 }
