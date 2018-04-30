@@ -82,3 +82,32 @@ jar 包先随便填，后期再整理清楚
 5、完整的格式化 log4j2 的输出格式，除了高亮问题没解决
 6、集成 druid mybatis MySQL
 7、集成 druid filter，durid filter解释
+8、druid filter wall SQL 注入攻击
+9、druid filter web 监控配置 WebStatFilter
+10、druid filter web 配置 StatViewServlet
+11、陪完了具体参照配置说明
+12、spring boot 配置首页
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Druid内置提供了一个StatViewServlet用于展示Druid的统计信息，详细说明 https://github.com/alibaba/druid/wiki/%E9%85%8D%E7%BD%AE_StatViewServlet%E9%85%8D%E7%BD%AE
+# Web关联监控配置 https://github.com/alibaba/druid/wiki/配置_配置WebStatFil=ter
+# 配置监控页面访问密码
+# 配置allow和deny
+# 配置allow和deny
