@@ -87,6 +87,7 @@ jar 包先随便填，后期再整理清楚
 10、druid filter web 配置 StatViewServlet
 11、陪完了具体参照配置说明
 12、spring boot 配置首页
+13、spring boot 500,404处理
 
 
 
@@ -111,4 +112,7 @@ jar 包先随便填，后期再整理清楚
 # 配置监控页面访问密码
 # 配置allow和deny
 # 配置allow和deny
-# 回头也弄一个 yml 配置
+# 回头也弄一个 yml 配置和properties一模一样的配置
+# 注解时间
+# spring boot 默认 json 相关配置
+# 默认编码 UTF-8 

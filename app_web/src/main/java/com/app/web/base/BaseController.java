@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 public class BaseController {
 	
-    protected Logger logger = LoggerFactory.getLogger(this.getClass());
+    protected final Logger LOGGER = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
 	protected HttpServletRequest request;
