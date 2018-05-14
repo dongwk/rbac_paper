@@ -5,12 +5,9 @@ package com.app.web.controller;
 
 import com.app.model.model.User;
 import com.app.service.service.UserService;
-import com.app.web.base.BaseController;
+import com.app.web.controller.base.BaseController;
 import com.app.web.common.R;
-import com.baomidou.mybatisplus.mapper.EntityWrapper;
-import com.baomidou.mybatisplus.mapper.Wrapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,9 +23,11 @@ public class UserController extends BaseController{
     @Autowired
     private UserService userService;
 
-	@RequestMapping
-	public String index() {
-		return "hello world";
+	@GetMapping
+	public R<?> index(){
+		System.out.println("-----");
+		if (true) throw new RuntimeException("异常");
+		return R.SUCCESS(new Date());
 	}
 
 	@GetMapping(value = "/{id}")

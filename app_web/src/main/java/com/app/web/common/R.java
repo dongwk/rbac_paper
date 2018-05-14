@@ -70,7 +70,7 @@ public class R<T> {
 	}
 
 
-	public static R<String> SYS_ERROR(){
+	public static R<String> E500(){
 		return new R<String>(false,R_CODE.SYS_ERROR.CODE, R_CODE.SYS_ERROR.MSG);
 	}
 

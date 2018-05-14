@@ -72,6 +72,11 @@ controller 也想继承一个第三方类
 
 jar 包先随便填，后期再整理清楚
 
+想实现一个绝对简单的开发方式，所有公共的列表等剔除出来
+错误状态码到时候可能需要再完善 ErrorPageConfigurar
+错误状态码可能未来会支持多种场景，比如 500，json or html, pc 端 or 移动端，ErrorPageController
+
+
 1、spring boot log4j2
 2、spring boot spring mvc 环境有问题，一直再调试，搭建spring boot 1.4.0 现在的配置是可以的，其实根本问题已经查到了，
 不是默认的项目问题，是maven中默认增加了自定义properties，可能和一些开源jar包的问题，使用了公共的名称可能覆盖了原先的版本，
@@ -87,9 +92,9 @@ jar 包先随便填，后期再整理清楚
 10、druid filter web 配置 StatViewServlet
 11、陪完了具体参照配置说明
 12、spring boot 配置首页
-13、spring boot 500,404处理
+13、spring boot 500,404处理，错误页面已经准备好了，异常先，错误编码后，统一交给错误编码处理
 14、maven 插件是继承的，spring boot 加载只针对对应的那个项目就可以
-15
+15、
 
 
 
