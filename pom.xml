@@ -256,7 +256,7 @@
 		<module>app_inter</module>
 		<module>app_manage</module>
 		<module>app_common</module>
-	</modules>
+    </modules>
 
 	<distributionManagement>
 		<repository>
