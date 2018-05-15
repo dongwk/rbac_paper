@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.app.manage.controller.common;
+package com.app.manage.web.controller.common;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

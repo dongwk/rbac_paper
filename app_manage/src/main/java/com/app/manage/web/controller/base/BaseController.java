@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.app.manage.controller.base;
+package com.app.manage.web.controller.base;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.app.manage.controller.base;
+package com.app.manage.web.controller.base;
 
 import com.app.util.JsonUtil;
 import org.apache.commons.lang3.exception.ExceptionUtils;

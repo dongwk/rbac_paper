@@ -1,14 +1,14 @@
 /**
  * 
  */
-package com.app.manage.controller;
+package com.app.manage.web.controller;
 
-import com.app.manage.controller.base.BaseController;
+import com.app.manage.web.controller.base.BaseController;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
-public class IndexController extends BaseController{
+public class IndexController extends BaseController {
 
 
 	@GetMapping(value = "/")

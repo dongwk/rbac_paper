@@ -19,12 +19,14 @@ public class ErrorPageController extends BaseController{
 	@GetMapping(value = ErrorPagePath.E404)
     @ResponseBody
 	public String E404(){
+		LOGGER.info("404 uri:{} ", request.getRequestURI());
 		return "404 response";
 	}
 
 	@GetMapping(value = ErrorPagePath.E500)
 	@ResponseBody
 	public R<?> E500(){
+		LOGGER.error("500 uri:{} ", request.getRequestURI());
 		return R.E500();
 	}
 }

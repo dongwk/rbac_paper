@@ -1,14 +1,14 @@
 /**
  * 
  */
-package com.app.manage.controller;
+package com.app.manage.web.controller;
 
-import com.app.manage.controller.base.BaseController;
+import com.app.manage.web.controller.base.BaseController;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/function")
-public class FunctionController extends BaseController{
+public class FunctionController extends BaseController {
 	
 }
