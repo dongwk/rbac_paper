@@ -12,3 +12,5 @@ angular.js 作为后台管理的主要js框架
 react.js 作为移动端的框架
 
 后台管理暂时定位 core ui, bootstrap
+
+https://github.com/coreui/coreui-free-bootstrap-admin-template

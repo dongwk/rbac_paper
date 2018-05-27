@@ -75,6 +75,10 @@ public class R<T> {
 		return new R<String>(false,R_CODE.SYS_ERROR.CODE, R_CODE.SYS_ERROR.MSG);
 	}
 
+	public static R<String> E404(){
+		return new R<String>(false,R_CODE.NOT_FOUND.CODE, R_CODE.NOT_FOUND.MSG);
+	}
+
 	public String getCode() {
 		return code;
 	}

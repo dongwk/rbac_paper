@@ -28,4 +28,8 @@ public class BaseController {
 	public HttpServletResponse getResponse() {
 		return response;
 	}
+
+	public String getRequestURI(){
+		return request.getRequestURI();
+	}
 }
