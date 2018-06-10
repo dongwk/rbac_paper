@@ -13,7 +13,13 @@ public class IndexController extends BaseController {
 	@RequestMapping(value = "/")
 	public String index(){
         System.out.println("index1");
-		return "/index";
+        return "index";
+	}
+
+	@RequestMapping(value = "/index")
+	public String index1(){
+		System.out.println("index2");
+		return "index1";
 	}
 
 }

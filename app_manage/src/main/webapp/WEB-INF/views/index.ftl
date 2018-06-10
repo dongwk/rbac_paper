@@ -5,6 +5,6 @@
 <title></title>
 </head>
 <body>
-index.ftl views
+index.ftl WEB-INF
 </body>
 </html>

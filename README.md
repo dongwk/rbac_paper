@@ -76,6 +76,13 @@ jar 包先随便填，后期再整理清楚
 错误状态码到时候可能需要再完善 ErrorPageConfigurar
 错误状态码可能未来会支持多种场景，比如 500，json or html, pc 端 or 移动端，ErrorPageController
 
+后期可以使用相关的免费的 bootstrap 模板，
+https://blog.csdn.net/li396864285/article/details/78095814
+
+后台参考
+https://www.oschina.net/project/tag/464/backend
+目前参考
+https://www.oschina.net/p/guns
 
 1、spring boot log4j2
 2、spring boot spring mvc 环境有问题，一直再调试，搭建spring boot 1.4.0 现在的配置是可以的，其实根本问题已经查到了，

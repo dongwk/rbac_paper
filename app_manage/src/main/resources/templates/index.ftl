@@ -5,6 +5,6 @@
 <title></title>
 </head>
 <body>
-index.ftl resources
+index.ftl resources12
 </body>
 </html>

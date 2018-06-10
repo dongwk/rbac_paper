@@ -17,6 +17,4 @@ public class LoginController extends BaseController {
 		LOGGER.debug("login");
 		return "login";
 	}
-
-
 }
