@@ -15,21 +15,7 @@ public class BaseController {
 	
     protected final Logger LOGGER = LoggerFactory.getLogger(this.getClass());
 
-    @Autowired
 	protected HttpServletRequest request;
 
-	@Autowired
 	protected HttpServletResponse response;
-
-	public HttpServletRequest getRequest() {
-		return request;
-	}
-
-	public HttpServletResponse getResponse() {
-		return response;
-	}
-
-	public String getRequestURI(){
-		return request.getRequestURI();
-	}
 }

@@ -196,6 +196,12 @@
 			<artifactId>jackson-datatype-joda</artifactId>
 		</dependency>
 
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.18.2</version>
+			<scope>provided</scope>
+		</dependency>
 	</dependencies>
 
 	<profiles>
@@ -256,6 +262,7 @@
 		<module>app_inter</module>
 		<module>app_manage</module>
 		<module>app_common</module>
+        <module>../aa</module>
     </modules>
 
 	<distributionManagement>

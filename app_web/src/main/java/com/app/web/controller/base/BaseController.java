@@ -9,23 +9,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import javax.servlet.http.HttpSession;
 
 public class BaseController {
 	
-    protected final Logger LOGGER = LoggerFactory.getLogger(this.getClass());
+    protected final Logger log = LoggerFactory.getLogger(this.getClass());
 
-    @Autowired
 	protected HttpServletRequest request;
 
-	@Autowired
+    @Autowired
 	protected HttpServletResponse response;
 
-	public HttpServletRequest getRequest() {
-		return request;
-	}
+    @Autowired
+    protected HttpSession session;
 
-	public HttpServletResponse getResponse() {
-		return response;
-	}
 }

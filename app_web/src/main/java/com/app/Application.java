@@ -16,7 +16,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @SpringBootApplication
 @MapperScan("com.app.mapper.mapper")
-@EnableWebMvc
 public class Application {
 
     public static void main(String[] args) throws Exception {

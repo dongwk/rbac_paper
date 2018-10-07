@@ -70,6 +70,10 @@ public class R<T> {
 	}
 
 
+	public static R<String> E404(){
+		return new R<String>(false,R_CODE.SYS_NOTFOUND.CODE, R_CODE.SYS_NOTFOUND.MSG);
+	}
+
 	public static R<String> E500(){
 		return new R<String>(false,R_CODE.SYS_ERROR.CODE, R_CODE.SYS_ERROR.MSG);
 	}

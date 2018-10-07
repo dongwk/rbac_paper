@@ -4,6 +4,9 @@ RBAC 项目
 # app_util 各工具类
 # app_common 暂未定
 # app_core 暂未定
+# app_manage 后台管理
+# app_web web 项目
+# app_api api
 
 
 http://blog.csdn.net/painsonline/article/details/7183613/
