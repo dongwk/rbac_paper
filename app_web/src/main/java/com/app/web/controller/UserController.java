@@ -25,17 +25,13 @@ public class UserController extends BaseController{
 
 	@GetMapping
 	public R<?> index(){
-		System.out.println("-----");
-		if (true) throw new RuntimeException("异常");
 		return R.SUCCESS(new Date());
 	}
 
 	@GetMapping(value = "/{id}")
 	public R<?> get(@PathVariable long id){
-        List<User> list = userService.selectList(null);
-        System.out.println(list);
-        userService.get(id);
-    	return R.SUCCESS(new Date());
+        User obj = userService.selectById(id);
+    	return R.SUCCESS(obj);
 	}
 
 }
