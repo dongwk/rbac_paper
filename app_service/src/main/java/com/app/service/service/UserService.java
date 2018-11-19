@@ -5,17 +5,16 @@ package com.app.service.service;
 
 import com.app.mapper.mapper.UserMapper;
 import com.app.model.model.User;
-import com.app.service.base.MapperService;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.app.service.base.MapperSupportService;
 import org.springframework.stereotype.Service;
 
 @Service
-public class UserService extends MapperService<UserMapper, User> {
+public class UserService extends MapperSupportService<UserMapper, User> {
 
-    @Autowired
-    private UserMapper userMapper;
-
-    public User get(long id){
-        return userMapper.selectById(id);
+    public User login(String username, String password) {
+        User u = new User();
+        u.setUsername(username);
+        u.setPassword(password);
+        return get(u);
     }
 }

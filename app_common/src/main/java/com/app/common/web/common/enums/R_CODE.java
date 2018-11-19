@@ -1,5 +1,8 @@
 package com.app.common.web.common.enums;
 
+/**
+ * 不包含 http 标准返回状态
+ */
 public enum R_CODE {
     ERROR("0", "error"),
     SUCCESS("1", "success"),

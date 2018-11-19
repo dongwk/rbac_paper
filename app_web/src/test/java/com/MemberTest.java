@@ -1,6 +1,7 @@
 package com;
 
 import com.app.Application;
+import com.app.model.model.User;
 import com.app.service.service.UserService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -17,7 +18,7 @@ public class MemberTest {
 
     @Test
     public void test(){
-        System.out.println("-----测试完毕-------");
-
+        User u = null; //userService.get(1);
+        System.out.println(u);
     }
 }

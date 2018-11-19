@@ -104,7 +104,11 @@ https://www.oschina.net/p/guns
 12、spring boot 配置首页
 13、spring boot 500,404处理，错误页面已经准备好了，异常先，错误编码后，统一交给错误编码处理
 14、maven 插件是继承的，spring boot 加载只针对对应的那个项目就可以
-15、
+15、先暂停该项，调整标准 rest
+
+
+
+
 
 
 
@@ -133,3 +137,5 @@ https://www.oschina.net/p/guns
 # 注解时间
 # spring boot 默认 json 相关配置
 # 默认编码 UTF-8 
+# rest 参照 https://github.com/ScienJus/spring-restful-authorization 
+# 代码中的作者 ScienJus，是参照他的

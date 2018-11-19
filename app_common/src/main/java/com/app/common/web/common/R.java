@@ -6,113 +6,142 @@ package com.app.common.web.common;
 
 
 import com.app.common.web.common.enums.R_CODE;
+import lombok.Data;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 
-public class R<T> {
+/**
+ * 统一返回值定义，定义 http 状态码和 responseBody 中的 code 码
+ * ResponseStatus: http 状态码
+ * ResponseBody: http 返回内容
+ * ResponseBody 中 R.Model 为内容标准
+ * R.Model 中 code 为 http 状态码或自定义，code 统一成功为 200
+ *
+ * code 不同方法下的值:
+ * SUCCESS/ERROR/MODEL(HttpStatus) code 为标准
+ * MODEL(String) code 为自定义，检测如果是标准则返回标准，否则返回自定义 ResponseStatus 为 500
+ *
+ */
+public class R<T> extends ResponseEntity<R.Model> {
 
-	private boolean success;
-	private String code;
-	private String msg;
-	private T data;
+	private static final Model MODEL = new Model(true, null, null, null);
 
-	public R() {
-		super();
+	private R() {
+	    super(MODEL, HttpStatus.OK);
 	}
 
-	public R(boolean success, String code) {
-		this.success = success;
-		this.code = code;
-	}
-	
-	public R(boolean success, String code, String msg) {
-		super();
-		this.success = success;
-		this.code = code;
-		this.msg = msg;
-	}
+	private R(Model m, HttpStatus httpStatus) {
+        super(m, httpStatus);
+		m = new Model();
+        m.success = (getStatusCode() == HttpStatus.OK);
+        m.code = httpStatus.value()+"";
+        m.msg = httpStatus.getReasonPhrase();
+    }
 
-	public R(boolean success, String code, String msg, T data) {
-		super();
-		this.success = success;
-		this.code = code;
-		this.msg = msg;
-		this.data = data;
-	}
-
-	public static R<String> SUCCESS(){
-		return new R<String>(true, R_CODE.SUCCESS.CODE, R_CODE.SUCCESS.MSG);
+	public static R SUCCESS(){
+		HttpStatus httpStatus = HttpStatus.OK;
+		return new R(new Model(true, httpStatus.value()+"", httpStatus.getReasonPhrase(), null), httpStatus);
 	}
 
 	public static <T> R<T> SUCCESS(T t){
-		return new R<T>(true, R_CODE.SUCCESS.CODE, R_CODE.SUCCESS.MSG, t);
+		HttpStatus httpStatus = HttpStatus.OK;
+		return new R(new Model(true, httpStatus.value()+"", httpStatus.getReasonPhrase(), t), httpStatus);
 	}
 
-	public static R<String> SUCCESS(String msg){
-		return new R<String>(true, R_CODE.SUCCESS.CODE, msg);
+	public static R SUCCESS(String msg){
+		HttpStatus httpStatus = HttpStatus.OK;
+		return new R(new Model(true, httpStatus.value()+"", msg, null), httpStatus);
 	}
 
-	public static R<String> SUCCESS(String code, String msg){
-		return new R<String>(true, code, msg);
-	}
-
-	public static R<String> ERROR(){
-		return new R<String>(false, R_CODE.ERROR.CODE, R_CODE.ERROR.MSG);
+	public static R ERROR(){
+		HttpStatus httpStatus = HttpStatus.INTERNAL_SERVER_ERROR;
+		return new R(new Model(false, httpStatus.value()+"", R_CODE.ERROR.MSG, null), httpStatus);
 	}
 
 	public static <T> R<T> ERROR(T t){
-		return new R<T>(false, R_CODE.ERROR.CODE, R_CODE.ERROR.MSG, t);
+		HttpStatus httpStatus = HttpStatus.INTERNAL_SERVER_ERROR;
+		return new R(new Model(false, httpStatus.value()+"", R_CODE.ERROR.MSG, t), httpStatus);
 	}
 
-	public static R<String> ERROR(String msg){
-		return new R<String>(false, R_CODE.ERROR.CODE, msg);
+	public static R ERROR(String msg){
+		HttpStatus httpStatus = HttpStatus.INTERNAL_SERVER_ERROR;
+		return new R(new Model(false, httpStatus.value()+"", msg, null), httpStatus);
 	}
 
-	public static R<String> ERROR(String code, String msg){
-		return new R<String>(false, code, msg);
+	public static R MODEL(HttpStatus httpStatus){
+		return new R(new Model(httpStatus == HttpStatus.OK, httpStatus != null ? httpStatus.value()+"" : null, httpStatus != null ? httpStatus.getReasonPhrase() : null, null), httpStatus);
+	}
+
+	public static R MODEL(HttpStatus httpStatus, String msg){
+		return new R(new Model(httpStatus == HttpStatus.OK, httpStatus != null ? httpStatus.value()+"" : null, msg, null), httpStatus);
+	}
+
+	public static <T> R<T> MODEL(HttpStatus httpStatus, T t){
+		return new R(new Model(httpStatus == HttpStatus.OK,  httpStatus != null ? httpStatus.value()+"" : null, httpStatus != null ? httpStatus.getReasonPhrase() : null, t), httpStatus);
+	}
+
+	/**
+	 * 非标准 httpStatus，返回 500
+	 *
+	 * @param httpStatus
+	 * @return
+	 */
+	public static R MODEL(String httpStatus){
+		HttpStatus httpStatus1 = HttpStatus.valueOf(httpStatus);
+		return httpStatus1 != null ? new R(new Model(httpStatus1 == HttpStatus.OK, httpStatus1 != null ? httpStatus1.value()+"" : null, httpStatus1 != null ? httpStatus1.getReasonPhrase() : null, null), httpStatus1)
+									: new R(new Model(false, httpStatus, null, null), HttpStatus.INTERNAL_SERVER_ERROR);
+	}
+
+	/**
+	 * 非标准 httpStatus，返回 500
+	 *
+	 * @param httpStatus
+	 * @param msg
+	 * @return
+	 */
+	public static R MODEL(String httpStatus, String msg){
+		HttpStatus httpStatus1 = HttpStatus.valueOf(httpStatus);
+		return httpStatus1 != null ? new R(new Model(httpStatus1 == HttpStatus.OK, httpStatus1 != null ? httpStatus1.value()+"" : null, msg, null), httpStatus1)
+									: new R(new Model(false, httpStatus, msg, null), HttpStatus.INTERNAL_SERVER_ERROR);
+	}
+
+	/**
+	 * 非标准 httpStatus，返回 500
+	 *
+	 * @param httpStatus
+	 * @param t
+	 * @param <T>
+	 * @return
+	 */
+	public static <T> R<T> MODEL(String httpStatus, T t){
+		HttpStatus httpStatus1 = HttpStatus.valueOf(httpStatus);
+		return httpStatus1 != null ? new R(new Model(httpStatus1 == HttpStatus.OK,  httpStatus1 != null ? httpStatus1.value()+"" : null, httpStatus1 != null ? httpStatus1.getReasonPhrase() : null, t), httpStatus1)
+									: new R(new Model(false,  httpStatus,  null, t), HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 
 
-	public static R<String> E500(){
-		return new R<String>(false,R_CODE.SYS_ERROR.CODE, R_CODE.SYS_ERROR.MSG);
-	}
+	@Data
+	static class Model<T>{
+		private boolean success;
+		private String code;
+		private String msg;
+		private T data;
 
-	public static R<String> E404(){
-		return new R<String>(false,R_CODE.NOT_FOUND.CODE, R_CODE.NOT_FOUND.MSG);
-	}
+		public Model() {}
+		public Model(boolean success, String code, String msg, T data) {
+			this.success = success;
+			this.code = code;
+			this.msg = msg;
+			this.data = data;
+		}
 
-	public String getCode() {
-		return code;
-	}
+		@Override
+		public String toString() {
+			return "R [success=" + success + ", code=" + code + ", msg=" + msg + ", data=" + data + "]";
+		}
 
-	public void setCode(String code) {
-		this.code = code;
-	}
-
-	public String getMsg() {
-		return msg;
-	}
-
-	public void setMsg(String msg) {
-		this.msg = msg;
-	}
-
-	public T getData() {
-		return data;
-	}
-
-	public void setData(T data) {
-		this.data = data;
-	}
-
-	public boolean isSuccess() {
-		return success;
-	}
-
-	public void setSuccess(boolean success) {
-		this.success = success;
-	}
-
-	@Override
-	public String toString() {
-		return "R [success=" + success + ", code=" + code + ", msg=" + msg + ", data=" + data + "]";
+		public boolean isSuccess() {
+			return success;
+		}
 	}
 }
