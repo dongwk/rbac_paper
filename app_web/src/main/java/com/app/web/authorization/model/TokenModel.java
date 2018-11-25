@@ -14,6 +14,9 @@ public class TokenModel {
     //随机生成的uuid
     private String token;
 
+    public TokenModel() {
+    }
+
     public TokenModel(long userId, String token) {
         this.userId = userId;
         this.token = token;

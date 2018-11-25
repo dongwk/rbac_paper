@@ -16,22 +16,22 @@ public interface TokenManager {
 
     /**
      * 检查token是否有效
-     * @param model token
+     * @param token
      * @return 是否有效
      */
-    boolean checkToken(TokenModel model);
+    boolean checkToken(String token);
 
     /**
      * 从字符串中解析token
-     * @param authentication 加密后的字符串
+     * @param token 加密后的字符串
      * @return
      */
-    TokenModel getToken(String authentication);
+    TokenModel getToken(String token);
 
     /**
      * 清除token
-     * @param userId 登录用户的id
+     * @param token 登录用户的id
      */
-    void deleteToken(long userId);
+    void deleteToken(String token);
 
 }

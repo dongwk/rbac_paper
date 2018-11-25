@@ -24,4 +24,12 @@ public class MapperSupportService<M extends BaseMapper<T>, T> extends ServiceImp
         List<T> list = baseMapper.selectList(new EntityWrapper<>(t));
         return list.size() > 0 ? list.get(0):null;
     }
+
+    public T getOne(T t){
+        return baseMapper.selectOne(t);
+    }
+
+    public T get(Serializable id){
+        return baseMapper.selectById(id);
+    }
 }

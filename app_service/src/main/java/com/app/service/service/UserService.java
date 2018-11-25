@@ -17,4 +17,6 @@ public class UserService extends MapperSupportService<UserMapper, User> {
         u.setPassword(password);
         return get(u);
     }
+
+
 }

@@ -104,7 +104,8 @@ https://www.oschina.net/p/guns
 12、spring boot 配置首页
 13、spring boot 500,404处理，错误页面已经准备好了，异常先，错误编码后，统一交给错误编码处理
 14、maven 插件是继承的，spring boot 加载只针对对应的那个项目就可以
-15、先暂停该项，调整标准 rest
+15、先暂停该项，调整标准 rest，未完 TODO
+16、接口超时时间，每层接口都加一个超时时间记录
 
 
 
@@ -139,3 +140,5 @@ https://www.oschina.net/p/guns
 # 默认编码 UTF-8 
 # rest 参照 https://github.com/ScienJus/spring-restful-authorization 
 # 代码中的作者 ScienJus，是参照他的
+# 接口超时参照 https://www.bbsmax.com/A/pRdB2yPdnx/
+# trance id 已去掉 接口超时参照里有 trace id，暂时没有微服务暂时没有 trace id，记录日志跟踪

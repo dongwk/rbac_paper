@@ -3,37 +3,31 @@ package com.app.web.authorization.manager.impl;
 import com.app.web.authorization.config.Constants;
 import com.app.web.authorization.manager.TokenManager;
 import com.app.web.authorization.model.TokenModel;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.JdkSerializationRedisSerializer;
 import org.springframework.stereotype.Component;
 
+import java.util.Map;
 import java.util.UUID;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.TimeUnit;
 
 /**
- * 通过Redis存储和验证token的实现类
+ * 内存 Token
  * @see TokenManager
- * @author ScienJus
- * @date 2015/7/31.
+ * @date 2018/11/21
  */
 @Component
-public class RedisTokenManager implements TokenManager {
+public class MemTokenManager implements TokenManager {
 
-    private RedisTemplate<Long, String> redis;
-
-    public void setRedis(RedisTemplate redis) {
-        this.redis = redis;
-        //泛型设置成Long后必须更改对应的序列化方案
-        redis.setKeySerializer(new JdkSerializationRedisSerializer());
-    }
+    public static Map<String, TokenModel> tokens = new ConcurrentHashMap<>();
 
     public TokenModel createToken(long userId) {
         //使用uuid作为源token
         String token = UUID.randomUUID().toString().replace("-", "");
         TokenModel model = new TokenModel(userId, token);
         //存储到redis并设置过期时间
-        redis.boundValueOps(userId).set(token, Constants.TOKEN_EXPIRES_HOUR, TimeUnit.HOURS);
+        tokens.put(token, model);
         return model;
     }
 
@@ -48,13 +42,10 @@ public class RedisTokenManager implements TokenManager {
         if (token == null) {
             return false;
         }
-        //如果验证成功，说明此用户进行了一次有效操作，延长token的过期时间
-        return true;
+        return tokens.get(token) != null;
     }
 
     public void deleteToken(String token) {
-
-        // TODO 待完善删除 token 功能，类似登出
-//        redis.delete(token);
+        tokens.remove(token);
     }
 }

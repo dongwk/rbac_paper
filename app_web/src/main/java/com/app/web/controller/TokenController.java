@@ -44,8 +44,6 @@ public class TokenController {
         //生成一个token，保存用户登录状态
 //        TokenModel model = tokenManager.createToken(user.getId());
         TokenModel model = new TokenModel(1,"lisi");
-        ResponseEntity re = new ResponseEntity(model, HttpStatus.OK);
-
         return R.SUCCESS(new LoginVo(model.getToken()));
     }
 
