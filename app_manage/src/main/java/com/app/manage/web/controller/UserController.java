@@ -3,10 +3,10 @@
  */
 package com.app.manage.web.controller;
 
-import com.app.common.web.common.R;
+import com.app.common.web.result.R;
 import com.app.manage.web.controller.base.BaseController;
 import com.app.model.model.User;
-import com.app.service.service.UserService;
+import com.app.service.service.UserSimpleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,7 +21,7 @@ import java.util.List;
 public class UserController extends BaseController {
 
     @Autowired
-    private UserService userService;
+    private UserSimpleService userService;
 
 	@GetMapping
 	public R<?> index(){

@@ -1,33 +1,14 @@
 package com.app.model.model;
 
-public class UserGroupRole {
-    private Integer id;
+import com.app.model.base.BaseModel;
+import com.baomidou.mybatisplus.annotations.TableName;
+import lombok.Data;
 
+@TableName("app_user_group_role")
+@Data
+public class UserGroupRole extends BaseModel {
     private Integer userGroupId;
 
     private Integer roleId;
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public Integer getUserGroupId() {
-        return userGroupId;
-    }
-
-    public void setUserGroupId(Integer userGroupId) {
-        this.userGroupId = userGroupId;
-    }
-
-    public Integer getRoleId() {
-        return roleId;
-    }
-
-    public void setRoleId(Integer roleId) {
-        this.roleId = roleId;
-    }
 }

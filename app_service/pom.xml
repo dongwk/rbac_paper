@@ -19,11 +19,6 @@
 		</dependency>
 		<dependency>
 			<groupId>com.mycompany</groupId>
-			<artifactId>app_util</artifactId>
-			<version>${project.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>com.mycompany</groupId>
 			<artifactId>app_common</artifactId>
 			<version>${project.version}</version>
 		</dependency>

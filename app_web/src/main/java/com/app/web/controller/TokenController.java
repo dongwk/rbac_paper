@@ -1,6 +1,6 @@
 package com.app.web.controller;
 
-import com.app.common.web.common.R;
+import com.app.common.web.result.R;
 import com.app.model.model.User;
 import com.app.service.service.UserService;
 import com.app.web.authorization.annotation.Authorization;
@@ -14,7 +14,6 @@ import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.*;
 

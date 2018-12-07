@@ -11,8 +11,8 @@ public class KeyValueHandle {
         if (ary == null || ary.length < 1) return null;
 
         for (T e: ary) {
-            System.out.println(e.getKey());
-            if (key.equals(e.getKey())){
+            System.out.println(e.getValue());
+            if (key.equals(e.getValue())){
                 return e;
             }
         }
@@ -28,7 +28,7 @@ public class KeyValueHandle {
 
         for (T e: ary) {
             for (Object key : keys) {
-                if (key.equals(e.getKey())){
+                if (key.equals(e.getValue())){
                     list.add(e);
                 }
             }

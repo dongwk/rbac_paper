@@ -3,16 +3,17 @@
  */
 package com.app.web.controller.common;
 
-import com.app.common.web.common.R;
+import com.app.common.web.result.R;
 import com.app.web.common.ErrorPagePath;
 import com.app.web.controller.base.BaseController;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
+@Slf4j
 public class ErrorPageController extends BaseController{
-
 
 	@GetMapping(value = ErrorPagePath.E404)
     @ResponseBody

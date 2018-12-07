@@ -5,10 +5,10 @@ package com.app.service.service;
 
 import com.app.mapper.mapper.AuthorityMapper;
 import com.app.model.model.Authority;
-import com.app.service.base.MapperSupportService;
+import com.app.service.base.BaseSimpleService;
 import org.springframework.stereotype.Service;
 
 @Service
-public class AuthorityService extends MapperSupportService<AuthorityMapper, Authority> {
+public class AuthorityService extends BaseSimpleService<AuthorityMapper, Authority> {
 
 }

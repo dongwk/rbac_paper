@@ -3,7 +3,7 @@
  */
 package com.app.manage.web.controller.base;
 
-import com.app.util.JsonUtil;
+import com.app.common.util.JsonUtil;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
