@@ -14,6 +14,8 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 /**
  * @author dongwk
  * @version 1.0
@@ -39,7 +41,7 @@ public class BaseSimpleController<S extends BaseSimpleService, T extends BaseMod
     // 默认页数
     protected static int DEFAULT_PAGE = 1;
     // 默认条数
-    protected static int DEFAULT_PER_PAGE = 10;
+    protected static int DEFAULT_PER_PAGE = 20;
     // 排序字段
     private static final String SORT = "sort";
     // 过滤字段
@@ -49,73 +51,10 @@ public class BaseSimpleController<S extends BaseSimpleService, T extends BaseMod
     // 条数字段
     private static final String PER_PAGE = "per_page";
 
-    /**
-     * 每页条数
-     * @author dongwk
-     * @date 2018/12/5
-     */
-    protected int getPerPage(){
-        String perPage = request.getParameter(PER_PAGE);
-        return ValidateUtil.isInteger(perPage) ?  Integer.parseInt(perPage) : 0;
-    }
-
-    /**
-     * 页数
-     * @author dongwk
-     * @date 2018/12/5
-     */
-    protected int getPage(){
-        String page = request.getParameter(PAGE);
-        return ValidateUtil.isInteger(page) ?  Integer.parseInt(page) : 0;
-    }
-
-    /**
-     * 显示字段
-     * @author dongwk
-     * @date 2018/12/5
-     * @return
-     */
-    protected String[] getFields(){
-        String fields = request.getParameter(FIELDS);
-        String[] ary = StringUtils.isNoneEmpty(fields) ? StringUtils.split(fields, ",") : null;
-        if (ary != null) {
-
-        }
-        return ary;
-    }
-
-    /**
-     * 排序字段
-     * @author dongwk
-     * @date 2018/12/4
-     * @return [{filed1, asc or desc}, {filed2, asc or desc}]
-     */
-    protected String[][] getSort(){
-        String sort = request.getParameter(SORT);
-        String[] fileds = StringUtils.isNoneEmpty(sort) ? StringUtils.split(sort, ","):null;
-        if (fileds == null) return null;
-        String[][] sortfileds = new String[fileds.length][2];
-
-        for (int i = 0; i < fileds.length; i++) {
-            String sortFiled = fileds[i];
-            if (sortFiled.startsWith("-")){
-                sortfileds[i][0] = sortFiled.substring(1);
-                sortfileds[i][1] = "desc";
-            } else {
-                sortfileds[i][0] = sortFiled;
-                sortfileds[i][1] = "asc";
-            }
-        }
-
-        return sortfileds;
-    }
-
     @GetMapping
     public R<?> get(){
-        Wrapper<T> wrapper = new EntityWrapper<>();
-        wrapper.setSqlSelect("username");
-        Page<T> page = baseSimpleService.selectPage(new Page(getPage(), getPerPage()));
-        return R.SUCCESS(page.getRecords());
+        List<T> list = baseSimpleService.selectList(null);
+        return R.SUCCESS(list);
     }
 
     @PostMapping
@@ -157,5 +96,87 @@ public class BaseSimpleController<S extends BaseSimpleService, T extends BaseMod
         obj.setId(id != null ? Integer.parseInt(id):null);
         obj.setUpdateTime(DateUtil.date());
         return R.SUCCESS(baseSimpleService.updateById(obj));
+    }
+
+
+    /**
+     * 每页条数
+     * @author dongwk
+     * @date 2018/12/5
+     */
+    protected int getPerPage(){
+        String perPage = request.getParameter(PER_PAGE);
+        return ValidateUtil.isInteger(perPage) ?  Integer.parseInt(perPage) : 0;
+    }
+
+    /**
+     * 页数
+     * @author dongwk
+     * @date 2018/12/5
+     */
+    protected int getPage(){
+        String page = request.getParameter(PAGE);
+        return ValidateUtil.isInteger(page) ?  Integer.parseInt(page) : 0;
+    }
+
+    /**
+     * 每页条数
+     * @author dongwk
+     * @date 2018/12/5
+     */
+    protected int getDefPerPage(){
+        String perPage = request.getParameter(PER_PAGE);
+        return ValidateUtil.isInteger(perPage) ?  Integer.parseInt(perPage) : DEFAULT_PER_PAGE;
+    }
+
+    /**
+     * 页数
+     * @author dongwk
+     * @date 2018/12/5
+     */
+    protected int getDefPage(){
+        String page = request.getParameter(PAGE);
+        return ValidateUtil.isInteger(page) ?  Integer.parseInt(page) : DEFAULT_PAGE;
+    }
+
+    /**
+     * 显示字段
+     * @author dongwk
+     * @date 2018/12/5
+     * @return
+     */
+    protected String[] getFields(){
+        String fields = request.getParameter(FIELDS);
+        String[] ary = StringUtils.isNoneEmpty(fields) ? StringUtils.split(fields, ",") : null;
+        if (ary != null) {
+
+        }
+        return ary;
+    }
+
+    /**
+     * 排序字段
+     * @author dongwk
+     * @date 2018/12/4
+     * @return [{filed1, asc or desc}, {filed2, asc or desc}]
+     */
+    protected String[][] getSort(){
+        String sort = request.getParameter(SORT);
+        String[] fileds = StringUtils.isNoneEmpty(sort) ? StringUtils.split(sort, ","):null;
+        if (fileds == null) return null;
+        String[][] sortfileds = new String[fileds.length][2];
+
+        for (int i = 0; i < fileds.length; i++) {
+            String sortFiled = fileds[i];
+            if (sortFiled.startsWith("-")){
+                sortfileds[i][0] = sortFiled.substring(1);
+                sortfileds[i][1] = "desc";
+            } else {
+                sortfileds[i][0] = sortFiled;
+                sortfileds[i][1] = "asc";
+            }
+        }
+
+        return sortfileds;
     }
 }
