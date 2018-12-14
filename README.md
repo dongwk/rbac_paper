@@ -106,7 +106,10 @@ https://www.oschina.net/p/guns
 14、maven 插件是继承的，spring boot 加载只针对对应的那个项目就可以
 15、先暂停该项，调整标准 rest，未完 TODO
 16、接口超时时间，每层接口都加一个超时时间记录，已加，要验证一下
-17、rest 动态字段内容，需要修改 mybatis plus 源码 
+17、rest 动态字段内容，需要修改 mybatis plus 源码，已确认 Wrapper 包装类有字段的功能
+18、公共字段填充，已解决，忘加了一个注解，源码没怎么看懂
+19、肯定是先异常后状态码，自己的理解 exception 之后才是 500
+
 
 
 
@@ -143,3 +146,7 @@ https://www.oschina.net/p/guns
 # 代码中的作者 ScienJus，是参照他的
 # 接口超时参照 https://www.bbsmax.com/A/pRdB2yPdnx/
 # trance id 已去掉 接口超时参照里有 trace id，暂时没有微服务暂时没有 trace id，记录日志跟踪
+# 多次request.getInputStream 参考两篇文章：
+# https://www.programcreek.com/java-api-examples/index.php?api=org.springframework.web.util.ContentCachingRequestWrapper
+# http://www.itgo.me/a/7708268096777122645/reading-httprequest-content-from-spring-exception-handler
+#

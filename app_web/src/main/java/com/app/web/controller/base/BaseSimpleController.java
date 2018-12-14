@@ -6,6 +6,8 @@ import com.app.model.base.BaseModel;
 import com.app.service.base.BaseSimpleService;
 import com.app.common.util.date.DateUtil;
 import com.app.common.util.reflection.GenericUtils;
+import com.baomidou.mybatisplus.mapper.EntityWrapper;
+import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.baomidou.mybatisplus.plugins.Page;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
@@ -35,9 +37,9 @@ public class BaseSimpleController<S extends BaseSimpleService, T extends BaseMod
     private final Class<T> tClass = (Class<T>) GenericUtils.extractSecondModelClass(getClass());
 
     // 默认页数
-    private static int DEFAULT_PAGE = 1;
+    protected static int DEFAULT_PAGE = 1;
     // 默认条数
-    private static int DEFAULT_PER_PAGE = 20;
+    protected static int DEFAULT_PER_PAGE = 10;
     // 排序字段
     private static final String SORT = "sort";
     // 过滤字段
@@ -110,13 +112,9 @@ public class BaseSimpleController<S extends BaseSimpleService, T extends BaseMod
 
     @GetMapping
     public R<?> get(){
-        int perPage = getPerPage();
-        int page1 = getPage();
-
-        perPage = (perPage == 0 ? DEFAULT_PER_PAGE : perPage);
-        page1 = (page1 == 0 ? DEFAULT_PAGE : page1);
-
-        Page<T> page = baseSimpleService.selectPage(new Page(page1, perPage));
+        Wrapper<T> wrapper = new EntityWrapper<>();
+        wrapper.setSqlSelect("username");
+        Page<T> page = baseSimpleService.selectPage(new Page(getPage(), getPerPage()));
         return R.SUCCESS(page.getRecords());
     }
 

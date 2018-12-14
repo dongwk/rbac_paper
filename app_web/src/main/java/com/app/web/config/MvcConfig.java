@@ -2,7 +2,9 @@ package com.app.web.config;
 
 import com.app.web.authorization.interceptor.AuthorizationInterceptor;
 import com.app.web.authorization.resolvers.CurrentUserMethodArgumentResolver;
+import com.app.web.filter.RequestBodyCachingFilter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
@@ -20,9 +22,15 @@ import java.util.List;
 @Configuration
 public class MvcConfig implements WebMvcConfigurer {
 
+    /**
+     * 权限
+     */
     @Autowired
     private AuthorizationInterceptor authorizationInterceptor;
 
+    /**
+     * 当前登录用户
+     */
     @Autowired
     private CurrentUserMethodArgumentResolver currentUserMethodArgumentResolver;
 
@@ -34,5 +42,14 @@ public class MvcConfig implements WebMvcConfigurer {
     @Override
     public void addArgumentResolvers(List<HandlerMethodArgumentResolver> argumentResolvers) {
         argumentResolvers.add(currentUserMethodArgumentResolver);
+    }
+
+    /**
+     * request.getInputStream 缓存
+     * @return
+     */
+    @Bean
+    public RequestBodyCachingFilter requestBodyCachingFilter() {
+        return new RequestBodyCachingFilter();
     }
 }
