@@ -22,7 +22,7 @@ import java.util.List;
  * @date 2018/11/27 14:42
  */
 @Slf4j
-public class BaseSimpleController<S extends BaseSimpleService, T extends BaseModel> extends BaseController {
+public class BaseRestController<S extends BaseSimpleService, T extends BaseModel> extends BaseController {
 
     /** 
      * 关键字

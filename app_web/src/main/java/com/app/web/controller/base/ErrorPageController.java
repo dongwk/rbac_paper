@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.app.web.controller.config;
+package com.app.web.controller.base;
 
 import com.app.common.web.result.R;
 import com.app.web.constant.ErrorPagePath;

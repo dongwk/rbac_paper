@@ -17,12 +17,12 @@ public class ErrorPageController extends BaseController {
 	@GetMapping(value = ErrorPagePath.E404)
     @ResponseBody
 	public R<?> E404(){
-		return R.MODEL("404");
+		return R.MODEL(404);
 	}
 
 	@GetMapping(value = ErrorPagePath.E500)
 	@ResponseBody
 	public R<?> E500(){
-		return R.MODEL("500");
+		return R.MODEL(500);
 	}
 }

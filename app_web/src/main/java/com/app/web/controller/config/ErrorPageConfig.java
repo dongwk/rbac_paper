@@ -1,4 +1,4 @@
-package com.app.web.config;
+package com.app.web.controller.config;
 
 import com.app.web.constant.ErrorPagePath;
 import org.springframework.boot.web.server.ErrorPage;

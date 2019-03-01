@@ -1,4 +1,4 @@
-package com.app.web.config;
+package com.app.web.controller.config;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.ObjectMapper;

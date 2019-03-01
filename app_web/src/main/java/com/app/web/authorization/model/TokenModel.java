@@ -21,4 +21,6 @@ public class TokenModel {
         this.userId = userId;
         this.token = token;
     }
+    
+    
 }
