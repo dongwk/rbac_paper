@@ -8,6 +8,8 @@ import com.app.model.model.User;
 import com.app.service.base.BaseSimpleService;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UserService extends BaseSimpleService<UserMapper, User> {
 
@@ -18,5 +20,7 @@ public class UserService extends BaseSimpleService<UserMapper, User> {
         return get(u);
     }
 
-
+    public List<User> selectAll(){
+        return baseMapper.selectAll();
+    }
 }

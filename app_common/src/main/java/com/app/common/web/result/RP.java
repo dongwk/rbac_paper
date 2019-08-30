@@ -10,11 +10,21 @@ import java.util.List;
  * @date 2018/12/6
  */
 @Data
-public class RPage<T> {
+public class RP<T> {
     private Integer page;
     private Integer size;
     private Integer totalPage;
     private Integer totalSize;
     private List<T> data;
 
+    public RP() {
+    }
+
+    public RP(Integer page, Integer size, Integer totalPage, Integer totalSize, List<T> data) {
+        this.page = page;
+        this.size = size;
+        this.totalPage = totalPage;
+        this.totalSize = totalSize;
+        this.data = data;
+    }
 }

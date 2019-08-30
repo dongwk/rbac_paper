@@ -38,6 +38,7 @@ http://blog.csdn.net/painsonline/article/details/7183613/
 这个问题不好，但回答可以
 好文，但是这样这不是太啰嗦了？用户组和角色的设计是否重复？
 回复fusionc：角色表与用户组是不冲突的，拿一个公司来说把，用户组是部门，角色表是职位，用户表就是员工
+https://github.com/macrozheng/mall
 
 想法
 1、
@@ -150,3 +151,4 @@ https://www.oschina.net/p/guns
 # https://www.programcreek.com/java-api-examples/index.php?api=org.springframework.web.util.ContentCachingRequestWrapper
 # http://www.itgo.me/a/7708268096777122645/reading-httprequest-content-from-spring-exception-handler
 # 有办法动态实现动态字段么，filed 参数动态查询
+http://www.ruanyifeng.com/blog/2014/05/restful_api.html rest 

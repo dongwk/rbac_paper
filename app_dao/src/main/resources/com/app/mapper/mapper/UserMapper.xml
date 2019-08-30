@@ -12,4 +12,10 @@
     <sql id="Base_Column_List">
         id, username, password, status, create_time, update_time
     </sql>
+
+    <select id="selectAll" resultType="com.app.model.model.User">
+        select
+          <include refid="Base_Column_List" />
+        from app_user
+    </select>
 </mapper>

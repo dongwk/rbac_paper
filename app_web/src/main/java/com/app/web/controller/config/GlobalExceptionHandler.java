@@ -35,7 +35,7 @@ class GlobalExceptionHandler {
         mav.addObject("url", req.getRequestURL());
         mav.addObject("exception", e.getMessage());
         ContentCachingRequestWrapper req1 = getUnderlyingCachingRequest(req);
-        log.error("GlobalExceptionHandler Url:{}, Params:{}, RequestBody:{}, Exception:{}",
+        log.error("GlobalExceptionHandler url:{}, params:{}, requestBody:{}, exception:{}",
                 req.getRequestURL(), req.getParameterMap(), req1 != null ? new String(req1.getContentAsByteArray(), "UTF-8"):null, ExceptionUtils.getStackTrace(e));
 
         return mav;
