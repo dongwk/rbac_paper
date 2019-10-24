@@ -3,6 +3,7 @@
  */
 package com.app.web.controller.base;
 
+import com.app.web.controller.common.TokenHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.servlet.http.HttpServletRequest;
@@ -19,5 +20,8 @@ public class BaseController {
 
     @Autowired
     protected HttpSession session;
+
+    @Autowired
+    private TokenHandler tokenHandler;
 
 }

@@ -1,7 +1,6 @@
 package com;
 
-import com.app.model.model.User;
-import com.app.web.util.FieldsUtils;
+import com.app.web.utils.FieldsUtils;
 import com.app.web.vo.UserVo;
 import org.junit.Assert;
 import org.junit.Test;

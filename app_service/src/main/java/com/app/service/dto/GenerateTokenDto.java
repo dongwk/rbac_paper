@@ -1,17 +1,13 @@
-package com.app.web.vo;
+package com.app.service.dto;
 
 import lombok.Builder;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
-/**
- * @author dongwk
- * @date 2018/11/16 18:34
- **/
 @Data
 @Builder
 @Accessors(chain = true)
-public class LoginVo {
+public class GenerateTokenDto {
     private String token;
     private long expires;
     private boolean ssl;

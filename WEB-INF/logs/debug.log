@@ -1,0 +1,682 @@
+[INFO] [2018-01-28 17:47:36,603] [main] (StartupInfoLogger.java:48) com.app.web.springboot.Application - Starting Application on sshss-PC with PID 8984 (F:\workspace\idea\rbac_paper\app_web\target\classes started by Administrator in F:\workspace\idea\rbac_paper)
+[INFO] [2018-01-28 17:47:36,605] [main] (SpringApplication.java:593) com.app.web.springboot.Application - No active profile set, falling back to default profiles: default
+[INFO] [2018-01-28 17:47:36,772] [main] (AbstractApplicationContext.java:581) org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext - Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@463b4ac8: startup date [Sun Jan 28 17:47:36 CST 2018]; root of context hierarchy
+[INFO] [2018-01-28 17:47:39,342] [main] (AutowiredAnnotationBeanPostProcessor.java:155) org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+[INFO] [2018-01-28 17:47:40,616] [main] (TomcatEmbeddedServletContainer.java:89) org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer - Tomcat initialized with port(s): 8080 (http)
+[INFO] [2018-01-28 17:47:40,645] [main] (DirectJDKLog.java:179) org.apache.catalina.core.StandardService - Starting service [Tomcat]
+[INFO] [2018-01-28 17:47:40,648] [main] (DirectJDKLog.java:179) org.apache.catalina.core.StandardEngine - Starting Servlet Engine: Apache Tomcat/8.5.23
+[INFO] [2018-01-28 17:47:40,954] [localhost-startStop-1] (DirectJDKLog.java:179) org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+[INFO] [2018-01-28 17:47:40,955] [localhost-startStop-1] (EmbeddedWebApplicationContext.java:276) org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 4188 ms
+[INFO] [2018-01-28 17:47:41,490] [localhost-startStop-1] (AbstractFilterRegistrationBean.java:258) org.springframework.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'characterEncodingFilter' to: [/*]
+[INFO] [2018-01-28 17:47:41,491] [localhost-startStop-1] (AbstractFilterRegistrationBean.java:258) org.springframework.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+[INFO] [2018-01-28 17:47:41,491] [localhost-startStop-1] (AbstractFilterRegistrationBean.java:258) org.springframework.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'httpPutFormContentFilter' to: [/*]
+[INFO] [2018-01-28 17:47:41,491] [localhost-startStop-1] (AbstractFilterRegistrationBean.java:258) org.springframework.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'requestContextFilter' to: [/*]
+[INFO] [2018-01-28 17:47:41,496] [localhost-startStop-1] (AbstractFilterRegistrationBean.java:258) org.springframework.boot.web.servlet.DelegatingFilterProxyRegistrationBean - Mapping filter: 'springSecurityFilterChain' to: [/*]
+[INFO] [2018-01-28 17:47:41,497] [localhost-startStop-1] (ServletRegistrationBean.java:190) org.springframework.boot.web.servlet.ServletRegistrationBean - Mapping servlet: 'dispatcherServlet' to [/]
+[WARN] [2018-01-28 17:47:41,608] [main] (AbstractApplicationContext.java:549) org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'authorityElementMapper' defined in file [F:\workspace\idea\rbac_paper\app_dao\target\classes\com\app\mapper\mapper\AuthorityElementMapper.class]: Invocation of init method failed; nested exception is java.lang.IllegalArgumentException: Property 'sqlSessionFactory' or 'sqlSessionTemplate' are required
+[INFO] [2018-01-28 17:47:41,616] [main] (DirectJDKLog.java:179) org.apache.catalina.core.StandardService - Stopping service [Tomcat]
+[WARN] [2018-01-28 17:47:41,653] [localhost-startStop-1] (DirectJDKLog.java:179) org.apache.catalina.loader.WebappClassLoaderBase - The web application [ROOT] appears to have started a thread named [Abandoned connection cleanup thread] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.lang.Object.wait(Native Method)
+ java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:143)
+ com.mysql.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:40)
+[ERROR] [2018-01-28 17:47:41,715] [main] (SpringApplication.java:771) org.springframework.boot.SpringApplication - Application startup failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'authorityElementMapper' defined in file [F:\workspace\idea\rbac_paper\app_dao\target\classes\com\app\mapper\mapper\AuthorityElementMapper.class]: Invocation of init method failed; nested exception is java.lang.IllegalArgumentException: Property 'sqlSessionFactory' or 'sqlSessionTemplate' are required
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1578)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:545)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:482)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:197)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:757)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:861)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:541)
+	at org.springframework.boot.context.embedded.EmbeddedWebApplicationContext.refresh(EmbeddedWebApplicationContext.java:122)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:693)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:360)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:303)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1118)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1107)
+	at com.app.web.springboot.Application.main(Application.java:14)
+Caused by: java.lang.IllegalArgumentException: Property 'sqlSessionFactory' or 'sqlSessionTemplate' are required
+	at org.springframework.util.Assert.notNull(Assert.java:115)
+	at org.mybatis.spring.support.SqlSessionDaoSupport.checkDaoConfig(SqlSessionDaoSupport.java:75)
+	at org.mybatis.spring.mapper.MapperFactoryBean.checkDaoConfig(MapperFactoryBean.java:73)
+	at org.springframework.dao.support.DaoSupport.afterPropertiesSet(DaoSupport.java:44)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1637)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1574)
+	... 16 more
+[INFO] [2018-01-28 17:48:38,208] [main] (StartupInfoLogger.java:48) com.app.web.springboot.Application - Starting Application on sshss-PC with PID 6628 (F:\workspace\idea\rbac_paper\app_web\target\classes started by Administrator in F:\workspace\idea\rbac_paper)
+[INFO] [2018-01-28 17:48:38,212] [main] (SpringApplication.java:593) com.app.web.springboot.Application - No active profile set, falling back to default profiles: default
+[INFO] [2018-01-28 17:48:38,384] [main] (AbstractApplicationContext.java:581) org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext - Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@463b4ac8: startup date [Sun Jan 28 17:48:38 CST 2018]; root of context hierarchy
+[INFO] [2018-01-28 17:48:40,855] [main] (AutowiredAnnotationBeanPostProcessor.java:155) org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+[INFO] [2018-01-28 17:48:42,357] [main] (TomcatEmbeddedServletContainer.java:89) org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer - Tomcat initialized with port(s): 8080 (http)
+[INFO] [2018-01-28 17:48:42,381] [main] (DirectJDKLog.java:179) org.apache.catalina.core.StandardService - Starting service [Tomcat]
+[INFO] [2018-01-28 17:48:42,383] [main] (DirectJDKLog.java:179) org.apache.catalina.core.StandardEngine - Starting Servlet Engine: Apache Tomcat/8.5.23
+[INFO] [2018-01-28 17:48:42,704] [localhost-startStop-1] (DirectJDKLog.java:179) org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+[INFO] [2018-01-28 17:48:42,705] [localhost-startStop-1] (EmbeddedWebApplicationContext.java:276) org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 4328 ms
+[INFO] [2018-01-28 17:48:43,245] [localhost-startStop-1] (AbstractFilterRegistrationBean.java:258) org.springframework.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'characterEncodingFilter' to: [/*]
+[INFO] [2018-01-28 17:48:43,246] [localhost-startStop-1] (AbstractFilterRegistrationBean.java:258) org.springframework.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+[INFO] [2018-01-28 17:48:43,246] [localhost-startStop-1] (AbstractFilterRegistrationBean.java:258) org.springframework.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'httpPutFormContentFilter' to: [/*]
+[INFO] [2018-01-28 17:48:43,246] [localhost-startStop-1] (AbstractFilterRegistrationBean.java:258) org.springframework.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'requestContextFilter' to: [/*]
+[INFO] [2018-01-28 17:48:43,251] [localhost-startStop-1] (AbstractFilterRegistrationBean.java:258) org.springframework.boot.web.servlet.DelegatingFilterProxyRegistrationBean - Mapping filter: 'springSecurityFilterChain' to: [/*]
+[INFO] [2018-01-28 17:48:43,251] [localhost-startStop-1] (ServletRegistrationBean.java:190) org.springframework.boot.web.servlet.ServletRegistrationBean - Mapping servlet: 'dispatcherServlet' to [/]
+[INFO] [2018-01-28 17:48:44,254] [main] (RequestMappingHandlerAdapter.java:534) org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter - Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@463b4ac8: startup date [Sun Jan 28 17:48:38 CST 2018]; root of context hierarchy
+[INFO] [2018-01-28 17:48:44,457] [main] (AbstractHandlerMethodMapping.java:543) org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+[INFO] [2018-01-28 17:48:44,473] [main] (AbstractHandlerMethodMapping.java:543) org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+[INFO] [2018-01-28 17:48:44,723] [main] (AbstractUrlHandlerMapping.java:354) org.springframework.web.servlet.handler.SimpleUrlHandlerMapping - Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+[INFO] [2018-01-28 17:48:44,723] [main] (AbstractUrlHandlerMapping.java:354) org.springframework.web.servlet.handler.SimpleUrlHandlerMapping - Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+[INFO] [2018-01-28 17:48:44,832] [main] (AbstractUrlHandlerMapping.java:354) org.springframework.web.servlet.handler.SimpleUrlHandlerMapping - Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+[INFO] [2018-01-28 17:48:45,536] [main] (AuthenticationManagerConfiguration.java:173) org.springframework.boot.autoconfigure.security.AuthenticationManagerConfiguration - 
+
+Using default security password: 056c6be3-119d-4e1d-a7fc-a202bae531ef
+
+[INFO] [2018-01-28 17:48:45,692] [main] (DefaultSecurityFilterChain.java:28) org.springframework.security.web.DefaultSecurityFilterChain - Creating filter chain: OrRequestMatcher [requestMatchers=[Ant [pattern='/css/**'], Ant [pattern='/js/**'], Ant [pattern='/images/**'], Ant [pattern='/webjars/**'], Ant [pattern='/**/favicon.ico'], Ant [pattern='/error']]], []
+[INFO] [2018-01-28 17:48:45,973] [main] (DefaultSecurityFilterChain.java:28) org.springframework.security.web.DefaultSecurityFilterChain - Creating filter chain: OrRequestMatcher [requestMatchers=[Ant [pattern='/**']]], [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@ed2f2f6, org.springframework.security.web.context.SecurityContextPersistenceFilter@5d94a2dc, org.springframework.security.web.header.HeaderWriterFilter@687e6293, org.springframework.security.web.authentication.logout.LogoutFilter@3c0e00a8, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@3b4825f0, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@59b32539, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@60a7e509, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@fe87ddd, org.springframework.security.web.session.SessionManagementFilter@7e4579c7, org.springframework.security.web.access.ExceptionTranslationFilter@1f2f0109, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@25a7fedf]
+[INFO] [2018-01-28 17:48:46,521] [main] (MBeanExporter.java:431) org.springframework.jmx.export.annotation.AnnotationMBeanExporter - Registering beans for JMX exposure on startup
+[INFO] [2018-01-28 17:48:46,614] [main] (DirectJDKLog.java:179) org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+[INFO] [2018-01-28 17:48:46,661] [main] (DirectJDKLog.java:179) org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+[INFO] [2018-01-28 17:48:46,692] [main] (DirectJDKLog.java:179) org.apache.tomcat.util.net.NioSelectorPool - Using a shared selector for servlet write/read
+[INFO] [2018-01-28 17:48:46,974] [main] (TomcatEmbeddedServletContainer.java:201) org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer - Tomcat started on port(s): 8080 (http)
+[INFO] [2018-01-28 17:48:46,974] [main] (StartupInfoLogger.java:57) com.app.web.springboot.Application - Started Application in 10.836 seconds (JVM running for 12.02)
+[INFO] [2018-01-28 18:01:29,854] [main] (StartupInfoLogger.java:48) com.app.web.springboot.Application - Starting Application on sshss-PC with PID 7296 (F:\workspace\idea\rbac_paper\app_web\target\classes started by Administrator in F:\workspace\idea\rbac_paper)
+[INFO] [2018-01-28 18:01:29,855] [main] (SpringApplication.java:593) com.app.web.springboot.Application - No active profile set, falling back to default profiles: default
+[INFO] [2018-01-28 18:01:29,955] [main] (AbstractApplicationContext.java:581) org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext - Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@463b4ac8: startup date [Sun Jan 28 18:01:29 CST 2018]; root of context hierarchy
+[INFO] [2018-01-28 18:01:31,361] [main] (AutowiredAnnotationBeanPostProcessor.java:155) org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+[INFO] [2018-01-28 18:01:32,051] [main] (TomcatEmbeddedServletContainer.java:89) org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer - Tomcat initialized with port(s): 8080 (http)
+[INFO] [2018-01-28 18:01:32,069] [main] (DirectJDKLog.java:179) org.apache.catalina.core.StandardService - Starting service [Tomcat]
+[INFO] [2018-01-28 18:01:32,071] [main] (DirectJDKLog.java:179) org.apache.catalina.core.StandardEngine - Starting Servlet Engine: Apache Tomcat/8.5.23
+[INFO] [2018-01-28 18:01:32,254] [localhost-startStop-1] (DirectJDKLog.java:179) org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+[INFO] [2018-01-28 18:01:32,255] [localhost-startStop-1] (EmbeddedWebApplicationContext.java:276) org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 2305 ms
+[INFO] [2018-01-28 18:01:32,526] [localhost-startStop-1] (AbstractFilterRegistrationBean.java:258) org.springframework.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'characterEncodingFilter' to: [/*]
+[INFO] [2018-01-28 18:01:32,527] [localhost-startStop-1] (AbstractFilterRegistrationBean.java:258) org.springframework.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+[INFO] [2018-01-28 18:01:32,527] [localhost-startStop-1] (AbstractFilterRegistrationBean.java:258) org.springframework.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'httpPutFormContentFilter' to: [/*]
+[INFO] [2018-01-28 18:01:32,527] [localhost-startStop-1] (AbstractFilterRegistrationBean.java:258) org.springframework.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'requestContextFilter' to: [/*]
+[INFO] [2018-01-28 18:01:32,531] [localhost-startStop-1] (AbstractFilterRegistrationBean.java:258) org.springframework.boot.web.servlet.DelegatingFilterProxyRegistrationBean - Mapping filter: 'springSecurityFilterChain' to: [/*]
+[INFO] [2018-01-28 18:01:32,531] [localhost-startStop-1] (ServletRegistrationBean.java:190) org.springframework.boot.web.servlet.ServletRegistrationBean - Mapping servlet: 'dispatcherServlet' to [/]
+[WARN] [2018-01-28 18:01:32,607] [main] (AbstractApplicationContext.java:549) org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'authorityElementMapper' defined in file [F:\workspace\idea\rbac_paper\app_dao\target\classes\com\app\mapper\mapper\AuthorityElementMapper.class]: Invocation of init method failed; nested exception is java.lang.IllegalArgumentException: Property 'sqlSessionFactory' or 'sqlSessionTemplate' are required
+[INFO] [2018-01-28 18:01:32,610] [main] (DirectJDKLog.java:179) org.apache.catalina.core.StandardService - Stopping service [Tomcat]
+[WARN] [2018-01-28 18:01:32,628] [localhost-startStop-1] (DirectJDKLog.java:179) org.apache.catalina.loader.WebappClassLoaderBase - The web application [ROOT] appears to have started a thread named [Abandoned connection cleanup thread] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.lang.Object.wait(Native Method)
+ java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:143)
+ com.mysql.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:40)
+[ERROR] [2018-01-28 18:01:32,653] [main] (SpringApplication.java:771) org.springframework.boot.SpringApplication - Application startup failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'authorityElementMapper' defined in file [F:\workspace\idea\rbac_paper\app_dao\target\classes\com\app\mapper\mapper\AuthorityElementMapper.class]: Invocation of init method failed; nested exception is java.lang.IllegalArgumentException: Property 'sqlSessionFactory' or 'sqlSessionTemplate' are required
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1578)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:545)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:482)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:197)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:757)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:861)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:541)
+	at org.springframework.boot.context.embedded.EmbeddedWebApplicationContext.refresh(EmbeddedWebApplicationContext.java:122)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:693)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:360)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:303)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1118)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1107)
+	at com.app.web.springboot.Application.main(Application.java:14)
+Caused by: java.lang.IllegalArgumentException: Property 'sqlSessionFactory' or 'sqlSessionTemplate' are required
+	at org.springframework.util.Assert.notNull(Assert.java:115)
+	at org.mybatis.spring.support.SqlSessionDaoSupport.checkDaoConfig(SqlSessionDaoSupport.java:75)
+	at org.mybatis.spring.mapper.MapperFactoryBean.checkDaoConfig(MapperFactoryBean.java:73)
+	at org.springframework.dao.support.DaoSupport.afterPropertiesSet(DaoSupport.java:44)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1637)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1574)
+	... 16 more
+[INFO] [2018-01-28 18:05:50,512] [main] (StartupInfoLogger.java:48) com.app.web.springboot.Application - Starting Application on sshss-PC with PID 1772 (F:\workspace\idea\rbac_paper\app_web\target\classes started by Administrator in F:\workspace\idea\rbac_paper)
+[INFO] [2018-01-28 18:05:50,512] [main] (SpringApplication.java:593) com.app.web.springboot.Application - No active profile set, falling back to default profiles: default
+[INFO] [2018-01-28 18:05:50,590] [main] (AbstractApplicationContext.java:581) org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext - Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@463b4ac8: startup date [Sun Jan 28 18:05:50 CST 2018]; root of context hierarchy
+[INFO] [2018-01-28 18:05:52,294] [main] (AutowiredAnnotationBeanPostProcessor.java:155) org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+[INFO] [2018-01-28 18:05:52,981] [main] (TomcatEmbeddedServletContainer.java:89) org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer - Tomcat initialized with port(s): 8080 (http)
+[INFO] [2018-01-28 18:05:52,997] [main] (DirectJDKLog.java:179) org.apache.catalina.core.StandardService - Starting service [Tomcat]
+[INFO] [2018-01-28 18:05:52,997] [main] (DirectJDKLog.java:179) org.apache.catalina.core.StandardEngine - Starting Servlet Engine: Apache Tomcat/8.5.23
+[INFO] [2018-01-28 18:05:53,216] [localhost-startStop-1] (DirectJDKLog.java:179) org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+[INFO] [2018-01-28 18:05:53,216] [localhost-startStop-1] (EmbeddedWebApplicationContext.java:276) org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 2626 ms
+[INFO] [2018-01-28 18:05:53,529] [localhost-startStop-1] (AbstractFilterRegistrationBean.java:258) org.springframework.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'characterEncodingFilter' to: [/*]
+[INFO] [2018-01-28 18:05:53,529] [localhost-startStop-1] (AbstractFilterRegistrationBean.java:258) org.springframework.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+[INFO] [2018-01-28 18:05:53,529] [localhost-startStop-1] (AbstractFilterRegistrationBean.java:258) org.springframework.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'httpPutFormContentFilter' to: [/*]
+[INFO] [2018-01-28 18:05:53,529] [localhost-startStop-1] (AbstractFilterRegistrationBean.java:258) org.springframework.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'requestContextFilter' to: [/*]
+[INFO] [2018-01-28 18:05:53,529] [localhost-startStop-1] (AbstractFilterRegistrationBean.java:258) org.springframework.boot.web.servlet.DelegatingFilterProxyRegistrationBean - Mapping filter: 'springSecurityFilterChain' to: [/*]
+[INFO] [2018-01-28 18:05:53,529] [localhost-startStop-1] (ServletRegistrationBean.java:190) org.springframework.boot.web.servlet.ServletRegistrationBean - Mapping servlet: 'dispatcherServlet' to [/]
+[WARN] [2018-01-28 18:05:53,607] [main] (AbstractApplicationContext.java:549) org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'authorityElementMapper' defined in file [F:\workspace\idea\rbac_paper\app_dao\target\classes\com\app\mapper\mapper\AuthorityElementMapper.class]: Invocation of init method failed; nested exception is java.lang.IllegalArgumentException: Property 'sqlSessionFactory' or 'sqlSessionTemplate' are required
+[INFO] [2018-01-28 18:05:53,622] [main] (DirectJDKLog.java:179) org.apache.catalina.core.StandardService - Stopping service [Tomcat]
+[WARN] [2018-01-28 18:05:53,638] [localhost-startStop-1] (DirectJDKLog.java:179) org.apache.catalina.loader.WebappClassLoaderBase - The web application [ROOT] appears to have started a thread named [Abandoned connection cleanup thread] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.lang.Object.wait(Native Method)
+ java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:143)
+ com.mysql.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:40)
+[ERROR] [2018-01-28 18:05:53,669] [main] (SpringApplication.java:771) org.springframework.boot.SpringApplication - Application startup failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'authorityElementMapper' defined in file [F:\workspace\idea\rbac_paper\app_dao\target\classes\com\app\mapper\mapper\AuthorityElementMapper.class]: Invocation of init method failed; nested exception is java.lang.IllegalArgumentException: Property 'sqlSessionFactory' or 'sqlSessionTemplate' are required
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1578)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:545)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:482)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:197)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:757)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:861)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:541)
+	at org.springframework.boot.context.embedded.EmbeddedWebApplicationContext.refresh(EmbeddedWebApplicationContext.java:122)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:693)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:360)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:303)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1118)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1107)
+	at com.app.web.springboot.Application.main(Application.java:14)
+Caused by: java.lang.IllegalArgumentException: Property 'sqlSessionFactory' or 'sqlSessionTemplate' are required
+	at org.springframework.util.Assert.notNull(Assert.java:115)
+	at org.mybatis.spring.support.SqlSessionDaoSupport.checkDaoConfig(SqlSessionDaoSupport.java:75)
+	at org.mybatis.spring.mapper.MapperFactoryBean.checkDaoConfig(MapperFactoryBean.java:73)
+	at org.springframework.dao.support.DaoSupport.afterPropertiesSet(DaoSupport.java:44)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1637)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1574)
+	... 16 more
+[INFO] [2018-01-28 18:06:46,954] [main] (StartupInfoLogger.java:48) com.app.web.springboot.Application - Starting Application on sshss-PC with PID 6752 (F:\workspace\idea\rbac_paper\app_web\target\classes started by Administrator in F:\workspace\idea\rbac_paper)
+[INFO] [2018-01-28 18:06:46,954] [main] (SpringApplication.java:593) com.app.web.springboot.Application - No active profile set, falling back to default profiles: default
+[INFO] [2018-01-28 18:06:47,032] [main] (AbstractApplicationContext.java:581) org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext - Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@463b4ac8: startup date [Sun Jan 28 18:06:47 CST 2018]; root of context hierarchy
+[INFO] [2018-01-28 18:06:48,706] [main] (AutowiredAnnotationBeanPostProcessor.java:155) org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+[INFO] [2018-01-28 18:06:49,440] [main] (TomcatEmbeddedServletContainer.java:89) org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer - Tomcat initialized with port(s): 8080 (http)
+[INFO] [2018-01-28 18:06:49,456] [main] (DirectJDKLog.java:179) org.apache.catalina.core.StandardService - Starting service [Tomcat]
+[INFO] [2018-01-28 18:06:49,471] [main] (DirectJDKLog.java:179) org.apache.catalina.core.StandardEngine - Starting Servlet Engine: Apache Tomcat/8.5.23
+[INFO] [2018-01-28 18:06:49,659] [localhost-startStop-1] (DirectJDKLog.java:179) org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+[INFO] [2018-01-28 18:06:49,659] [localhost-startStop-1] (EmbeddedWebApplicationContext.java:276) org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 2627 ms
+[INFO] [2018-01-28 18:06:49,940] [localhost-startStop-1] (AbstractFilterRegistrationBean.java:258) org.springframework.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'characterEncodingFilter' to: [/*]
+[INFO] [2018-01-28 18:06:49,940] [localhost-startStop-1] (AbstractFilterRegistrationBean.java:258) org.springframework.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+[INFO] [2018-01-28 18:06:49,940] [localhost-startStop-1] (AbstractFilterRegistrationBean.java:258) org.springframework.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'httpPutFormContentFilter' to: [/*]
+[INFO] [2018-01-28 18:06:49,940] [localhost-startStop-1] (AbstractFilterRegistrationBean.java:258) org.springframework.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'requestContextFilter' to: [/*]
+[INFO] [2018-01-28 18:06:49,940] [localhost-startStop-1] (AbstractFilterRegistrationBean.java:258) org.springframework.boot.web.servlet.DelegatingFilterProxyRegistrationBean - Mapping filter: 'springSecurityFilterChain' to: [/*]
+[INFO] [2018-01-28 18:06:49,940] [localhost-startStop-1] (ServletRegistrationBean.java:190) org.springframework.boot.web.servlet.ServletRegistrationBean - Mapping servlet: 'dispatcherServlet' to [/]
+[WARN] [2018-01-28 18:06:50,034] [main] (AbstractApplicationContext.java:549) org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'authorityElementMapper' defined in file [F:\workspace\idea\rbac_paper\app_dao\target\classes\com\app\mapper\mapper\AuthorityElementMapper.class]: Invocation of init method failed; nested exception is java.lang.IllegalArgumentException: Property 'sqlSessionFactory' or 'sqlSessionTemplate' are required
+[INFO] [2018-01-28 18:06:50,049] [main] (DirectJDKLog.java:179) org.apache.catalina.core.StandardService - Stopping service [Tomcat]
+[WARN] [2018-01-28 18:06:50,065] [localhost-startStop-1] (DirectJDKLog.java:179) org.apache.catalina.loader.WebappClassLoaderBase - The web application [ROOT] appears to have started a thread named [Abandoned connection cleanup thread] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.lang.Object.wait(Native Method)
+ java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:143)
+ com.mysql.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:40)
+[ERROR] [2018-01-28 18:06:50,096] [main] (SpringApplication.java:771) org.springframework.boot.SpringApplication - Application startup failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'authorityElementMapper' defined in file [F:\workspace\idea\rbac_paper\app_dao\target\classes\com\app\mapper\mapper\AuthorityElementMapper.class]: Invocation of init method failed; nested exception is java.lang.IllegalArgumentException: Property 'sqlSessionFactory' or 'sqlSessionTemplate' are required
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1578)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:545)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:482)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:197)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:757)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:861)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:541)
+	at org.springframework.boot.context.embedded.EmbeddedWebApplicationContext.refresh(EmbeddedWebApplicationContext.java:122)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:693)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:360)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:303)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1118)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1107)
+	at com.app.web.springboot.Application.main(Application.java:14)
+Caused by: java.lang.IllegalArgumentException: Property 'sqlSessionFactory' or 'sqlSessionTemplate' are required
+	at org.springframework.util.Assert.notNull(Assert.java:115)
+	at org.mybatis.spring.support.SqlSessionDaoSupport.checkDaoConfig(SqlSessionDaoSupport.java:75)
+	at org.mybatis.spring.mapper.MapperFactoryBean.checkDaoConfig(MapperFactoryBean.java:73)
+	at org.springframework.dao.support.DaoSupport.afterPropertiesSet(DaoSupport.java:44)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1637)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1574)
+	... 16 more
+[INFO] [2018-01-28 18:19:08,406] [main] (StartupInfoLogger.java:48) com.app.web.springboot.Application - Starting Application on sshss-PC with PID 3644 (F:\workspace\idea\rbac_paper\app_web\target\classes started by Administrator in F:\workspace\idea\rbac_paper)
+[INFO] [2018-01-28 18:19:08,406] [main] (SpringApplication.java:593) com.app.web.springboot.Application - No active profile set, falling back to default profiles: default
+[INFO] [2018-01-28 18:19:08,500] [main] (AbstractApplicationContext.java:581) org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext - Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@463b4ac8: startup date [Sun Jan 28 18:19:08 CST 2018]; root of context hierarchy
+[INFO] [2018-01-28 18:19:09,890] [main] (DefaultListableBeanFactory.java:843) org.springframework.beans.factory.support.DefaultListableBeanFactory - Overriding bean definition for bean 'dataSource' with a different definition: replacing [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=org.springframework.boot.autoconfigure.jdbc.DataSourceConfiguration$Dbcp; factoryMethodName=dataSource; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [org/springframework/boot/autoconfigure/jdbc/DataSourceConfiguration$Dbcp.class]] with [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=org.springframework.boot.autoconfigure.jdbc.DataSourceConfiguration$Tomcat; factoryMethodName=dataSource; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [org/springframework/boot/autoconfigure/jdbc/DataSourceConfiguration$Tomcat.class]]
+[INFO] [2018-01-28 18:19:10,562] [main] (AutowiredAnnotationBeanPostProcessor.java:155) org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+[INFO] [2018-01-28 18:19:11,312] [main] (TomcatEmbeddedServletContainer.java:89) org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer - Tomcat initialized with port(s): 8080 (http)
+[INFO] [2018-01-28 18:19:11,328] [main] (DirectJDKLog.java:179) org.apache.catalina.core.StandardService - Starting service [Tomcat]
+[INFO] [2018-01-28 18:19:11,328] [main] (DirectJDKLog.java:179) org.apache.catalina.core.StandardEngine - Starting Servlet Engine: Apache Tomcat/8.5.23
+[INFO] [2018-01-28 18:19:11,484] [localhost-startStop-1] (DirectJDKLog.java:179) org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+[INFO] [2018-01-28 18:19:11,484] [localhost-startStop-1] (EmbeddedWebApplicationContext.java:276) org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 2984 ms
+[INFO] [2018-01-28 18:19:11,781] [localhost-startStop-1] (AbstractFilterRegistrationBean.java:258) org.springframework.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'characterEncodingFilter' to: [/*]
+[INFO] [2018-01-28 18:19:11,781] [localhost-startStop-1] (AbstractFilterRegistrationBean.java:258) org.springframework.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+[INFO] [2018-01-28 18:19:11,781] [localhost-startStop-1] (AbstractFilterRegistrationBean.java:258) org.springframework.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'httpPutFormContentFilter' to: [/*]
+[INFO] [2018-01-28 18:19:11,781] [localhost-startStop-1] (AbstractFilterRegistrationBean.java:258) org.springframework.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'requestContextFilter' to: [/*]
+[INFO] [2018-01-28 18:19:11,781] [localhost-startStop-1] (AbstractFilterRegistrationBean.java:258) org.springframework.boot.web.servlet.DelegatingFilterProxyRegistrationBean - Mapping filter: 'springSecurityFilterChain' to: [/*]
+[INFO] [2018-01-28 18:19:11,781] [localhost-startStop-1] (ServletRegistrationBean.java:190) org.springframework.boot.web.servlet.ServletRegistrationBean - Mapping servlet: 'dispatcherServlet' to [/]
+[INFO] [2018-01-28 18:19:12,875] [main] (LocalContainerEntityManagerFactoryBean.java:334) org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean - Building JPA container EntityManagerFactory for persistence unit 'default'
+[INFO] [2018-01-28 18:19:13,672] [main] (AbstractEntityManagerFactoryBean.java:382) org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+[WARN] [2018-01-28 18:19:13,719] [main] (AbstractApplicationContext.java:549) org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'authorityElementMapper' defined in file [F:\workspace\idea\rbac_paper\app_dao\target\classes\com\app\mapper\mapper\AuthorityElementMapper.class]: Invocation of init method failed; nested exception is java.lang.IllegalArgumentException: Property 'sqlSessionFactory' or 'sqlSessionTemplate' are required
+[INFO] [2018-01-28 18:19:13,735] [main] (AbstractEntityManagerFactoryBean.java:551) org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+[INFO] [2018-01-28 18:19:13,735] [main] (DirectJDKLog.java:179) org.apache.catalina.core.StandardService - Stopping service [Tomcat]
+[ERROR] [2018-01-28 18:19:13,782] [main] (SpringApplication.java:771) org.springframework.boot.SpringApplication - Application startup failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'authorityElementMapper' defined in file [F:\workspace\idea\rbac_paper\app_dao\target\classes\com\app\mapper\mapper\AuthorityElementMapper.class]: Invocation of init method failed; nested exception is java.lang.IllegalArgumentException: Property 'sqlSessionFactory' or 'sqlSessionTemplate' are required
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1578)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:545)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:482)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:197)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:757)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:861)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:541)
+	at org.springframework.boot.context.embedded.EmbeddedWebApplicationContext.refresh(EmbeddedWebApplicationContext.java:122)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:693)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:360)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:303)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1118)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1107)
+	at com.app.web.springboot.Application.main(Application.java:14)
+Caused by: java.lang.IllegalArgumentException: Property 'sqlSessionFactory' or 'sqlSessionTemplate' are required
+	at org.springframework.util.Assert.notNull(Assert.java:115)
+	at org.mybatis.spring.support.SqlSessionDaoSupport.checkDaoConfig(SqlSessionDaoSupport.java:75)
+	at org.mybatis.spring.mapper.MapperFactoryBean.checkDaoConfig(MapperFactoryBean.java:73)
+	at org.springframework.dao.support.DaoSupport.afterPropertiesSet(DaoSupport.java:44)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1637)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1574)
+	... 16 more
+[INFO] [2018-01-28 18:19:25,533] [main] (StartupInfoLogger.java:48) com.app.web.springboot.Application - Starting Application on sshss-PC with PID 6352 (F:\workspace\idea\rbac_paper\app_web\target\classes started by Administrator in F:\workspace\idea\rbac_paper)
+[INFO] [2018-01-28 18:19:25,534] [main] (SpringApplication.java:593) com.app.web.springboot.Application - No active profile set, falling back to default profiles: default
+[INFO] [2018-01-28 18:19:25,647] [main] (AbstractApplicationContext.java:581) org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext - Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@f2ff811: startup date [Sun Jan 28 18:19:25 CST 2018]; root of context hierarchy
+[INFO] [2018-01-28 18:19:26,880] [main] (DefaultListableBeanFactory.java:843) org.springframework.beans.factory.support.DefaultListableBeanFactory - Overriding bean definition for bean 'dataSource' with a different definition: replacing [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=org.springframework.boot.autoconfigure.jdbc.DataSourceConfiguration$Dbcp; factoryMethodName=dataSource; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [org/springframework/boot/autoconfigure/jdbc/DataSourceConfiguration$Dbcp.class]] with [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=org.springframework.boot.autoconfigure.jdbc.DataSourceConfiguration$Tomcat; factoryMethodName=dataSource; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [org/springframework/boot/autoconfigure/jdbc/DataSourceConfiguration$Tomcat.class]]
+[INFO] [2018-01-28 18:19:27,286] [main] (AutowiredAnnotationBeanPostProcessor.java:155) org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+[INFO] [2018-01-28 18:19:28,012] [main] (TomcatEmbeddedServletContainer.java:89) org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer - Tomcat initialized with port(s): 8080 (http)
+[INFO] [2018-01-28 18:19:28,025] [main] (DirectJDKLog.java:179) org.apache.catalina.core.StandardService - Starting service [Tomcat]
+[INFO] [2018-01-28 18:19:28,026] [main] (DirectJDKLog.java:179) org.apache.catalina.core.StandardEngine - Starting Servlet Engine: Apache Tomcat/8.5.23
+[INFO] [2018-01-28 18:19:28,167] [localhost-startStop-1] (DirectJDKLog.java:179) org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+[INFO] [2018-01-28 18:19:28,167] [localhost-startStop-1] (EmbeddedWebApplicationContext.java:276) org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 2525 ms
+[INFO] [2018-01-28 18:19:28,380] [localhost-startStop-1] (AbstractFilterRegistrationBean.java:258) org.springframework.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'characterEncodingFilter' to: [/*]
+[INFO] [2018-01-28 18:19:28,381] [localhost-startStop-1] (AbstractFilterRegistrationBean.java:258) org.springframework.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+[INFO] [2018-01-28 18:19:28,381] [localhost-startStop-1] (AbstractFilterRegistrationBean.java:258) org.springframework.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'httpPutFormContentFilter' to: [/*]
+[INFO] [2018-01-28 18:19:28,381] [localhost-startStop-1] (AbstractFilterRegistrationBean.java:258) org.springframework.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'requestContextFilter' to: [/*]
+[INFO] [2018-01-28 18:19:28,383] [localhost-startStop-1] (AbstractFilterRegistrationBean.java:258) org.springframework.boot.web.servlet.DelegatingFilterProxyRegistrationBean - Mapping filter: 'springSecurityFilterChain' to: [/*]
+[INFO] [2018-01-28 18:19:28,383] [localhost-startStop-1] (ServletRegistrationBean.java:190) org.springframework.boot.web.servlet.ServletRegistrationBean - Mapping servlet: 'dispatcherServlet' to [/]
+[INFO] [2018-01-28 18:19:29,203] [main] (LocalContainerEntityManagerFactoryBean.java:334) org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean - Building JPA container EntityManagerFactory for persistence unit 'default'
+[INFO] [2018-01-28 18:19:29,756] [main] (AbstractEntityManagerFactoryBean.java:382) org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+[WARN] [2018-01-28 18:19:29,776] [main] (AbstractApplicationContext.java:549) org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'authorityElementMapper' defined in file [F:\workspace\idea\rbac_paper\app_dao\target\classes\com\app\mapper\mapper\AuthorityElementMapper.class]: Invocation of init method failed; nested exception is java.lang.IllegalArgumentException: Property 'sqlSessionFactory' or 'sqlSessionTemplate' are required
+[INFO] [2018-01-28 18:19:29,778] [main] (AbstractEntityManagerFactoryBean.java:551) org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+[INFO] [2018-01-28 18:19:29,783] [main] (DirectJDKLog.java:179) org.apache.catalina.core.StandardService - Stopping service [Tomcat]
+[ERROR] [2018-01-28 18:19:29,809] [main] (SpringApplication.java:771) org.springframework.boot.SpringApplication - Application startup failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'authorityElementMapper' defined in file [F:\workspace\idea\rbac_paper\app_dao\target\classes\com\app\mapper\mapper\AuthorityElementMapper.class]: Invocation of init method failed; nested exception is java.lang.IllegalArgumentException: Property 'sqlSessionFactory' or 'sqlSessionTemplate' are required
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1578)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:545)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:482)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:197)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:757)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:861)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:541)
+	at org.springframework.boot.context.embedded.EmbeddedWebApplicationContext.refresh(EmbeddedWebApplicationContext.java:122)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:693)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:360)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:303)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1118)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1107)
+	at com.app.web.springboot.Application.main(Application.java:14)
+Caused by: java.lang.IllegalArgumentException: Property 'sqlSessionFactory' or 'sqlSessionTemplate' are required
+	at org.springframework.util.Assert.notNull(Assert.java:115)
+	at org.mybatis.spring.support.SqlSessionDaoSupport.checkDaoConfig(SqlSessionDaoSupport.java:75)
+	at org.mybatis.spring.mapper.MapperFactoryBean.checkDaoConfig(MapperFactoryBean.java:73)
+	at org.springframework.dao.support.DaoSupport.afterPropertiesSet(DaoSupport.java:44)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1637)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1574)
+	... 16 more
+[INFO] [2018-01-28 18:21:04,915] [main] (StartupInfoLogger.java:48) com.app.web.springboot.Application - Starting Application on sshss-PC with PID 440 (F:\workspace\idea\rbac_paper\app_web\target\classes started by Administrator in F:\workspace\idea\rbac_paper)
+[INFO] [2018-01-28 18:21:04,930] [main] (SpringApplication.java:593) com.app.web.springboot.Application - No active profile set, falling back to default profiles: default
+[INFO] [2018-01-28 18:21:05,040] [main] (AbstractApplicationContext.java:581) org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext - Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@5c42d2b7: startup date [Sun Jan 28 18:21:05 CST 2018]; root of context hierarchy
+[INFO] [2018-01-28 18:21:06,274] [main] (DefaultListableBeanFactory.java:843) org.springframework.beans.factory.support.DefaultListableBeanFactory - Overriding bean definition for bean 'dataSource' with a different definition: replacing [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=org.springframework.boot.autoconfigure.jdbc.DataSourceConfiguration$Dbcp; factoryMethodName=dataSource; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [org/springframework/boot/autoconfigure/jdbc/DataSourceConfiguration$Dbcp.class]] with [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=org.springframework.boot.autoconfigure.jdbc.DataSourceConfiguration$Tomcat; factoryMethodName=dataSource; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [org/springframework/boot/autoconfigure/jdbc/DataSourceConfiguration$Tomcat.class]]
+[INFO] [2018-01-28 18:21:06,917] [main] (AutowiredAnnotationBeanPostProcessor.java:155) org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+[INFO] [2018-01-28 18:21:07,777] [main] (TomcatEmbeddedServletContainer.java:89) org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer - Tomcat initialized with port(s): 8080 (http)
+[INFO] [2018-01-28 18:21:07,808] [main] (DirectJDKLog.java:179) org.apache.catalina.core.StandardService - Starting service [Tomcat]
+[INFO] [2018-01-28 18:21:07,808] [main] (DirectJDKLog.java:179) org.apache.catalina.core.StandardEngine - Starting Servlet Engine: Apache Tomcat/8.5.23
+[INFO] [2018-01-28 18:21:07,964] [localhost-startStop-1] (DirectJDKLog.java:179) org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+[INFO] [2018-01-28 18:21:07,964] [localhost-startStop-1] (EmbeddedWebApplicationContext.java:276) org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 2940 ms
+[INFO] [2018-01-28 18:21:08,277] [localhost-startStop-1] (AbstractFilterRegistrationBean.java:258) org.springframework.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'characterEncodingFilter' to: [/*]
+[INFO] [2018-01-28 18:21:08,277] [localhost-startStop-1] (AbstractFilterRegistrationBean.java:258) org.springframework.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+[INFO] [2018-01-28 18:21:08,277] [localhost-startStop-1] (AbstractFilterRegistrationBean.java:258) org.springframework.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'httpPutFormContentFilter' to: [/*]
+[INFO] [2018-01-28 18:21:08,277] [localhost-startStop-1] (AbstractFilterRegistrationBean.java:258) org.springframework.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'requestContextFilter' to: [/*]
+[INFO] [2018-01-28 18:21:08,292] [localhost-startStop-1] (AbstractFilterRegistrationBean.java:258) org.springframework.boot.web.servlet.DelegatingFilterProxyRegistrationBean - Mapping filter: 'springSecurityFilterChain' to: [/*]
+[INFO] [2018-01-28 18:21:08,292] [localhost-startStop-1] (ServletRegistrationBean.java:190) org.springframework.boot.web.servlet.ServletRegistrationBean - Mapping servlet: 'dispatcherServlet' to [/]
+[INFO] [2018-01-28 18:21:09,277] [main] (LocalContainerEntityManagerFactoryBean.java:334) org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean - Building JPA container EntityManagerFactory for persistence unit 'default'
+[INFO] [2018-01-28 18:21:10,012] [main] (AbstractEntityManagerFactoryBean.java:382) org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+[WARN] [2018-01-28 18:21:10,137] [main] (AbstractApplicationContext.java:549) org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'authorityElementMapper' defined in file [F:\workspace\idea\rbac_paper\app_dao\target\classes\com\app\mapper\mapper\AuthorityElementMapper.class]: Unsatisfied dependency expressed through bean property 'sqlSessionFactory': Error creating bean with name 'sqlSessionFactory' defined in class path resource [org/mybatis/spring/boot/autoconfigure/MybatisAutoConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.apache.ibatis.session.SqlSessionFactory]: Factory method 'sqlSessionFactory' threw exception; nested exception is java.lang.NoSuchMethodError: org.mybatis.spring.SqlSessionFactoryBean.setConfiguration(Lorg/apache/ibatis/session/Configuration;)V; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sqlSessionFactory' defined in class path resource [org/mybatis/spring/boot/autoconfigure/MybatisAutoConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.apache.ibatis.session.SqlSessionFactory]: Factory method 'sqlSessionFactory' threw exception; nested exception is java.lang.NoSuchMethodError: org.mybatis.spring.SqlSessionFactoryBean.setConfiguration(Lorg/apache/ibatis/session/Configuration;)V
+[INFO] [2018-01-28 18:21:10,152] [main] (AbstractEntityManagerFactoryBean.java:551) org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+[INFO] [2018-01-28 18:21:10,152] [main] (DirectJDKLog.java:179) org.apache.catalina.core.StandardService - Stopping service [Tomcat]
+[ERROR] [2018-01-28 18:21:10,199] [main] (SpringApplication.java:771) org.springframework.boot.SpringApplication - Application startup failed
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'authorityElementMapper' defined in file [F:\workspace\idea\rbac_paper\app_dao\target\classes\com\app\mapper\mapper\AuthorityElementMapper.class]: Unsatisfied dependency expressed through bean property 'sqlSessionFactory': Error creating bean with name 'sqlSessionFactory' defined in class path resource [org/mybatis/spring/boot/autoconfigure/MybatisAutoConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.apache.ibatis.session.SqlSessionFactory]: Factory method 'sqlSessionFactory' threw exception; nested exception is java.lang.NoSuchMethodError: org.mybatis.spring.SqlSessionFactoryBean.setConfiguration(Lorg/apache/ibatis/session/Configuration;)V; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sqlSessionFactory' defined in class path resource [org/mybatis/spring/boot/autoconfigure/MybatisAutoConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.apache.ibatis.session.SqlSessionFactory]: Factory method 'sqlSessionFactory' threw exception; nested exception is java.lang.NoSuchMethodError: org.mybatis.spring.SqlSessionFactoryBean.setConfiguration(Lorg/apache/ibatis/session/Configuration;)V
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireByType(AbstractAutowireCapableBeanFactory.java:1307)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1199)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:543)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:482)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:197)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:757)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:861)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:541)
+	at org.springframework.boot.context.embedded.EmbeddedWebApplicationContext.refresh(EmbeddedWebApplicationContext.java:122)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:693)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:360)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:303)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1118)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1107)
+	at com.app.web.springboot.Application.main(Application.java:14)
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sqlSessionFactory' defined in class path resource [org/mybatis/spring/boot/autoconfigure/MybatisAutoConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.apache.ibatis.session.SqlSessionFactory]: Factory method 'sqlSessionFactory' threw exception; nested exception is java.lang.NoSuchMethodError: org.mybatis.spring.SqlSessionFactoryBean.setConfiguration(Lorg/apache/ibatis/session/Configuration;)V
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:599)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1123)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1018)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:510)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:482)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:207)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.findAutowireCandidates(DefaultListableBeanFactory.java:1214)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1054)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1019)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireByType(AbstractAutowireCapableBeanFactory.java:1292)
+	... 17 more
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.apache.ibatis.session.SqlSessionFactory]: Factory method 'sqlSessionFactory' threw exception; nested exception is java.lang.NoSuchMethodError: org.mybatis.spring.SqlSessionFactoryBean.setConfiguration(Lorg/apache/ibatis/session/Configuration;)V
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:189)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:588)
+	... 30 more
+Caused by: java.lang.NoSuchMethodError: org.mybatis.spring.SqlSessionFactoryBean.setConfiguration(Lorg/apache/ibatis/session/Configuration;)V
+	at org.mybatis.spring.boot.autoconfigure.MybatisAutoConfiguration.sqlSessionFactory(MybatisAutoConfiguration.java:119)
+	at org.mybatis.spring.boot.autoconfigure.MybatisAutoConfiguration$$EnhancerBySpringCGLIB$$fd8abff9.CGLIB$sqlSessionFactory$1(<generated>)
+	at org.mybatis.spring.boot.autoconfigure.MybatisAutoConfiguration$$EnhancerBySpringCGLIB$$fd8abff9$$FastClassBySpringCGLIB$$41a69eec.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:228)
+	at org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.intercept(ConfigurationClassEnhancer.java:356)
+	at org.mybatis.spring.boot.autoconfigure.MybatisAutoConfiguration$$EnhancerBySpringCGLIB$$fd8abff9.sqlSessionFactory(<generated>)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:162)
+	... 31 more
+[INFO] [2018-01-28 19:06:30,730] [main] (StartupInfoLogger.java:48) com.app.web.springboot.Application - Starting Application on sshss-PC with PID 7056 (F:\workspace\idea\rbac_paper\app_web\target\classes started by Administrator in F:\workspace\idea\rbac_paper)
+[INFO] [2018-01-28 19:06:30,731] [main] (SpringApplication.java:593) com.app.web.springboot.Application - No active profile set, falling back to default profiles: default
+[INFO] [2018-01-28 19:06:30,890] [main] (AbstractApplicationContext.java:581) org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext - Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@5c18016b: startup date [Sun Jan 28 19:06:30 CST 2018]; root of context hierarchy
+[INFO] [2018-01-28 19:06:32,086] [main] (DefaultListableBeanFactory.java:843) org.springframework.beans.factory.support.DefaultListableBeanFactory - Overriding bean definition for bean 'dataSource' with a different definition: replacing [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=org.springframework.boot.autoconfigure.jdbc.DataSourceConfiguration$Dbcp; factoryMethodName=dataSource; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [org/springframework/boot/autoconfigure/jdbc/DataSourceConfiguration$Dbcp.class]] with [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=org.springframework.boot.autoconfigure.jdbc.DataSourceConfiguration$Tomcat; factoryMethodName=dataSource; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [org/springframework/boot/autoconfigure/jdbc/DataSourceConfiguration$Tomcat.class]]
+[INFO] [2018-01-28 19:06:33,466] [main] (TomcatEmbeddedServletContainer.java:89) org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer - Tomcat initialized with port(s): 8080 (http)
+[INFO] [2018-01-28 19:06:33,485] [main] (DirectJDKLog.java:179) org.apache.catalina.core.StandardService - Starting service [Tomcat]
+[INFO] [2018-01-28 19:06:33,487] [main] (DirectJDKLog.java:179) org.apache.catalina.core.StandardEngine - Starting Servlet Engine: Apache Tomcat/8.5.23
+[INFO] [2018-01-28 19:06:33,727] [localhost-startStop-1] (DirectJDKLog.java:179) org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+[INFO] [2018-01-28 19:06:33,728] [localhost-startStop-1] (EmbeddedWebApplicationContext.java:276) org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 2840 ms
+[INFO] [2018-01-28 19:06:33,921] [localhost-startStop-1] (ServletRegistrationBean.java:190) org.springframework.boot.web.servlet.ServletRegistrationBean - Mapping servlet: 'dispatcherServlet' to [/]
+[INFO] [2018-01-28 19:06:33,927] [localhost-startStop-1] (AbstractFilterRegistrationBean.java:258) org.springframework.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'characterEncodingFilter' to: [/*]
+[INFO] [2018-01-28 19:06:33,927] [localhost-startStop-1] (AbstractFilterRegistrationBean.java:258) org.springframework.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+[INFO] [2018-01-28 19:06:33,927] [localhost-startStop-1] (AbstractFilterRegistrationBean.java:258) org.springframework.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'httpPutFormContentFilter' to: [/*]
+[INFO] [2018-01-28 19:06:33,928] [localhost-startStop-1] (AbstractFilterRegistrationBean.java:258) org.springframework.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'requestContextFilter' to: [/*]
+[INFO] [2018-01-28 19:06:34,912] [main] (LocalContainerEntityManagerFactoryBean.java:334) org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean - Building JPA container EntityManagerFactory for persistence unit 'default'
+[INFO] [2018-01-28 19:06:35,503] [main] (AbstractEntityManagerFactoryBean.java:382) org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+[WARN] [2018-01-28 19:06:36,015] [main] (AbstractApplicationContext.java:549) org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'authorityElementMapper' defined in file [F:\workspace\idea\rbac_paper\app_dao\target\classes\com\app\mapper\mapper\AuthorityElementMapper.class]: Unsatisfied dependency expressed through bean property 'sqlSessionFactory': Error creating bean with name 'sqlSessionFactory' defined in class path resource [org/mybatis/spring/boot/autoconfigure/MybatisAutoConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.apache.ibatis.session.SqlSessionFactory]: Factory method 'sqlSessionFactory' threw exception; nested exception is org.springframework.core.NestedIOException: Failed to parse mapping resource: 'file [F:\workspace\idea\rbac_paper\app_dao\target\classes\com\app\mapper\mapper\UserMapper.xml]'; nested exception is org.apache.ibatis.builder.BuilderException: Error parsing Mapper XML. Cause: org.apache.ibatis.builder.BuilderException: Error resolving class. Cause: org.apache.ibatis.type.TypeException: Could not resolve type alias 'com.app.model.User'.  Cause: java.lang.ClassNotFoundException: Cannot find class: com.app.model.User; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sqlSessionFactory' defined in class path resource [org/mybatis/spring/boot/autoconfigure/MybatisAutoConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.apache.ibatis.session.SqlSessionFactory]: Factory method 'sqlSessionFactory' threw exception; nested exception is org.springframework.core.NestedIOException: Failed to parse mapping resource: 'file [F:\workspace\idea\rbac_paper\app_dao\target\classes\com\app\mapper\mapper\UserMapper.xml]'; nested exception is org.apache.ibatis.builder.BuilderException: Error parsing Mapper XML. Cause: org.apache.ibatis.builder.BuilderException: Error resolving class. Cause: org.apache.ibatis.type.TypeException: Could not resolve type alias 'com.app.model.User'.  Cause: java.lang.ClassNotFoundException: Cannot find class: com.app.model.User
+[INFO] [2018-01-28 19:06:36,020] [main] (AbstractEntityManagerFactoryBean.java:551) org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+[INFO] [2018-01-28 19:06:36,027] [main] (DirectJDKLog.java:179) org.apache.catalina.core.StandardService - Stopping service [Tomcat]
+[ERROR] [2018-01-28 19:06:36,054] [main] (SpringApplication.java:771) org.springframework.boot.SpringApplication - Application startup failed
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'authorityElementMapper' defined in file [F:\workspace\idea\rbac_paper\app_dao\target\classes\com\app\mapper\mapper\AuthorityElementMapper.class]: Unsatisfied dependency expressed through bean property 'sqlSessionFactory': Error creating bean with name 'sqlSessionFactory' defined in class path resource [org/mybatis/spring/boot/autoconfigure/MybatisAutoConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.apache.ibatis.session.SqlSessionFactory]: Factory method 'sqlSessionFactory' threw exception; nested exception is org.springframework.core.NestedIOException: Failed to parse mapping resource: 'file [F:\workspace\idea\rbac_paper\app_dao\target\classes\com\app\mapper\mapper\UserMapper.xml]'; nested exception is org.apache.ibatis.builder.BuilderException: Error parsing Mapper XML. Cause: org.apache.ibatis.builder.BuilderException: Error resolving class. Cause: org.apache.ibatis.type.TypeException: Could not resolve type alias 'com.app.model.User'.  Cause: java.lang.ClassNotFoundException: Cannot find class: com.app.model.User; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sqlSessionFactory' defined in class path resource [org/mybatis/spring/boot/autoconfigure/MybatisAutoConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.apache.ibatis.session.SqlSessionFactory]: Factory method 'sqlSessionFactory' threw exception; nested exception is org.springframework.core.NestedIOException: Failed to parse mapping resource: 'file [F:\workspace\idea\rbac_paper\app_dao\target\classes\com\app\mapper\mapper\UserMapper.xml]'; nested exception is org.apache.ibatis.builder.BuilderException: Error parsing Mapper XML. Cause: org.apache.ibatis.builder.BuilderException: Error resolving class. Cause: org.apache.ibatis.type.TypeException: Could not resolve type alias 'com.app.model.User'.  Cause: java.lang.ClassNotFoundException: Cannot find class: com.app.model.User
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireByType(AbstractAutowireCapableBeanFactory.java:1307)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1199)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:543)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:482)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:197)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:757)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:861)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:541)
+	at org.springframework.boot.context.embedded.EmbeddedWebApplicationContext.refresh(EmbeddedWebApplicationContext.java:122)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:693)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:360)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:303)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1118)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1107)
+	at com.app.web.springboot.Application.main(Application.java:14)
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sqlSessionFactory' defined in class path resource [org/mybatis/spring/boot/autoconfigure/MybatisAutoConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.apache.ibatis.session.SqlSessionFactory]: Factory method 'sqlSessionFactory' threw exception; nested exception is org.springframework.core.NestedIOException: Failed to parse mapping resource: 'file [F:\workspace\idea\rbac_paper\app_dao\target\classes\com\app\mapper\mapper\UserMapper.xml]'; nested exception is org.apache.ibatis.builder.BuilderException: Error parsing Mapper XML. Cause: org.apache.ibatis.builder.BuilderException: Error resolving class. Cause: org.apache.ibatis.type.TypeException: Could not resolve type alias 'com.app.model.User'.  Cause: java.lang.ClassNotFoundException: Cannot find class: com.app.model.User
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:599)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1123)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1018)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:510)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:482)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:207)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.findAutowireCandidates(DefaultListableBeanFactory.java:1214)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1054)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1019)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireByType(AbstractAutowireCapableBeanFactory.java:1292)
+	... 17 more
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.apache.ibatis.session.SqlSessionFactory]: Factory method 'sqlSessionFactory' threw exception; nested exception is org.springframework.core.NestedIOException: Failed to parse mapping resource: 'file [F:\workspace\idea\rbac_paper\app_dao\target\classes\com\app\mapper\mapper\UserMapper.xml]'; nested exception is org.apache.ibatis.builder.BuilderException: Error parsing Mapper XML. Cause: org.apache.ibatis.builder.BuilderException: Error resolving class. Cause: org.apache.ibatis.type.TypeException: Could not resolve type alias 'com.app.model.User'.  Cause: java.lang.ClassNotFoundException: Cannot find class: com.app.model.User
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:189)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:588)
+	... 30 more
+Caused by: org.springframework.core.NestedIOException: Failed to parse mapping resource: 'file [F:\workspace\idea\rbac_paper\app_dao\target\classes\com\app\mapper\mapper\UserMapper.xml]'; nested exception is org.apache.ibatis.builder.BuilderException: Error parsing Mapper XML. Cause: org.apache.ibatis.builder.BuilderException: Error resolving class. Cause: org.apache.ibatis.type.TypeException: Could not resolve type alias 'com.app.model.User'.  Cause: java.lang.ClassNotFoundException: Cannot find class: com.app.model.User
+	at org.mybatis.spring.SqlSessionFactoryBean.buildSqlSessionFactory(SqlSessionFactoryBean.java:523)
+	at org.mybatis.spring.SqlSessionFactoryBean.afterPropertiesSet(SqlSessionFactoryBean.java:380)
+	at org.mybatis.spring.SqlSessionFactoryBean.getObject(SqlSessionFactoryBean.java:547)
+	at org.mybatis.spring.boot.autoconfigure.MybatisAutoConfiguration.sqlSessionFactory(MybatisAutoConfiguration.java:139)
+	at org.mybatis.spring.boot.autoconfigure.MybatisAutoConfiguration$$EnhancerBySpringCGLIB$$2c51b22f.CGLIB$sqlSessionFactory$1(<generated>)
+	at org.mybatis.spring.boot.autoconfigure.MybatisAutoConfiguration$$EnhancerBySpringCGLIB$$2c51b22f$$FastClassBySpringCGLIB$$eb3f8aff.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:228)
+	at org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.intercept(ConfigurationClassEnhancer.java:356)
+	at org.mybatis.spring.boot.autoconfigure.MybatisAutoConfiguration$$EnhancerBySpringCGLIB$$2c51b22f.sqlSessionFactory(<generated>)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:162)
+	... 31 more
+Caused by: org.apache.ibatis.builder.BuilderException: Error parsing Mapper XML. Cause: org.apache.ibatis.builder.BuilderException: Error resolving class. Cause: org.apache.ibatis.type.TypeException: Could not resolve type alias 'com.app.model.User'.  Cause: java.lang.ClassNotFoundException: Cannot find class: com.app.model.User
+	at org.apache.ibatis.builder.xml.XMLMapperBuilder.configurationElement(XMLMapperBuilder.java:120)
+	at org.apache.ibatis.builder.xml.XMLMapperBuilder.parse(XMLMapperBuilder.java:92)
+	at org.mybatis.spring.SqlSessionFactoryBean.buildSqlSessionFactory(SqlSessionFactoryBean.java:521)
+	... 44 more
+Caused by: org.apache.ibatis.builder.BuilderException: Error resolving class. Cause: org.apache.ibatis.type.TypeException: Could not resolve type alias 'com.app.model.User'.  Cause: java.lang.ClassNotFoundException: Cannot find class: com.app.model.User
+	at org.apache.ibatis.builder.BaseBuilder.resolveClass(BaseBuilder.java:118)
+	at org.apache.ibatis.builder.xml.XMLMapperBuilder.resultMapElement(XMLMapperBuilder.java:265)
+	at org.apache.ibatis.builder.xml.XMLMapperBuilder.resultMapElement(XMLMapperBuilder.java:252)
+	at org.apache.ibatis.builder.xml.XMLMapperBuilder.resultMapElements(XMLMapperBuilder.java:244)
+	at org.apache.ibatis.builder.xml.XMLMapperBuilder.configurationElement(XMLMapperBuilder.java:116)
+	... 46 more
+Caused by: org.apache.ibatis.type.TypeException: Could not resolve type alias 'com.app.model.User'.  Cause: java.lang.ClassNotFoundException: Cannot find class: com.app.model.User
+	at org.apache.ibatis.type.TypeAliasRegistry.resolveAlias(TypeAliasRegistry.java:120)
+	at org.apache.ibatis.builder.BaseBuilder.resolveAlias(BaseBuilder.java:149)
+	at org.apache.ibatis.builder.BaseBuilder.resolveClass(BaseBuilder.java:116)
+	... 50 more
+Caused by: java.lang.ClassNotFoundException: Cannot find class: com.app.model.User
+	at org.apache.ibatis.io.ClassLoaderWrapper.classForName(ClassLoaderWrapper.java:200)
+	at org.apache.ibatis.io.ClassLoaderWrapper.classForName(ClassLoaderWrapper.java:89)
+	at org.apache.ibatis.io.Resources.classForName(Resources.java:261)
+	at org.apache.ibatis.type.TypeAliasRegistry.resolveAlias(TypeAliasRegistry.java:116)
+	... 52 more
+[INFO] [2018-01-28 19:23:04,878] [main] (StartupInfoLogger.java:48) com.app.web.springboot.Application - Starting Application on sshss-PC with PID 12036 (F:\workspace\idea\rbac_paper\app_web\target\classes started by Administrator in F:\workspace\idea\rbac_paper)
+[INFO] [2018-01-28 19:23:04,880] [main] (SpringApplication.java:593) com.app.web.springboot.Application - No active profile set, falling back to default profiles: default
+[INFO] [2018-01-28 19:23:05,001] [main] (AbstractApplicationContext.java:581) org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext - Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@1951b871: startup date [Sun Jan 28 19:23:04 CST 2018]; root of context hierarchy
+[INFO] [2018-01-28 19:23:06,230] [main] (DefaultListableBeanFactory.java:843) org.springframework.beans.factory.support.DefaultListableBeanFactory - Overriding bean definition for bean 'dataSource' with a different definition: replacing [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=org.springframework.boot.autoconfigure.jdbc.DataSourceConfiguration$Dbcp; factoryMethodName=dataSource; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [org/springframework/boot/autoconfigure/jdbc/DataSourceConfiguration$Dbcp.class]] with [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=org.springframework.boot.autoconfigure.jdbc.DataSourceConfiguration$Tomcat; factoryMethodName=dataSource; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [org/springframework/boot/autoconfigure/jdbc/DataSourceConfiguration$Tomcat.class]]
+[INFO] [2018-01-28 19:23:07,754] [main] (TomcatEmbeddedServletContainer.java:89) org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer - Tomcat initialized with port(s): 8080 (http)
+[INFO] [2018-01-28 19:23:07,770] [main] (DirectJDKLog.java:179) org.apache.catalina.core.StandardService - Starting service [Tomcat]
+[INFO] [2018-01-28 19:23:07,770] [main] (DirectJDKLog.java:179) org.apache.catalina.core.StandardEngine - Starting Servlet Engine: Apache Tomcat/8.5.23
+[INFO] [2018-01-28 19:23:07,944] [localhost-startStop-1] (DirectJDKLog.java:179) org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+[INFO] [2018-01-28 19:23:07,945] [localhost-startStop-1] (EmbeddedWebApplicationContext.java:276) org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 2948 ms
+[INFO] [2018-01-28 19:23:08,197] [localhost-startStop-1] (ServletRegistrationBean.java:190) org.springframework.boot.web.servlet.ServletRegistrationBean - Mapping servlet: 'dispatcherServlet' to [/]
+[INFO] [2018-01-28 19:23:08,198] [localhost-startStop-1] (AbstractFilterRegistrationBean.java:258) org.springframework.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'characterEncodingFilter' to: [/*]
+[INFO] [2018-01-28 19:23:08,198] [localhost-startStop-1] (AbstractFilterRegistrationBean.java:258) org.springframework.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+[INFO] [2018-01-28 19:23:08,198] [localhost-startStop-1] (AbstractFilterRegistrationBean.java:258) org.springframework.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'httpPutFormContentFilter' to: [/*]
+[INFO] [2018-01-28 19:23:08,198] [localhost-startStop-1] (AbstractFilterRegistrationBean.java:258) org.springframework.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'requestContextFilter' to: [/*]
+[INFO] [2018-01-28 19:23:09,096] [main] (LocalContainerEntityManagerFactoryBean.java:334) org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean - Building JPA container EntityManagerFactory for persistence unit 'default'
+[INFO] [2018-01-28 19:23:09,713] [main] (AbstractEntityManagerFactoryBean.java:382) org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+[WARN] [2018-01-28 19:23:10,369] [main] (AbstractApplicationContext.java:549) org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'authorityElementMapper' defined in file [F:\workspace\idea\rbac_paper\app_dao\target\classes\com\app\mapper\mapper\AuthorityElementMapper.class]: Unsatisfied dependency expressed through bean property 'sqlSessionFactory': Error creating bean with name 'sqlSessionFactory' defined in class path resource [org/mybatis/spring/boot/autoconfigure/MybatisAutoConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.apache.ibatis.session.SqlSessionFactory]: Factory method 'sqlSessionFactory' threw exception; nested exception is org.springframework.core.NestedIOException: Failed to parse mapping resource: 'file [F:\workspace\idea\rbac_paper\app_dao\target\classes\com\app\mapper\mapper\UserMapper.xml]'; nested exception is org.apache.ibatis.builder.BuilderException: Error parsing Mapper XML. Cause: org.apache.ibatis.builder.BuilderException: Error resolving class. Cause: org.apache.ibatis.type.TypeException: Could not resolve type alias 'com.app.model.User'.  Cause: java.lang.ClassNotFoundException: Cannot find class: com.app.model.User; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sqlSessionFactory' defined in class path resource [org/mybatis/spring/boot/autoconfigure/MybatisAutoConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.apache.ibatis.session.SqlSessionFactory]: Factory method 'sqlSessionFactory' threw exception; nested exception is org.springframework.core.NestedIOException: Failed to parse mapping resource: 'file [F:\workspace\idea\rbac_paper\app_dao\target\classes\com\app\mapper\mapper\UserMapper.xml]'; nested exception is org.apache.ibatis.builder.BuilderException: Error parsing Mapper XML. Cause: org.apache.ibatis.builder.BuilderException: Error resolving class. Cause: org.apache.ibatis.type.TypeException: Could not resolve type alias 'com.app.model.User'.  Cause: java.lang.ClassNotFoundException: Cannot find class: com.app.model.User
+[INFO] [2018-01-28 19:23:10,385] [main] (AbstractEntityManagerFactoryBean.java:551) org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+[INFO] [2018-01-28 19:23:10,385] [main] (DirectJDKLog.java:179) org.apache.catalina.core.StandardService - Stopping service [Tomcat]
+[ERROR] [2018-01-28 19:23:10,469] [main] (SpringApplication.java:771) org.springframework.boot.SpringApplication - Application startup failed
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'authorityElementMapper' defined in file [F:\workspace\idea\rbac_paper\app_dao\target\classes\com\app\mapper\mapper\AuthorityElementMapper.class]: Unsatisfied dependency expressed through bean property 'sqlSessionFactory': Error creating bean with name 'sqlSessionFactory' defined in class path resource [org/mybatis/spring/boot/autoconfigure/MybatisAutoConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.apache.ibatis.session.SqlSessionFactory]: Factory method 'sqlSessionFactory' threw exception; nested exception is org.springframework.core.NestedIOException: Failed to parse mapping resource: 'file [F:\workspace\idea\rbac_paper\app_dao\target\classes\com\app\mapper\mapper\UserMapper.xml]'; nested exception is org.apache.ibatis.builder.BuilderException: Error parsing Mapper XML. Cause: org.apache.ibatis.builder.BuilderException: Error resolving class. Cause: org.apache.ibatis.type.TypeException: Could not resolve type alias 'com.app.model.User'.  Cause: java.lang.ClassNotFoundException: Cannot find class: com.app.model.User; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sqlSessionFactory' defined in class path resource [org/mybatis/spring/boot/autoconfigure/MybatisAutoConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.apache.ibatis.session.SqlSessionFactory]: Factory method 'sqlSessionFactory' threw exception; nested exception is org.springframework.core.NestedIOException: Failed to parse mapping resource: 'file [F:\workspace\idea\rbac_paper\app_dao\target\classes\com\app\mapper\mapper\UserMapper.xml]'; nested exception is org.apache.ibatis.builder.BuilderException: Error parsing Mapper XML. Cause: org.apache.ibatis.builder.BuilderException: Error resolving class. Cause: org.apache.ibatis.type.TypeException: Could not resolve type alias 'com.app.model.User'.  Cause: java.lang.ClassNotFoundException: Cannot find class: com.app.model.User
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireByType(AbstractAutowireCapableBeanFactory.java:1307)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1199)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:543)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:482)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:197)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:757)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:861)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:541)
+	at org.springframework.boot.context.embedded.EmbeddedWebApplicationContext.refresh(EmbeddedWebApplicationContext.java:122)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:693)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:360)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:303)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1118)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1107)
+	at com.app.web.springboot.Application.main(Application.java:14)
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sqlSessionFactory' defined in class path resource [org/mybatis/spring/boot/autoconfigure/MybatisAutoConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.apache.ibatis.session.SqlSessionFactory]: Factory method 'sqlSessionFactory' threw exception; nested exception is org.springframework.core.NestedIOException: Failed to parse mapping resource: 'file [F:\workspace\idea\rbac_paper\app_dao\target\classes\com\app\mapper\mapper\UserMapper.xml]'; nested exception is org.apache.ibatis.builder.BuilderException: Error parsing Mapper XML. Cause: org.apache.ibatis.builder.BuilderException: Error resolving class. Cause: org.apache.ibatis.type.TypeException: Could not resolve type alias 'com.app.model.User'.  Cause: java.lang.ClassNotFoundException: Cannot find class: com.app.model.User
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:599)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1123)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1018)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:510)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:482)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:207)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.findAutowireCandidates(DefaultListableBeanFactory.java:1214)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1054)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1019)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireByType(AbstractAutowireCapableBeanFactory.java:1292)
+	... 17 more
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.apache.ibatis.session.SqlSessionFactory]: Factory method 'sqlSessionFactory' threw exception; nested exception is org.springframework.core.NestedIOException: Failed to parse mapping resource: 'file [F:\workspace\idea\rbac_paper\app_dao\target\classes\com\app\mapper\mapper\UserMapper.xml]'; nested exception is org.apache.ibatis.builder.BuilderException: Error parsing Mapper XML. Cause: org.apache.ibatis.builder.BuilderException: Error resolving class. Cause: org.apache.ibatis.type.TypeException: Could not resolve type alias 'com.app.model.User'.  Cause: java.lang.ClassNotFoundException: Cannot find class: com.app.model.User
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:189)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:588)
+	... 30 more
+Caused by: org.springframework.core.NestedIOException: Failed to parse mapping resource: 'file [F:\workspace\idea\rbac_paper\app_dao\target\classes\com\app\mapper\mapper\UserMapper.xml]'; nested exception is org.apache.ibatis.builder.BuilderException: Error parsing Mapper XML. Cause: org.apache.ibatis.builder.BuilderException: Error resolving class. Cause: org.apache.ibatis.type.TypeException: Could not resolve type alias 'com.app.model.User'.  Cause: java.lang.ClassNotFoundException: Cannot find class: com.app.model.User
+	at org.mybatis.spring.SqlSessionFactoryBean.buildSqlSessionFactory(SqlSessionFactoryBean.java:523)
+	at org.mybatis.spring.SqlSessionFactoryBean.afterPropertiesSet(SqlSessionFactoryBean.java:380)
+	at org.mybatis.spring.SqlSessionFactoryBean.getObject(SqlSessionFactoryBean.java:547)
+	at org.mybatis.spring.boot.autoconfigure.MybatisAutoConfiguration.sqlSessionFactory(MybatisAutoConfiguration.java:139)
+	at org.mybatis.spring.boot.autoconfigure.MybatisAutoConfiguration$$EnhancerBySpringCGLIB$$b8a42a34.CGLIB$sqlSessionFactory$0(<generated>)
+	at org.mybatis.spring.boot.autoconfigure.MybatisAutoConfiguration$$EnhancerBySpringCGLIB$$b8a42a34$$FastClassBySpringCGLIB$$cdf66147.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:228)
+	at org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.intercept(ConfigurationClassEnhancer.java:356)
+	at org.mybatis.spring.boot.autoconfigure.MybatisAutoConfiguration$$EnhancerBySpringCGLIB$$b8a42a34.sqlSessionFactory(<generated>)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:162)
+	... 31 more
+Caused by: org.apache.ibatis.builder.BuilderException: Error parsing Mapper XML. Cause: org.apache.ibatis.builder.BuilderException: Error resolving class. Cause: org.apache.ibatis.type.TypeException: Could not resolve type alias 'com.app.model.User'.  Cause: java.lang.ClassNotFoundException: Cannot find class: com.app.model.User
+	at org.apache.ibatis.builder.xml.XMLMapperBuilder.configurationElement(XMLMapperBuilder.java:120)
+	at org.apache.ibatis.builder.xml.XMLMapperBuilder.parse(XMLMapperBuilder.java:92)
+	at org.mybatis.spring.SqlSessionFactoryBean.buildSqlSessionFactory(SqlSessionFactoryBean.java:521)
+	... 44 more
+Caused by: org.apache.ibatis.builder.BuilderException: Error resolving class. Cause: org.apache.ibatis.type.TypeException: Could not resolve type alias 'com.app.model.User'.  Cause: java.lang.ClassNotFoundException: Cannot find class: com.app.model.User
+	at org.apache.ibatis.builder.BaseBuilder.resolveClass(BaseBuilder.java:118)
+	at org.apache.ibatis.builder.xml.XMLMapperBuilder.resultMapElement(XMLMapperBuilder.java:265)
+	at org.apache.ibatis.builder.xml.XMLMapperBuilder.resultMapElement(XMLMapperBuilder.java:252)
+	at org.apache.ibatis.builder.xml.XMLMapperBuilder.resultMapElements(XMLMapperBuilder.java:244)
+	at org.apache.ibatis.builder.xml.XMLMapperBuilder.configurationElement(XMLMapperBuilder.java:116)
+	... 46 more
+Caused by: org.apache.ibatis.type.TypeException: Could not resolve type alias 'com.app.model.User'.  Cause: java.lang.ClassNotFoundException: Cannot find class: com.app.model.User
+	at org.apache.ibatis.type.TypeAliasRegistry.resolveAlias(TypeAliasRegistry.java:120)
+	at org.apache.ibatis.builder.BaseBuilder.resolveAlias(BaseBuilder.java:149)
+	at org.apache.ibatis.builder.BaseBuilder.resolveClass(BaseBuilder.java:116)
+	... 50 more
+Caused by: java.lang.ClassNotFoundException: Cannot find class: com.app.model.User
+	at org.apache.ibatis.io.ClassLoaderWrapper.classForName(ClassLoaderWrapper.java:200)
+	at org.apache.ibatis.io.ClassLoaderWrapper.classForName(ClassLoaderWrapper.java:89)
+	at org.apache.ibatis.io.Resources.classForName(Resources.java:261)
+	at org.apache.ibatis.type.TypeAliasRegistry.resolveAlias(TypeAliasRegistry.java:116)
+	... 52 more
+[INFO] [2018-01-28 19:24:17,224] [main] (StartupInfoLogger.java:48) com.app.web.springboot.Application - Starting Application on sshss-PC with PID 3144 (F:\workspace\idea\rbac_paper\app_web\target\classes started by Administrator in F:\workspace\idea\rbac_paper)
+[INFO] [2018-01-28 19:24:17,225] [main] (SpringApplication.java:593) com.app.web.springboot.Application - No active profile set, falling back to default profiles: default
+[INFO] [2018-01-28 19:24:17,325] [main] (AbstractApplicationContext.java:581) org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext - Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@5d1659ea: startup date [Sun Jan 28 19:24:17 CST 2018]; root of context hierarchy
+[INFO] [2018-01-28 19:24:18,444] [main] (DefaultListableBeanFactory.java:843) org.springframework.beans.factory.support.DefaultListableBeanFactory - Overriding bean definition for bean 'dataSource' with a different definition: replacing [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=org.springframework.boot.autoconfigure.jdbc.DataSourceConfiguration$Dbcp; factoryMethodName=dataSource; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [org/springframework/boot/autoconfigure/jdbc/DataSourceConfiguration$Dbcp.class]] with [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=org.springframework.boot.autoconfigure.jdbc.DataSourceConfiguration$Tomcat; factoryMethodName=dataSource; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [org/springframework/boot/autoconfigure/jdbc/DataSourceConfiguration$Tomcat.class]]
+[INFO] [2018-01-28 19:24:19,934] [main] (TomcatEmbeddedServletContainer.java:89) org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer - Tomcat initialized with port(s): 8080 (http)
+[INFO] [2018-01-28 19:24:19,949] [main] (DirectJDKLog.java:179) org.apache.catalina.core.StandardService - Starting service [Tomcat]
+[INFO] [2018-01-28 19:24:19,951] [main] (DirectJDKLog.java:179) org.apache.catalina.core.StandardEngine - Starting Servlet Engine: Apache Tomcat/8.5.23
+[INFO] [2018-01-28 19:24:20,116] [localhost-startStop-1] (DirectJDKLog.java:179) org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+[INFO] [2018-01-28 19:24:20,116] [localhost-startStop-1] (EmbeddedWebApplicationContext.java:276) org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 2796 ms
+[INFO] [2018-01-28 19:24:20,331] [localhost-startStop-1] (ServletRegistrationBean.java:190) org.springframework.boot.web.servlet.ServletRegistrationBean - Mapping servlet: 'dispatcherServlet' to [/]
+[INFO] [2018-01-28 19:24:20,346] [localhost-startStop-1] (AbstractFilterRegistrationBean.java:258) org.springframework.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'characterEncodingFilter' to: [/*]
+[INFO] [2018-01-28 19:24:20,346] [localhost-startStop-1] (AbstractFilterRegistrationBean.java:258) org.springframework.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+[INFO] [2018-01-28 19:24:20,346] [localhost-startStop-1] (AbstractFilterRegistrationBean.java:258) org.springframework.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'httpPutFormContentFilter' to: [/*]
+[INFO] [2018-01-28 19:24:20,346] [localhost-startStop-1] (AbstractFilterRegistrationBean.java:258) org.springframework.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'requestContextFilter' to: [/*]
+[INFO] [2018-01-28 19:24:21,306] [main] (LocalContainerEntityManagerFactoryBean.java:334) org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean - Building JPA container EntityManagerFactory for persistence unit 'default'
+[INFO] [2018-01-28 19:24:21,870] [main] (AbstractEntityManagerFactoryBean.java:382) org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+[WARN] [2018-01-28 19:24:22,355] [main] (AbstractApplicationContext.java:549) org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'authorityElementMapper' defined in file [F:\workspace\idea\rbac_paper\app_dao\target\classes\com\app\mapper\mapper\AuthorityElementMapper.class]: Unsatisfied dependency expressed through bean property 'sqlSessionFactory': Error creating bean with name 'sqlSessionFactory' defined in class path resource [org/mybatis/spring/boot/autoconfigure/MybatisAutoConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.apache.ibatis.session.SqlSessionFactory]: Factory method 'sqlSessionFactory' threw exception; nested exception is org.springframework.core.NestedIOException: Failed to parse mapping resource: 'file [F:\workspace\idea\rbac_paper\app_dao\target\classes\com\app\mapper\mapper\UserMapper.xml]'; nested exception is org.apache.ibatis.builder.BuilderException: Error parsing Mapper XML. Cause: java.lang.IllegalArgumentException: Result Maps collection already contains value for com.app.mapper.mapper.UserMapper.BaseResultMap; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sqlSessionFactory' defined in class path resource [org/mybatis/spring/boot/autoconfigure/MybatisAutoConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.apache.ibatis.session.SqlSessionFactory]: Factory method 'sqlSessionFactory' threw exception; nested exception is org.springframework.core.NestedIOException: Failed to parse mapping resource: 'file [F:\workspace\idea\rbac_paper\app_dao\target\classes\com\app\mapper\mapper\UserMapper.xml]'; nested exception is org.apache.ibatis.builder.BuilderException: Error parsing Mapper XML. Cause: java.lang.IllegalArgumentException: Result Maps collection already contains value for com.app.mapper.mapper.UserMapper.BaseResultMap
+[INFO] [2018-01-28 19:24:22,371] [main] (AbstractEntityManagerFactoryBean.java:551) org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+[INFO] [2018-01-28 19:24:22,371] [main] (DirectJDKLog.java:179) org.apache.catalina.core.StandardService - Stopping service [Tomcat]
+[ERROR] [2018-01-28 19:24:22,424] [main] (SpringApplication.java:771) org.springframework.boot.SpringApplication - Application startup failed
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'authorityElementMapper' defined in file [F:\workspace\idea\rbac_paper\app_dao\target\classes\com\app\mapper\mapper\AuthorityElementMapper.class]: Unsatisfied dependency expressed through bean property 'sqlSessionFactory': Error creating bean with name 'sqlSessionFactory' defined in class path resource [org/mybatis/spring/boot/autoconfigure/MybatisAutoConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.apache.ibatis.session.SqlSessionFactory]: Factory method 'sqlSessionFactory' threw exception; nested exception is org.springframework.core.NestedIOException: Failed to parse mapping resource: 'file [F:\workspace\idea\rbac_paper\app_dao\target\classes\com\app\mapper\mapper\UserMapper.xml]'; nested exception is org.apache.ibatis.builder.BuilderException: Error parsing Mapper XML. Cause: java.lang.IllegalArgumentException: Result Maps collection already contains value for com.app.mapper.mapper.UserMapper.BaseResultMap; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sqlSessionFactory' defined in class path resource [org/mybatis/spring/boot/autoconfigure/MybatisAutoConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.apache.ibatis.session.SqlSessionFactory]: Factory method 'sqlSessionFactory' threw exception; nested exception is org.springframework.core.NestedIOException: Failed to parse mapping resource: 'file [F:\workspace\idea\rbac_paper\app_dao\target\classes\com\app\mapper\mapper\UserMapper.xml]'; nested exception is org.apache.ibatis.builder.BuilderException: Error parsing Mapper XML. Cause: java.lang.IllegalArgumentException: Result Maps collection already contains value for com.app.mapper.mapper.UserMapper.BaseResultMap
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireByType(AbstractAutowireCapableBeanFactory.java:1307)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1199)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:543)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:482)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:197)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:757)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:861)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:541)
+	at org.springframework.boot.context.embedded.EmbeddedWebApplicationContext.refresh(EmbeddedWebApplicationContext.java:122)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:693)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:360)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:303)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1118)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1107)
+	at com.app.web.springboot.Application.main(Application.java:14)
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sqlSessionFactory' defined in class path resource [org/mybatis/spring/boot/autoconfigure/MybatisAutoConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.apache.ibatis.session.SqlSessionFactory]: Factory method 'sqlSessionFactory' threw exception; nested exception is org.springframework.core.NestedIOException: Failed to parse mapping resource: 'file [F:\workspace\idea\rbac_paper\app_dao\target\classes\com\app\mapper\mapper\UserMapper.xml]'; nested exception is org.apache.ibatis.builder.BuilderException: Error parsing Mapper XML. Cause: java.lang.IllegalArgumentException: Result Maps collection already contains value for com.app.mapper.mapper.UserMapper.BaseResultMap
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:599)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1123)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1018)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:510)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:482)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:207)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.findAutowireCandidates(DefaultListableBeanFactory.java:1214)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1054)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1019)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireByType(AbstractAutowireCapableBeanFactory.java:1292)
+	... 17 more
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.apache.ibatis.session.SqlSessionFactory]: Factory method 'sqlSessionFactory' threw exception; nested exception is org.springframework.core.NestedIOException: Failed to parse mapping resource: 'file [F:\workspace\idea\rbac_paper\app_dao\target\classes\com\app\mapper\mapper\UserMapper.xml]'; nested exception is org.apache.ibatis.builder.BuilderException: Error parsing Mapper XML. Cause: java.lang.IllegalArgumentException: Result Maps collection already contains value for com.app.mapper.mapper.UserMapper.BaseResultMap
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:189)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:588)
+	... 30 more
+Caused by: org.springframework.core.NestedIOException: Failed to parse mapping resource: 'file [F:\workspace\idea\rbac_paper\app_dao\target\classes\com\app\mapper\mapper\UserMapper.xml]'; nested exception is org.apache.ibatis.builder.BuilderException: Error parsing Mapper XML. Cause: java.lang.IllegalArgumentException: Result Maps collection already contains value for com.app.mapper.mapper.UserMapper.BaseResultMap
+	at org.mybatis.spring.SqlSessionFactoryBean.buildSqlSessionFactory(SqlSessionFactoryBean.java:523)
+	at org.mybatis.spring.SqlSessionFactoryBean.afterPropertiesSet(SqlSessionFactoryBean.java:380)
+	at org.mybatis.spring.SqlSessionFactoryBean.getObject(SqlSessionFactoryBean.java:547)
+	at org.mybatis.spring.boot.autoconfigure.MybatisAutoConfiguration.sqlSessionFactory(MybatisAutoConfiguration.java:139)
+	at org.mybatis.spring.boot.autoconfigure.MybatisAutoConfiguration$$EnhancerBySpringCGLIB$$fa5e917e.CGLIB$sqlSessionFactory$1(<generated>)
+	at org.mybatis.spring.boot.autoconfigure.MybatisAutoConfiguration$$EnhancerBySpringCGLIB$$fa5e917e$$FastClassBySpringCGLIB$$9dfa519f.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:228)
+	at org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.intercept(ConfigurationClassEnhancer.java:356)
+	at org.mybatis.spring.boot.autoconfigure.MybatisAutoConfiguration$$EnhancerBySpringCGLIB$$fa5e917e.sqlSessionFactory(<generated>)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:162)
+	... 31 more
+Caused by: org.apache.ibatis.builder.BuilderException: Error parsing Mapper XML. Cause: java.lang.IllegalArgumentException: Result Maps collection already contains value for com.app.mapper.mapper.UserMapper.BaseResultMap
+	at org.apache.ibatis.builder.xml.XMLMapperBuilder.configurationElement(XMLMapperBuilder.java:120)
+	at org.apache.ibatis.builder.xml.XMLMapperBuilder.parse(XMLMapperBuilder.java:92)
+	at org.mybatis.spring.SqlSessionFactoryBean.buildSqlSessionFactory(SqlSessionFactoryBean.java:521)
+	... 44 more
+Caused by: java.lang.IllegalArgumentException: Result Maps collection already contains value for com.app.mapper.mapper.UserMapper.BaseResultMap
+	at org.apache.ibatis.session.Configuration$StrictMap.put(Configuration.java:859)
+	at org.apache.ibatis.session.Configuration$StrictMap.put(Configuration.java:831)
+	at org.apache.ibatis.session.Configuration.addResultMap(Configuration.java:613)
+	at org.apache.ibatis.builder.MapperBuilderAssistant.addResultMap(MapperBuilderAssistant.java:214)
+	at org.apache.ibatis.builder.ResultMapResolver.resolve(ResultMapResolver.java:47)
+	at org.apache.ibatis.builder.xml.XMLMapperBuilder.resultMapElement(XMLMapperBuilder.java:285)
+	at org.apache.ibatis.builder.xml.XMLMapperBuilder.resultMapElement(XMLMapperBuilder.java:252)
+	at org.apache.ibatis.builder.xml.XMLMapperBuilder.resultMapElements(XMLMapperBuilder.java:244)
+	at org.apache.ibatis.builder.xml.XMLMapperBuilder.configurationElement(XMLMapperBuilder.java:116)
+	... 46 more

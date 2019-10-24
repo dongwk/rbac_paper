@@ -1,6 +1,7 @@
 package com;
 
 import com.app.Application;
+import com.app.service.service.AuthService;
 import com.app.service.service.UserService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -18,8 +19,11 @@ public class ApplicationTest {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private AuthService authService;
+
     @Test
     public void aop(){
-        userService.login("zhangsan", "123456");
+        System.out.println(userService.login("lisi", "123456"));
     }
 }

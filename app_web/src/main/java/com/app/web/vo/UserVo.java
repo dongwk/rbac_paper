@@ -1,6 +1,5 @@
 package com.app.web.vo;
 
-import com.app.web.util.annotation.UnSupportQuery;
 import lombok.Data;
 
 /**

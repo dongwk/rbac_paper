@@ -12,7 +12,7 @@
     </appenders>
 
     <loggers>
-        <root level="DEBUG">
+        <root level="INFO">
             <appenderref ref="CONSOLE" />
         </root>
     </loggers>

@@ -10,5 +10,5 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/authority")
 public class AuthorityController extends BaseController{
-	
+
 }
