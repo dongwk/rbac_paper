@@ -2,10 +2,15 @@ package com.app.web.controller.base;
 
 import com.app.common.util.ValidateUtil;
 import com.app.common.web.result.R;
+import com.app.common.web.result.RP;
 import com.app.model.base.BaseModel;
+import com.app.model.model.User;
 import com.app.service.base.BaseSimpleService;
 import com.app.common.util.date.DateUtil;
 import com.app.common.util.reflection.GenericUtils;
+import com.app.web.util.RPUtils;
+import com.app.web.util.RestUtils;
+import com.app.web.vo.PageVo;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.baomidou.mybatisplus.plugins.Page;
@@ -17,6 +22,15 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 /**
+ * 基本操作的服务类
+ * 提供基于 Rest 的方法
+ * 关键字
+ * sort 排序 逗号分隔 sort=-updated_at
+ * fields 过滤字段 逗号分隔
+ * 更新创建 时间字段 不再更新列中
+ * https://www.oschina.net/translate/best-practices-for-a-pragmatic-restful-api?lang=chs&p=1
+ * page perPage 页数 每页条数
+ *
  * @author dongwk
  * @version 1.0
  * @date 2018/11/27 14:42
@@ -24,61 +38,75 @@ import java.util.List;
 @Slf4j
 public class BaseRestController<S extends BaseSimpleService, T extends BaseModel> extends BaseController {
 
-    /** 
-     * 关键字
-     * sort 排序 逗号分隔 sort=-updated_at
-     * fields 过滤字段 逗号分隔
-     * 更新创建 时间字段 不再更新列中
-     * https://www.oschina.net/translate/best-practices-for-a-pragmatic-restful-api?lang=chs&p=1
-     * page perPage 页数 每页条数
-     */
-    // 基本操作的服务类
     @Autowired
-    protected S baseSimpleService;
-    // 提取泛型类型
+    protected S baseService;
+    /** 提取泛型类型 */
     private final Class<T> tClass = (Class<T>) GenericUtils.extractSecondModelClass(getClass());
 
-    // 默认页数
+    /** 默认页数 */
     protected static int DEFAULT_PAGE = 1;
-    // 默认条数
+    /** 默认条数 */
     protected static int DEFAULT_PER_PAGE = 20;
-    // 排序字段
+    /** 排序字段 */
     private static final String SORT = "sort";
-    // 过滤字段
+    /** 过滤字段 */
     private static final String FIELDS = "fields";
-    // 页码字段
+    /** 页码字段 */
     private static final String PAGE = "page";
-    // 条数字段
+    /** 条数字段 */
     private static final String PER_PAGE = "per_page";
 
+    /**
+     *  Get
+     *  get /user
+     */
     @GetMapping
     public R<?> get(){
-        List<T> list = baseSimpleService.selectList(null);
-        return R.SUCCESS(list);
+        Wrapper<User> wrapper = null;
+        if (StringUtils.isNotBlank(getFields())) {
+            wrapper = new EntityWrapper<>();
+            wrapper.setSqlSelect(RestUtils.filedsToCamel(getFields()));
+        }
+        Page page = buildPage();
+
+        List<T> list = null;
+        if (page != null){
+            Page<T> page1 = baseService.selectPage(page, wrapper);
+            return R.SUCCESS(RPUtils.parsePR(page1));
+        } else {
+            list = baseService.selectList(wrapper);
+            return R.SUCCESS(list);
+        }
     }
 
+    /**
+     * Post
+     * post /user
+     */
     @PostMapping
     public R<?> post(@RequestBody T obj){
-        return R.SUCCESS(baseSimpleService.insert(obj));
+        return R.SUCCESS(baseService.insert(obj));
     }
 
     @GetMapping(value = "/{id}")
     public R<?> get(@PathVariable String id){
-        return R.SUCCESS(baseSimpleService.get(id));
+        Wrapper<User> wrapper = new EntityWrapper<>();
+        if (StringUtils.isNotBlank(getFields())) wrapper.setSqlSelect(RestUtils.filedsToCamel(getFields()));
+        return R.SUCCESS(baseService.get(id));
     }
 
     @PutMapping(value = "/{id}")
     public R<?> put(@PathVariable String id, @RequestBody T obj){
         obj.setId(id != null ? Integer.parseInt(id):null);
         obj.setUpdateTime(DateUtil.date());
-        return R.SUCCESS(baseSimpleService.updateAllColumnById(obj));
+        return R.SUCCESS(baseService.updateAllColumnById(obj));
     }
 
     @PatchMapping(value = "/{id}")
     public R<?> patch(@PathVariable String id, @RequestBody T obj){
         obj.setId(id != null ? Integer.parseInt(id):null);
         obj.setUpdateTime(DateUtil.date());
-        return R.SUCCESS(baseSimpleService.updateById(obj));
+        return R.SUCCESS(baseService.updateById(obj));
     }
 
     @DeleteMapping(value = "/{id}")
@@ -95,7 +123,8 @@ public class BaseRestController<S extends BaseSimpleService, T extends BaseModel
         }
         obj.setId(id != null ? Integer.parseInt(id):null);
         obj.setUpdateTime(DateUtil.date());
-        return R.SUCCESS(baseSimpleService.updateById(obj));
+        obj.setStatus(Boolean.FALSE);
+        return R.SUCCESS(baseService.updateById(obj));
     }
 
 
@@ -120,63 +149,43 @@ public class BaseRestController<S extends BaseSimpleService, T extends BaseModel
     }
 
     /**
-     * 每页条数
-     * @author dongwk
-     * @date 2018/12/5
-     */
-    protected int getDefPerPage(){
-        String perPage = request.getParameter(PER_PAGE);
-        return ValidateUtil.isInteger(perPage) ?  Integer.parseInt(perPage) : DEFAULT_PER_PAGE;
-    }
-
-    /**
-     * 页数
-     * @author dongwk
-     * @date 2018/12/5
-     */
-    protected int getDefPage(){
-        String page = request.getParameter(PAGE);
-        return ValidateUtil.isInteger(page) ?  Integer.parseInt(page) : DEFAULT_PAGE;
-    }
-
-    /**
      * 显示字段
      * @author dongwk
      * @date 2018/12/5
      * @return
      */
-    protected String[] getFields(){
+    protected String getFields(){
         String fields = request.getParameter(FIELDS);
-        String[] ary = StringUtils.isNoneEmpty(fields) ? StringUtils.split(fields, ",") : null;
-        if (ary != null) {
-
-        }
-        return ary;
+        return fields;
     }
 
     /**
      * 排序字段
      * @author dongwk
      * @date 2018/12/4
-     * @return [{filed1, asc or desc}, {filed2, asc or desc}]
+     * @return
      */
-    protected String[][] getSort(){
+    protected String getSort(){
         String sort = request.getParameter(SORT);
-        String[] fileds = StringUtils.isNoneEmpty(sort) ? StringUtils.split(sort, ","):null;
-        if (fileds == null) return null;
-        String[][] sortfileds = new String[fileds.length][2];
-
-        for (int i = 0; i < fileds.length; i++) {
-            String sortFiled = fileds[i];
-            if (sortFiled.startsWith("-")){
-                sortfileds[i][0] = sortFiled.substring(1);
-                sortfileds[i][1] = "desc";
-            } else {
-                sortfileds[i][0] = sortFiled;
-                sortfileds[i][1] = "asc";
-            }
-        }
-
-        return sortfileds;
+        return sort;
     }
+
+    /**
+     *
+     */
+    private Wrapper buildWrapper(){
+        Wrapper<User> wrapper = new EntityWrapper<>();
+        if (StringUtils.isNotBlank(getFields())) wrapper.setSqlSelect(RestUtils.filedsToCamel(getFields()));
+        if (StringUtils.isNotBlank(getSort())) wrapper.orderBy(RestUtils.sortToSql(getSort()));
+        return wrapper;
+    }
+    /**
+     *
+     */
+    private Page buildPage(){
+        Page page = null;
+        if (getPage() > 0 && getPerPage() > 0) page = new Page(getPage(), getPerPage()) ;
+        return page;
+    }
+
 }

@@ -1,20 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<configuration>
-    <properties>
+<Configuration>
+    <Properties>
         <!-- 文件输出格式 -->
-        <property name="PATTERN">%d{yyyy-MM-dd HH:mm:ss,SSS} %5p %5pid --- [%15.15t] %-40.40c{1.} %L: %m%n</property>
-    </properties>
+        <Property name="PATTERN">%d{yyyy-MM-dd HH:mm:ss,SSS} %5p %5pid --- [%15.15t] %-40.40c{1.} %L: %m%n</Property>
+    </Properties>
 
-    <appenders>
+    <Appenders>
         <Console name="CONSOLE" target="SYSTEM_OUT">
             <PatternLayout pattern="${PATTERN}" />
         </Console>
-    </appenders>
+    </Appenders>
+    <Loggers>
+        <Root level="INFO">
+            <AppenderRef ref="CONSOLE" />
+        </Root>
+        <Logger name="org.quartz" level="WARN">
+            <AppenderRef ref="CONSOLE" />
+        </Logger>
+    </Loggers>
 
-    <loggers>
-        <root level="INFO">
-            <appenderref ref="CONSOLE" />
-        </root>
-    </loggers>
 
-</configuration>
+</Configuration>

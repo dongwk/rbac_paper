@@ -9,7 +9,7 @@
   <version>1.0-SNAPSHOT</version>
   <packaging>war</packaging>
 
-  <name>app_api Maven Webapp</name>
+  <name>app_api</name>
   <url>http://www.example.com</url>
 
   <parent>
