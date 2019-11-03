@@ -5,14 +5,14 @@ import com.app.web.authorization.model.TokenModel;
 /**
  * 对Token进行操作的接口
  */
-public interface TokenManager {
+public interface TokenManage {
 
     /**
-     * 创建一个token关联上指定用户
-     * @param userId 指定用户的id
-     * @return 生成的token
+     * 存储token
+     * @param token 指定用户的id
+     * @param expires token 有效期
      */
-    TokenModel createToken(long userId);
+    void storeToken(String token, int expires);
 
     /**
      * 检查token是否有效

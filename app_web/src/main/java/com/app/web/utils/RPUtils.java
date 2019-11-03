@@ -1,4 +1,4 @@
-package com.app.web.util;
+package com.app.web.utils;
 
 import com.app.common.web.result.RP;
 import com.baomidou.mybatisplus.plugins.Page;

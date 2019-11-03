@@ -1,4 +1,4 @@
-package com.app.web.util;
+package com.app.web.utils;
 
 import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.google.common.base.CaseFormat;

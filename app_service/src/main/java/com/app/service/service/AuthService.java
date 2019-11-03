@@ -16,4 +16,11 @@ public class AuthService extends BaseSimpleService<UserMapper, User> {
 
         return get(u);
     }
+
+    public User getByUsername(String username) {
+        User u = new User();
+        u.setUsername(username);
+
+        return get(u);
+    }
 }

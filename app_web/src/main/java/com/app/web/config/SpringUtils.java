@@ -1,4 +1,4 @@
-package com.app.web.utils;
+package com.app.web.config;
 
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;

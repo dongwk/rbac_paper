@@ -1,4 +1,4 @@
-package com.app.web.controller.config;
+package com.app.web.config;
 
 import com.app.web.constant.ErrorPagePath;
 import org.springframework.boot.web.server.ErrorPage;
@@ -7,7 +7,7 @@ import org.springframework.boot.web.server.ErrorPageRegistry;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 
-@Component
+//@Component
 public class ErrorPageConfig implements ErrorPageRegistrar {
 
     @Override

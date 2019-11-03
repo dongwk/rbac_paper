@@ -1,9 +1,8 @@
 package com.app.web.authorization.manager.impl;
 
 import com.app.web.authorization.config.Constants;
-import com.app.web.authorization.manager.TokenManager;
+import com.app.web.authorization.manager.TokenManage;
 import com.app.web.authorization.model.TokenModel;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.JdkSerializationRedisSerializer;
 import org.springframework.stereotype.Component;
@@ -13,12 +12,12 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * 通过Redis存储和验证token的实现类
- * @see TokenManager
+ * @see TokenManage
  * @author ScienJus
  * @date 2015/7/31.
  */
-@Component
-public class RedisTokenManager implements TokenManager {
+@Component("redisTokenManage")
+public class RedisTokenManage implements TokenManage {
 
     private RedisTemplate<Long, String> redis;
 
@@ -42,6 +41,11 @@ public class RedisTokenManager implements TokenManager {
             return null;
         }
         return new TokenModel();
+    }
+
+    @Override
+    public void storeToken(String token, int expires) {
+
     }
 
     public boolean checkToken(String token) {

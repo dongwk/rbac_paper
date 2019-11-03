@@ -201,7 +201,13 @@
 		<dependency>
 			<groupId>com.google.guava</groupId>
 			<artifactId>guava</artifactId>
-			<version>27.1-jre</version>
+			<version>28.1-jre</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/redis.clients/jedis -->
+		<dependency>
+			<groupId>redis.clients</groupId>
+			<artifactId>jedis</artifactId>
+			<version>3.1.0</version>
 		</dependency>
 	</dependencies>
 
@@ -261,13 +267,14 @@
 		<module>app_core</module>
 		<module>app_manage</module>
 		<module>app_common</module>
+        <module>app_test</module>
     </modules>
 
-	<distributionManagement>
+	<repositories>
 		<repository>
 			<id>nexus</id>
 			<name>Repository</name>
 			<url>http://maven.aliyun.com/nexus/content/groups/public/</url>
 		</repository>
-	</distributionManagement>
+	</repositories>
 </project>

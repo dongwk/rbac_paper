@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping(value = "/user")
 public class UserController extends BaseRestController<UserService, User> {
 
-
     @PostMapping
     public R<Boolean> post(@RequestBody User obj){
         baseService.insert(obj);

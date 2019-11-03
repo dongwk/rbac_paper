@@ -5,7 +5,7 @@ import com.app.model.model.User;
 import com.app.service.service.UserService;
 import com.app.web.authorization.annotation.Authorization;
 import com.app.web.authorization.annotation.CurrentUser;
-import com.app.web.authorization.manager.TokenManager;
+import com.app.web.authorization.manager.TokenManage;
 import com.app.web.authorization.model.TokenModel;
 import com.app.web.vo.LoginVo;
 import com.app.web.vo.UserVo;
@@ -26,7 +26,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/token")
 public class TokenController {
 
-    private TokenManager tokenManager;
+    private TokenManage tokenManage;
 
     @Autowired
     private UserService userService;
@@ -43,7 +43,8 @@ public class TokenController {
         //生成一个token，保存用户登录状态
 //        TokenModel model = tokenManager.createToken(user.getId());
         TokenModel model = new TokenModel(1,"lisi");
-        return R.SUCCESS(new LoginVo(model.getToken()));
+
+        return R.SUCCESS(LoginVo.builder().token(model.getToken()).build());
     }
 
     @DeleteMapping

@@ -74,6 +74,10 @@ public class R<T> extends ResponseEntity<R.Model> {
 		return new R(new Model(httpStatus.value()+"", msg, null), httpStatus);
 	}
 
+	public static R ERROR(HttpStatus httpStatus, String msg){
+		return new R(new Model(httpStatus.value()+"", msg, null), httpStatus);
+	}
+
 	public static R MODEL(HttpStatus httpStatus){
 		return new R(new Model(httpStatus != null ? httpStatus.value()+"" : null, httpStatus != null ? httpStatus.getReasonPhrase() : null, null), httpStatus);
 	}

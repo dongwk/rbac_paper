@@ -110,6 +110,7 @@ https://www.oschina.net/p/guns
 17、rest 动态字段内容，需要修改 mybatis plus 源码，已确认 Wrapper 包装类有字段的功能
 18、公共字段填充，已解决，忘加了一个注解，源码没怎么看懂
 19、肯定是先异常后状态码，自己的理解 exception 之后才是 500
+20、TokenGenerate 是规划为创建不同 token 的方式，暂时不使用，暂时使用的工具类
 
 
 

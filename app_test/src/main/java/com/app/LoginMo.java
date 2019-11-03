@@ -1,4 +1,4 @@
-package com.app.web.mo;
+package com.app;
 
 import lombok.Builder;
 import lombok.Data;

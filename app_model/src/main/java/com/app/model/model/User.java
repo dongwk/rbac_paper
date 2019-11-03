@@ -13,4 +13,6 @@ public class User extends BaseModel {
     private String username;
 
     private String password;
+
+    private String salt;
 }
