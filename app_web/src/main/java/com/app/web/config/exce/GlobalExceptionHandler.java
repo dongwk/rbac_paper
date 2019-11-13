@@ -1,5 +1,6 @@
 package com.app.web.config.exce;
 
+import com.app.common.util.date.DateUtil;
 import com.app.common.web.result.R;
 import com.app.web.constant.BizErrorCode;
 import com.app.web.controller.common.MessageSourceHandler;
@@ -9,6 +10,8 @@ import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.util.StreamUtils;
 import org.springframework.validation.BindException;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
@@ -44,39 +47,49 @@ class GlobalExceptionHandler {
     }
 
     @ExceptionHandler(value = Exception.class)
-    public ModelAndView defaultErrorHandler(HttpServletRequest req, Exception e) throws Exception {
+    public ModelAndView defaultErroRrHandler(HttpServletRequest req, Exception e) throws Exception {
         ModelAndView mav = new ModelAndView(new MappingJackson2JsonView());
         mav.addObject("url", req.getRequestURL());
+        mav.addObject("timestamp", DateUtil.timestamp());
         mav.addObject("exception", e.getMessage());
-        ContentCachingRequestWrapper req1 = getUnderlyingCachingRequest(req);
-        log.error("GlobalExceptionHandler url:{}, params:{}, requestBody:{}, exception:{}",
-                req.getRequestURL(), req.getParameterMap(), req1 != null ? new String(req1.getContentAsByteArray(), "UTF-8"):null, ExceptionUtils.getStackTrace(e));
+        mav.setStatus(HttpStatus.INTERNAL_SERVER_ERROR);
 
+        ContentCachingRequestWrapper req1 = getUnderlyingCachingRequest(req);
+        log.error("url:{}", req.getRequestURL());
+        log.error("params:{}",req.getParameterMap());
+        log.error("requestBody:{}", (req1 != null && req1.getContentAsByteArray() != null) ? new String(req1.getContentAsByteArray(), "UTF-8"):null);
+        log.error("exception:\n{}", ExceptionUtils.getStackTrace(e));
+
+        //TODO 后期需要改成“系统错误”，现在是错误详细信息方便查问题
         return mav;
     }
 
-//    @ResponseBody
-//    @ExceptionHandler(value = {BindException.class, MethodArgumentNotValidException.class})
-//    public R validateHandler(HttpServletRequest req, Exception e) throws Exception {
-//        BindingResult bindResult = null;
-//        if (e instanceof BindException) {
-//            bindResult = ((BindException) e).getBindingResult();
-//        } else if (e instanceof MethodArgumentNotValidException) {
-//            bindResult = ((MethodArgumentNotValidException) e).getBindingResult();
-//        }
-//        String msg;
-//        if (bindResult != null && bindResult.hasErrors()) {
-//            msg = bindResult.getAllErrors().get(0).getDefaultMessage();
-//        }else {
-//            msg = "系统繁忙，请稍后重试...";
-//        }
-//        return R.ERROR(messageSourceHandler.getMessage(msg));
-//    }
+    @ResponseBody
+    @ExceptionHandler(value = {BindException.class, MethodArgumentNotValidException.class})
+    public R validateHandler(HttpServletRequest req, Exception e) throws Exception {
+        BindingResult bindResult = null;
+        if (e instanceof BindException) {
+            bindResult = ((BindException) e).getBindingResult();
+        } else if (e instanceof MethodArgumentNotValidException) {
+            bindResult = ((MethodArgumentNotValidException) e).getBindingResult();
+        }
+        e.printStackTrace();
+        String msg;
+        if (bindResult != null && bindResult.hasErrors()) {
+            msg = bindResult.getAllErrors().get(0).getDefaultMessage();
+            return R.BAD_REQUEST(msg);
+        }else {
+            msg = "系统繁忙，请稍后重试...";
+            return R.ERROR(msg);
+        }
+    }
 
     @ExceptionHandler(value = {BizException.class})
     public R validateHandler(HttpServletRequest req, BizException e) throws Exception {
         String property = null;
         String msg = null;
+        HttpStatus httpStatus = e.getHttpStatus();
+
         if (e.getProperties() != null) {
             msg = messageSourceHandler.getMessage(e.getProperties(), e.getArgs(), req);
             if (msg == null) msg = e.getProperties();

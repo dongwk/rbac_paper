@@ -10,6 +10,8 @@ import java.util.Date;
 @TableName("app_user")
 @Data
 public class User extends BaseModel {
+    private String nickname;
+
     private String username;
 
     private String password;

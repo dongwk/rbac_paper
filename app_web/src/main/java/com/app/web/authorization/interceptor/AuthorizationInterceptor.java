@@ -1,7 +1,16 @@
 package com.app.web.authorization.interceptor;
 
+import com.app.web.authorization.annotation.Authorization;
+import com.app.web.authorization.config.Constants;
+import com.app.web.authorization.manager.TokenManage;
+import com.app.web.controller.exce.BizException;
+import com.app.web.utils.HttpBizUtils;
 import com.google.common.collect.Sets;
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 import org.springframework.util.AntPathMatcher;
 import org.springframework.web.method.HandlerMethod;
@@ -27,7 +36,8 @@ public class AuthorizationInterceptor extends HandlerInterceptorAdapter {
         EXCLUDED_PATHS_METHOD.put("/token", Sets.newHashSet(HttpMethod.POST));
     }
 
-
+    @Autowired
+    private TokenManage tokenManage;
 
     public boolean preHandle (HttpServletRequest request,
                               HttpServletResponse response, Object handler) throws Exception {
@@ -36,6 +46,8 @@ public class AuthorizationInterceptor extends HandlerInterceptorAdapter {
         if (!(handler instanceof HandlerMethod)) {
             return true;
         }
+
+        HandlerMethod target = (HandlerMethod) handler;
 
         // 过滤某些方法
         String uri = request.getRequestURI();
@@ -46,21 +58,19 @@ public class AuthorizationInterceptor extends HandlerInterceptorAdapter {
             if (excludedSet.contains(HttpMethod.resolve(method))) return true;
         }
 
-        // 从 header 中得到 token
-//        String authorization = request.getHeader (Constants.AUTHORIZATION);
-        // 验证 token
-//        TokenModel model = manager.getToken (authorization);
-//        if (manager.checkToken (model)) {
-//            // 如果 token 验证成功，将 token 对应的用户 id 存在 request 中，便于之后注入
-//            request.setAttribute (Constants.CURRENT_USER_ID, model.getUserId ());
-//            return true;
-//        }
-        // 如果验证 token 失败，并且方法注明了 Authorization，返回 401 错误
-//        if (method.getAnnotation (Authorization.class) != null) {
-//            response.setStatus (HttpServletResponse.SC_UNAUTHORIZED);
-//            return false;
-//        }
-            return true;
+        // 验证注明了 Authorization 登录信息，返回 401 错误
+        if (target.getMethod().getAnnotation(Authorization.class) != null) {
+
+            // 从 header 中得到 token
+            String token = HttpBizUtils.getToken(request);
+
+            // 验证 token
+            String val = tokenManage.get(token);
+            if (StringUtils.isBlank(val)) { // 登录信息已过期或不存在，请重新登录
+                throw new BizException(HttpStatus.UNAUTHORIZED, "auth.token.exipred");
+            }
+        }
+        return true;
     }
 
     private boolean isExcluded(String path, String requestMethod) {

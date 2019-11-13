@@ -21,7 +21,7 @@ public class JsonUtil {
 
 	private static ObjectMapper mapper = new ObjectMapper();
 
-	{
+	static {
 		mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 	}
 
@@ -72,7 +72,6 @@ public class JsonUtil {
 	/**
 	 * 转换成Map
 	 * @param json
-	 * @param vt
 	 * @return
 	 */
 	@SuppressWarnings("unchecked")

@@ -8,30 +8,30 @@ import com.app.web.authorization.model.TokenModel;
 public interface TokenManage {
 
     /**
-     * 存储token
+     * 添加token
      * @param token 指定用户的id
-     * @param expires token 有效期
+     * @param val token 值
      */
-    void storeToken(String token, int expires);
+    void add(String token, String val);
 
     /**
      * 检查token是否有效
      * @param token
      * @return 是否有效
      */
-    boolean checkToken(String token);
+    boolean exists(String token);
 
     /**
      * 从字符串中解析token
      * @param token 加密后的字符串
      * @return
      */
-    TokenModel getToken(String token);
+    String get(String token);
 
     /**
      * 清除token
      * @param token 登录用户的id
      */
-    void deleteToken(String token);
+    void del(String token);
 
 }

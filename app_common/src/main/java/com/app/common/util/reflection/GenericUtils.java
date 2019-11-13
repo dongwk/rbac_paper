@@ -1,6 +1,6 @@
 package com.app.common.util.reflection;
 
-import com.baomidou.mybatisplus.toolkit.ArrayUtils;
+import org.apache.commons.lang3.ArrayUtils;
 
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;

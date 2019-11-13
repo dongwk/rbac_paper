@@ -5,6 +5,7 @@
 package com.app.common.web.result;
 
 
+import com.app.common.util.date.DateUtil;
 import com.app.common.web.result.enums.R_CODE;
 import lombok.Data;
 import org.springframework.http.HttpStatus;
@@ -59,6 +60,11 @@ public class R<T> extends ResponseEntity<R.Model> {
 		return new R(new Model(httpStatus.value()+"", msg, null), httpStatus);
 	}
 
+	public static R BAD_REQUEST(String msg){
+		HttpStatus httpStatus = HttpStatus.BAD_REQUEST;
+		return new R(new Model(httpStatus.value()+"", msg, null), httpStatus);
+	}
+
 	public static R ERROR(){
 		HttpStatus httpStatus = HttpStatus.INTERNAL_SERVER_ERROR;
 		return new R(new Model(httpStatus.value()+"", R_CODE.ERROR.msg, null), httpStatus);
@@ -71,10 +77,6 @@ public class R<T> extends ResponseEntity<R.Model> {
 
 	public static R ERROR(String msg){
 		HttpStatus httpStatus = HttpStatus.INTERNAL_SERVER_ERROR;
-		return new R(new Model(httpStatus.value()+"", msg, null), httpStatus);
-	}
-
-	public static R ERROR(HttpStatus httpStatus, String msg){
 		return new R(new Model(httpStatus.value()+"", msg, null), httpStatus);
 	}
 
@@ -134,6 +136,7 @@ public class R<T> extends ResponseEntity<R.Model> {
 	static class Model<T>{
 		private String code;
 		private String msg;
+		private Long timestamp;
 		private T data;
 
 		public Model() {}
@@ -141,6 +144,7 @@ public class R<T> extends ResponseEntity<R.Model> {
 			this.code = code;
 			this.msg = msg;
 			this.data = data;
+			this.timestamp = DateUtil.timestamp();
 		}
 
 		@Override

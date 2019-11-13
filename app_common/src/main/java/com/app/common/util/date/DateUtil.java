@@ -26,6 +26,20 @@ public class DateUtil {
 	}
 
 	/**
+	 * @return 当前时间
+	 */
+	public static long timestamp() {
+		return date().getTime();
+	}
+
+	/**
+	 * @return 当前时间
+	 */
+	public static long timestampSec() {
+		return date().getTime()/1000;
+	}
+
+	/**
 	 * 获取日期中的某数值。如获取月份
 	 * @param date 日期
 	 * @param dateType 日期格式

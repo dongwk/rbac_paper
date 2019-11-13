@@ -16,7 +16,6 @@ import java.util.concurrent.TimeUnit;
  * @author ScienJus
  * @date 2015/7/31.
  */
-@Component("redisTokenManage")
 public class RedisTokenManage implements TokenManage {
 
     private RedisTemplate<Long, String> redis;
@@ -27,28 +26,19 @@ public class RedisTokenManage implements TokenManage {
         redis.setKeySerializer(new JdkSerializationRedisSerializer());
     }
 
-    public TokenModel createToken(long userId) {
-        //使用uuid作为源token
-        String token = UUID.randomUUID().toString().replace("-", "");
-        TokenModel model = new TokenModel(userId, token);
+    public void add(String token, String val) {
         //存储到redis并设置过期时间
-        redis.boundValueOps(userId).set(token, Constants.TOKEN_EXPIRES_HOUR, TimeUnit.HOURS);
-        return model;
+//        return model;
     }
 
-    public TokenModel getToken(String token) {
+    public String get(String token) {
         if (token == null || token.length() == 0) {
             return null;
         }
-        return new TokenModel();
+        return null;
     }
 
-    @Override
-    public void storeToken(String token, int expires) {
-
-    }
-
-    public boolean checkToken(String token) {
+    public boolean exists(String token) {
         if (token == null) {
             return false;
         }
@@ -56,7 +46,7 @@ public class RedisTokenManage implements TokenManage {
         return true;
     }
 
-    public void deleteToken(String token) {
+    public void del(String token) {
 
         // TODO 待完善删除 token 功能，类似登出
 //        redis.delete(token);

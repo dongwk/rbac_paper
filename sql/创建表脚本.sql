@@ -136,8 +136,10 @@ DROP TABLE IF EXISTS `app_user`;
 
 CREATE TABLE `app_user` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `nickname` varchar(32) DEFAULT NULL COMMENT '昵称',
   `username` varchar(32) DEFAULT NULL COMMENT '用户名',
   `password` varchar(64) DEFAULT NULL COMMENT '密码',
+  `salt` varchar(32) DEFAULT NULL COMMENT '加密盐',
   `status` tinyint(1) DEFAULT NULL COMMENT '状态 1 有效 0 删除',
   `create_time` datetime DEFAULT NULL COMMENT '创建时间',
   `update_time` datetime DEFAULT NULL COMMENT '更新时间',

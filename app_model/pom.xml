@@ -8,11 +8,21 @@
   <artifactId>app_model</artifactId>
 
   <dependencies>
-    <!-- core -->
     <dependency>
       <groupId>com.mycompany</groupId>
       <artifactId>app_core</artifactId>
       <version>${project.version}</version>
     </dependency>
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <scope>provided</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>com.baomidou</groupId>
+      <artifactId>mybatis-plus</artifactId>
+    </dependency>
+
   </dependencies>
 </project>

@@ -14,7 +14,7 @@ public class DateFormatUtil {
 	/**
 	 * 将日期转化为日期字符串。失败返回null。
 	 * @param date 日期
-	 * @param parttern 日期格式
+	 * @param dateStyle 日期格式
 	 * @return 日期字符串
 	 */
 	public static String format(Date date, DateStyle dateStyle) {

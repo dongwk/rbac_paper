@@ -1,7 +1,7 @@
 package com;
 
 import com.app.web.utils.FieldsUtils;
-import com.app.web.vo.UserVo;
+import com.app.web.mo.LoginedUserMo;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -14,6 +14,6 @@ public class FiledsUtilsTest {
 
     @Test
     public void testQuery(){
-         Assert.assertTrue(FieldsUtils.isQuery(UserVo.class, "name"));
+         Assert.assertTrue(FieldsUtils.isQuery(LoginedUserMo.class, "name"));
     }
 }

@@ -1,11 +1,10 @@
 package com.app.web.config;
 
 import com.app.web.authorization.interceptor.AuthorizationInterceptor;
-import com.app.web.authorization.resolvers.CurrentUserMethodArgumentResolver;
+import com.app.web.authorization.resolvers.LoginedUserMethodArgumentResolver;
 import org.hibernate.validator.HibernateValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.validation.Validator;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
@@ -17,7 +16,7 @@ import java.util.List;
 
 /**
  * 配置类，增加自定义拦截器和解析器
- * @see CurrentUserMethodArgumentResolver
+ * @see LoginedUserMethodArgumentResolver
  * @see AuthorizationInterceptor
  * @author ScienJus
  * @date 2015/7/30.
@@ -35,7 +34,7 @@ public class MvcConfig implements WebMvcConfigurer {
      * 当前登录用户
      */
     @Autowired
-    private CurrentUserMethodArgumentResolver currentUserMethodArgumentResolver;
+    private LoginedUserMethodArgumentResolver loginedUserMethodArgumentResolver;
 
     /**
      * MessageSource
@@ -50,7 +49,7 @@ public class MvcConfig implements WebMvcConfigurer {
 
     @Override
     public void addArgumentResolvers(List<HandlerMethodArgumentResolver> argumentResolvers) {
-        argumentResolvers.add(currentUserMethodArgumentResolver);
+        argumentResolvers.add(loginedUserMethodArgumentResolver);
     }
 
     @Override

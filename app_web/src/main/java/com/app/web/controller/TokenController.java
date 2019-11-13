@@ -4,11 +4,11 @@ import com.app.common.web.result.R;
 import com.app.model.model.User;
 import com.app.service.service.UserService;
 import com.app.web.authorization.annotation.Authorization;
-import com.app.web.authorization.annotation.CurrentUser;
+import com.app.web.authorization.annotation.LoginedUser;
 import com.app.web.authorization.manager.TokenManage;
 import com.app.web.authorization.model.TokenModel;
 import com.app.web.vo.LoginVo;
-import com.app.web.vo.UserVo;
+import com.app.web.mo.LoginedUserMo;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
@@ -53,7 +53,7 @@ public class TokenController {
     @ApiImplicitParams({
             @ApiImplicitParam(name = "authorization", value = "authorization", required = true, dataType = "string", paramType = "header"),
     })
-    public R logout(@CurrentUser UserVo userVo) {
+    public R logout(@LoginedUser LoginedUserMo userVo) {
 //        tokenManager.deleteToken();
         System.out.println(userVo);
         return R.SUCCESS();

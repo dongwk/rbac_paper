@@ -1,8 +1,13 @@
 package com.app.web.authorization.resolvers;
 
-import com.app.web.authorization.annotation.CurrentUser;
-import com.app.web.vo.UserVo;
+import com.app.common.util.JsonUtil;
+import com.app.web.authorization.annotation.LoginedUser;
+import com.app.web.authorization.manager.TokenManage;
+import com.app.web.utils.HttpBizUtils;
+import com.app.web.mo.LoginedUserMo;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.MethodParameter;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.support.WebDataBinderFactory;
@@ -18,13 +23,16 @@ import javax.servlet.http.HttpServletRequest;
  */
 @Component
 @Slf4j
-public class CurrentUserMethodArgumentResolver implements HandlerMethodArgumentResolver {
+public class LoginedUserMethodArgumentResolver implements HandlerMethodArgumentResolver {
+
+    @Autowired
+    private TokenManage tokenManage;
 
     @Override
     public boolean supportsParameter(MethodParameter parameter) {
         // 如果参数类型是 UserVo 并且有 CurrentUser 注解则支持
-        if (parameter.getParameterType ().isAssignableFrom (UserVo.class) &&
-                parameter.hasParameterAnnotation (CurrentUser.class)) {
+        if (parameter.getParameterType ().isAssignableFrom (LoginedUserMo.class) &&
+                parameter.hasParameterAnnotation (LoginedUser.class)) {
             return true;
         }
         return false;
@@ -34,11 +42,13 @@ public class CurrentUserMethodArgumentResolver implements HandlerMethodArgumentR
     public Object resolveArgument(MethodParameter parameter, ModelAndViewContainer mavContainer, NativeWebRequest webRequest, WebDataBinderFactory binderFactory) throws Exception {
         HttpServletRequest request = webRequest.getNativeRequest(HttpServletRequest.class);
         // 取出鉴权时存入的登录用户 Id
-        // TODO 获取 token
-        String token = null;
-        if (token == null) {
-            // 从 redis 取
-            return new UserVo("lisi");
+        String token = HttpBizUtils.getToken(request);
+        if (token != null) {
+            String tokenVal = tokenManage.get(token);
+            if (StringUtils.isNotBlank(tokenVal)) {
+                return JsonUtil.toBean(tokenVal, LoginedUserMo.class);
+            }
+
         }
         return null;
     }
