@@ -1,12 +1,9 @@
 package com.app.web.utils;
 
-import com.app.common.util.reflection.FieldUtils;
-import com.app.web.utils.annotation.UnSupportQuery;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.http.HttpHeaders;
 
 import javax.servlet.http.HttpServletRequest;
-import java.lang.reflect.Field;
 
 /**
  *

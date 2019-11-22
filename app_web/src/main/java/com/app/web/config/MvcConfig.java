@@ -1,7 +1,8 @@
 package com.app.web.config;
 
-import com.app.web.authorization.interceptor.AuthorizationInterceptor;
-import com.app.web.authorization.resolvers.LoginedUserMethodArgumentResolver;
+import com.app.web.config.interceptor.AuthorizationInterceptor;
+import com.app.web.config.interceptor.RequiredLoginInterceptor;
+import com.app.web.config.resolvers.LoginedUserMethodArgumentResolver;
 import org.hibernate.validator.HibernateValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
@@ -25,13 +26,19 @@ import java.util.List;
 public class MvcConfig implements WebMvcConfigurer {
 
     /**
-     * 权限
+     * 登录校验
      */
     @Autowired
     private AuthorizationInterceptor authorizationInterceptor;
 
     /**
-     * 当前登录用户
+     * 权限校验
+     */
+    @Autowired
+    private RequiredLoginInterceptor requiredLoginInterceptor;
+
+    /**
+     * 自定义登录用户参数
      */
     @Autowired
     private LoginedUserMethodArgumentResolver loginedUserMethodArgumentResolver;
@@ -44,6 +51,7 @@ public class MvcConfig implements WebMvcConfigurer {
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(requiredLoginInterceptor);
         registry.addInterceptor(authorizationInterceptor);
     }
 

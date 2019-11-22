@@ -9,8 +9,6 @@ import lombok.Data;
 public class Menu extends BaseModel {
     private String name;
 
-    private String url;
-
     private Integer parentId;
 
 }

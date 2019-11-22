@@ -55,6 +55,16 @@ public class R<T> extends ResponseEntity<R.Model> {
 		return new R(new Model(httpStatus.value()+"", httpStatus.getReasonPhrase(), t), httpStatus);
 	}
 
+	public static <T> R<T> SUCCESS(T t, int count){
+		HttpStatus httpStatus = HttpStatus.OK;
+		return new R(new CountModel(httpStatus.value()+"", httpStatus.getReasonPhrase(), t, count), httpStatus);
+	}
+
+	public static <T> R<T> SUCCESS(T t, int page, int size, int totalPage, int totalSize){
+		HttpStatus httpStatus = HttpStatus.OK;
+		return new R(new PageModel(httpStatus.value()+"", httpStatus.getReasonPhrase(), t, page, size, totalPage, totalSize), httpStatus);
+	}
+
 	public static R SUCCESS(String msg){
 		HttpStatus httpStatus = HttpStatus.OK;
 		return new R(new Model(httpStatus.value()+"", msg, null), httpStatus);
@@ -147,12 +157,53 @@ public class R<T> extends ResponseEntity<R.Model> {
 			this.timestamp = DateUtil.timestamp();
 		}
 
+
 		@Override
 		public String toString() {
 			return "R [code=" + code + ", msg=" + msg + ", data=" + data + "]";
 		}
-
 	}
 
 
+
+	@Data
+	static class CountModel<T> extends Model<T>{
+		private Integer count;
+
+		public CountModel() {}
+
+		public CountModel(String code, String msg, T data, Integer count) {
+			super(code, msg, data);
+			this.count = count;
+		}
+
+		@Override
+		public String toString() {
+			return "R [code=" + getCode() + ", msg=" + getMsg() + ", data=" + getData() + ", count=" + count + "]";
+		}
+	}
+
+	@Data
+	static class PageModel<T> extends Model<T>{
+		private Integer page;
+		private Integer size;
+		private Integer totalPage;
+		private Integer totalSize;
+
+		public PageModel() {}
+
+		public PageModel(String code, String msg, T data, Integer page, Integer size, Integer totalPage, Integer totalSize) {
+			super(code, msg, data);
+			this.page = page;
+			this.size = size;
+			this.totalPage = totalPage;
+			this.totalSize = totalSize;
+		}
+
+
+		@Override
+		public String toString() {
+			return "R [code=" + getCode() + ", msg=" + getMsg() + ", data=" + getData() + ", page=" + page + ", size=" + size + ", totalPage=" + totalPage + ", totalSize=" + totalSize + "]";
+		}
+	}
 }

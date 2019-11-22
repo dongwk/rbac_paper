@@ -1,7 +1,7 @@
 package com.app.web.utils;
 
 import com.app.common.util.reflection.FieldUtils;
-import com.app.web.utils.annotation.UnSupportQuery;
+import com.app.web.config.annotation.UnSupportQuery;
 
 import java.lang.reflect.Field;
 

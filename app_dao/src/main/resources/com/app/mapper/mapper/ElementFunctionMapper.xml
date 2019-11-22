@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.app.mapper.mapper.ElementFunctionMapper" >
+  <resultMap id="BaseResultMap" type="com.app.model.model.ElementFunction" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="element_id" property="elementId" jdbcType="INTEGER" />
+    <result column="function_id" property="functionId" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, element_id, function_id
+  </sql>
+  <resultMap id="FunctionResultMap" type="com.app.model.model.Function">
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="code" property="code" jdbcType="VARCHAR" />
+    <result column="url" property="url" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="BIT" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Function_Column_List">
+        f.id, f.name, f.code, f.url, f.status, f.create_time, f.update_time
+  </sql>
+
+  <select id="listFuncByRoleIds" resultMap="FunctionResultMap">
+    select
+    <include refid="Function_Column_List" />
+    from app_function f
+    INNER JOIN app_element_function ef ON ef.function_id=f.id
+    INNER JOIN app_role_element re ON re.element_id=ef.element_id
+    where re.role_id in <foreach collection="roleIds" item="roleId" separator="," open="(" close=")"> #{roleId} </foreach>
+  </select>
+
+  <select id="listFuncUrlByRoleIds" resultType="java.lang.String">
+    select
+    f.url
+    from app_function f
+    INNER JOIN app_element_function ef ON ef.function_id=f.id
+    INNER JOIN app_role_element re ON re.element_id=ef.element_id
+    where re.role_id in <foreach collection="roleIds" item="roleId" separator="," open="(" close=")"> #{roleId} </foreach>
+  </select>
+</mapper>

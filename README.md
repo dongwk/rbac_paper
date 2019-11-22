@@ -40,6 +40,24 @@ http://blog.csdn.net/painsonline/article/details/7183613/
 回复fusionc：角色表与用户组是不冲突的，拿一个公司来说把，用户组是部门，角色表是职位，用户表就是员工
 https://github.com/macrozheng/mall
 
+20191121
+Authority 相关的表和Role有些重复，Authority 相关的表暂时不用，新增Role的对应关系表，只对应功能表（Function）和菜单表（Menu）
+用于权限和菜单，菜单是不是就不需要URL这个属性了，直接由功能表确认就可以了，待定先保留
+菜单表是不是可以和Function有个关联，一对一？
+元素表是不是也可以和Function有个关联，一对一，，
+这样Role和Menu就有关系了
+这样Role和Element就有关系了，这个有关系好像关系不大，那做很复杂才需要
+Element 暂时不用，不知道 RoleElement 有什么场景，以下类列表就是:
+Authority
+AuthorityElement
+AuthorityFunction
+AuthorityMenu
+RoleAuthority
+
+20191121
+批量废弃了一些暂时暂不清楚的类，上面已经有些相关说明，Authority相关的都暂时不用，包括 Mapper 类、Controller 类，新增了一套
+Role 和 其他元素的关系表，Role 和 Function 是主要的，其他都是些关系表，暂时的场景只有设置用
+
 想法
 1、
 做两套逻辑

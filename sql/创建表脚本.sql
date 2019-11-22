@@ -36,7 +36,7 @@ DROP TABLE IF EXISTS `app_authority_element`;
 CREATE TABLE `app_authority_element` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID',
   `authority_id` int(11) DEFAULT NULL COMMENT '权限表ID',
-  `element` int(11) DEFAULT NULL COMMENT '页面元素表ID',
+  `element_id` int(11) DEFAULT NULL COMMENT '页面元素表ID',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='权限表与页面元素关联表';
 
@@ -98,7 +98,6 @@ DROP TABLE IF EXISTS `app_menu`;
 CREATE TABLE `app_menu` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID',
   `name` varchar(32) DEFAULT NULL COMMENT '菜单名称',
-  `url` varchar(128) DEFAULT NULL COMMENT '菜单URL',
   `parent_id` int(11) DEFAULT NULL COMMENT '父菜单ID',
   `status` tinyint(2) DEFAULT NULL COMMENT '状态 1 有效 0 删除',
   `create_time` datetime DEFAULT NULL COMMENT '创建时间',
@@ -192,6 +191,43 @@ CREATE TABLE `app_user_role` (
   `role_id` int(11) DEFAULT NULL COMMENT '角色表ID',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='用户角色关联表';
+
+
+CREATE TABLE `app_role_function` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `role_id` INT(11) DEFAULT NULL COMMENT '角色表ID',
+  `function_id` INT(11) DEFAULT NULL COMMENT '功能表ID',
+  PRIMARY KEY (`id`)
+) ENGINE=INNODB DEFAULT CHARSET=utf8 COMMENT='角色表和功能表关联表';
+
+CREATE TABLE `app_role_element` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `role_id` INT(11) DEFAULT NULL COMMENT '角色表ID',
+  `element_id` INT(11) DEFAULT NULL COMMENT '元素表ID',
+  PRIMARY KEY (`id`)
+) ENGINE=INNODB DEFAULT CHARSET=utf8 COMMENT='角色表和页面元素表关联表';
+
+CREATE TABLE `app_role_menu` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `role_id` INT(11) DEFAULT NULL COMMENT '角色表ID',
+  `menu_id` INT(11) DEFAULT NULL COMMENT '菜单表ID',
+  PRIMARY KEY (`id`)
+) ENGINE=INNODB DEFAULT CHARSET=utf8 COMMENT='角色表和菜单表关联表';
+
+CREATE TABLE `app_element_function` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `element_id` INT(11) DEFAULT NULL COMMENT '角色表ID',
+  `function_id` INT(11) DEFAULT NULL COMMENT '功能表ID',
+  PRIMARY KEY (`id`)
+) ENGINE=INNODB DEFAULT CHARSET=utf8 COMMENT='页面元素表和功能表关联表，暂定为一对一关系';
+
+CREATE TABLE `app_menu_function` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `menu_id` INT(11) DEFAULT NULL COMMENT '菜单表ID',
+  `function_id` INT(11) DEFAULT NULL COMMENT '功能表ID',
+  PRIMARY KEY (`id`)
+) ENGINE=INNODB DEFAULT CHARSET=utf8 COMMENT='菜单表和功能表关联表，暂定为一对一关系';
+
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

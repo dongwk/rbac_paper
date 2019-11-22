@@ -48,7 +48,7 @@ public class MessageSourceHandler {
             String message = messageSource.getMessage(messageKey, args, locale);
             return message;
         } catch (NoSuchMessageException e){
-            log.warn("MessageKey {}, NoSuchMessageException {}", messageKey, ExceptionUtils.getStackTrace(e));
+            log.warn("MessageKey {}, NoSuchMessageException {}", messageKey, e.getMessage());
             return null;
         }
     }

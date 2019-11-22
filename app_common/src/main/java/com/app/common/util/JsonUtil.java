@@ -31,6 +31,7 @@ public class JsonUtil {
 	 * @return
 	 */
 	public static <T> String toJson(T t) {
+		if (t == null) return null;
 		try {
 			return mapper.writeValueAsString(t);
 		} catch (JsonProcessingException e) {

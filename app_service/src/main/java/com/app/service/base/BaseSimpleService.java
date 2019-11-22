@@ -1,5 +1,6 @@
 package com.app.service.base;
 
+import com.app.common.PageCount;
 import com.app.mapper.base.BaseMapper;
 import com.app.model.base.BaseModel;
 import com.baomidou.mybatisplus.entity.TableInfo;
@@ -344,6 +345,11 @@ public class BaseSimpleService<M extends BaseMapper<T>, T extends BaseModel> ext
     public int selectCount(Wrapper<T> wrapper) {
         return SqlHelper.retCount(baseMapper.selectCount(wrapper));
     }
+    public int selectCount(T t) {
+        EntityWrapper<T> wrapper = new EntityWrapper<T>();
+        wrapper.setEntity(t);
+        return SqlHelper.retCount(baseMapper.selectCount(wrapper));
+    }
 
     public List<T> selectList(Wrapper<T> wrapper) {
         return baseMapper.selectList(wrapper);
@@ -372,4 +378,25 @@ public class BaseSimpleService<M extends BaseMapper<T>, T extends BaseModel> ext
         page.setRecords(baseMapper.selectPage(page, wrapper));
         return page;
     }
+
+    public Page<T> selectPage(Page<T> page, T t) {
+        EntityWrapper<T> wrapper = new EntityWrapper<T>();
+        wrapper.setEntity(t);
+        SqlHelper.fillWrapper(page, wrapper);
+        page.setRecords(baseMapper.selectPage(page, wrapper));
+        return page;
+    }
+
+    public PageCount<T> selectPageCount(Page<T> page, T t) {
+        PageCount pageCount = new PageCount();
+
+        EntityWrapper<T> wrapper = new EntityWrapper<T>(t);
+        page = selectPage(page, wrapper);
+        int count = selectCount(wrapper);
+
+        pageCount.setData(page.getRecords());
+        pageCount.setCount(count);
+        return pageCount;
+    }
+
 }
