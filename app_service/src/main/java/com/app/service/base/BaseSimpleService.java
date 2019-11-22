@@ -388,12 +388,12 @@ public class BaseSimpleService<M extends BaseMapper<T>, T extends BaseModel> ext
     }
 
     public PageCount<T> selectPageCount(Page<T> page, T t) {
-        PageCount pageCount = new PageCount();
 
         EntityWrapper<T> wrapper = new EntityWrapper<T>(t);
         page = selectPage(page, wrapper);
         int count = selectCount(wrapper);
 
+        PageCount pageCount = new PageCount();
         pageCount.setData(page.getRecords());
         pageCount.setCount(count);
         return pageCount;

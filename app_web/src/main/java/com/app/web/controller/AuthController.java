@@ -31,6 +31,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.annotation.PostConstruct;
 import java.util.Set;
 
 @Controller
@@ -50,6 +51,12 @@ public class AuthController extends BaseController {
 	@Autowired
 	private AuthMqService authMqService;
 
+	@PostConstruct
+	public void init() {
+		String token = "be331fe5-99e4-4299-9245-bbfb0eece667";
+		User u = authService.getByUsername("zhangsan");
+		cacheTokenInfo(token, u);
+	}
 
 	@PostMapping
 	public R<?> auth(@RequestBody LoginMo loginMo){
@@ -63,11 +70,7 @@ public class AuthController extends BaseController {
 		// 生成token
 		String token = TokenUtils.generateToken();
 
-		// 查询用户权限信息
-		Set<String> funs = authService.listByUserId(u.getId());
-
-		// 存储登录信息
-		tokenManage.add(token, JsonUtil.toJson(new LoginedUserMo(u.getId(), u.getNickname(), u.getUsername(), token, funs)));
+		cacheTokenInfo(token, u);
 
 		// 发送登录成功消息
 		authMqService.loginSuccess(new LoginSucDto(u.getId(), DateUtil.date()));
@@ -90,4 +93,16 @@ public class AuthController extends BaseController {
 		return R.SUCCESS();
 	}
 
+	/**
+	 * 存储登录信息
+	 * @param token
+	 * @param u
+	 */
+	private void cacheTokenInfo(String token, User u){
+		// 查询用户权限信息
+		Set<String> funs = authService.listByUserId(u.getId());
+
+		// 存储登录信息
+		tokenManage.add(token, JsonUtil.toJson(new LoginedUserMo(u.getId(), u.getNickname(), u.getUsername(), token, funs)));
+	}
 }

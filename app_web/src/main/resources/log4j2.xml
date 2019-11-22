@@ -2,7 +2,7 @@
 <Configuration>
     <Properties>
         <!-- 文件输出格式 -->
-        <Property name="PATTERN">%d{yyyy-MM-dd HH:mm:ss,SSS} %5p %5pid --- [%15.15t] %-40.40c{1.} %L: %m%n</Property>
+        <Property name="PATTERN">%d{yyyy-MM-dd HH:mm:ss,SSS} %5p %5pid --- [%15.15t] %c %L: %m%n</Property>
     </Properties>
 
     <Appenders>
@@ -17,6 +17,8 @@
         <Logger name="org.quartz" level="WARN">
             <AppenderRef ref="CONSOLE" />
         </Logger>
+
+        <Logger name="com.app.mapper.mapper" level="DEBUG"></Logger>
     </Loggers>
 
 

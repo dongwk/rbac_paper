@@ -35,6 +35,12 @@ public class RoleController extends BaseController {
         return R.SUCCESS(page.getData(), page.getCount());
     }
 
+    @GetMapping("/{id}")
+    @Authorization
+    public R<?> get(@PathVariable("id") Integer id){
+        return R.SUCCESS(roleService.get(id));
+    }
+
     @PostMapping
     @Authorization
     public R<?> add(@RequestBody PageMo pageMo){

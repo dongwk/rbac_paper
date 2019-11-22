@@ -31,7 +31,7 @@ public class Constants {
     public static final int DEFAULT_PAGE_START = 0;
 
     // 默认分页显示条数
-    public static final int DEFAULT_PAGE_SIZE = 0;
+    public static final int DEFAULT_PAGE_SIZE = 10;
 
     // 默认 mybatisplus 分页对象
     public static final Page DEFAULT_MYBATISPLUS_PAGE = new Page(Constants.DEFAULT_PAGE_START, Constants.DEFAULT_PAGE_SIZE);

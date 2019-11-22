@@ -23,6 +23,6 @@ public class PageMoUtils {
         if (pageMo == null || pageMo.getPage() == null || pageMo.getSize() == null)
             return Constants.DEFAULT_MYBATISPLUS_PAGE;
 
-        return new Page(pageMo.getPage() < 1 ? 0:pageMo.getPage()*pageMo.getSize(), pageMo.getSize());
+        return new Page(pageMo.getPage() <= 1 ? 0:pageMo.getPage()-1*pageMo.getSize(), pageMo.getSize());
     }
 }
