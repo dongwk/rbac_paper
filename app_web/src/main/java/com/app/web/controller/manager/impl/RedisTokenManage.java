@@ -20,11 +20,13 @@ public class RedisTokenManage implements TokenManage {
         redis.setKeySerializer(new JdkSerializationRedisSerializer());
     }
 
+    @Override
     public void add(String token, String val) {
         //存储到redis并设置过期时间
 //        return model;
     }
 
+    @Override
     public String get(String token) {
         if (token == null || token.length() == 0) {
             return null;
@@ -32,6 +34,7 @@ public class RedisTokenManage implements TokenManage {
         return null;
     }
 
+    @Override
     public boolean exists(String token) {
         if (token == null) {
             return false;
@@ -40,9 +43,15 @@ public class RedisTokenManage implements TokenManage {
         return true;
     }
 
+    @Override
     public void del(String token) {
 
         // TODO 待完善删除 token 功能，类似登出
 //        redis.delete(token);
+    }
+
+    @Override
+    public void refresh(String token) {
+
     }
 }

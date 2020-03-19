@@ -15,36 +15,55 @@ import java.lang.reflect.WildcardType;
  */
 public class GenericUtils {
 
-
     /**
      * 提取泛型模型
      *
-     * @param mapperClass
+     * @param clazz
      * @return
      */
-    public static Class<?> extractModelClass(Class<?> mapperClass) {
-        return extractModelClass(mapperClass, 0);
+    public static Class<?> getInterfaceGeneric(Class<?> clazz) {
+        return getInterfaceGeneric(clazz, 0);
     }
-
 
     /**
      * 提取第二个泛型模型
      *
-     * @param mapperClass
+     * @param clazz
      * @return
      */
-    public static Class<?> extractSecondModelClass(Class<?> mapperClass) {
-        return extractModelClass(mapperClass, 1);
+    public static Class<?> getInterfaceSecondGeneric(Class<?> clazz) {
+        return getInterfaceGeneric(clazz, 1);
     }
+
 
     /**
      * 提取泛型模型
      *
-     * @param mapperClass
+     * @param clazz
      * @return
      */
-    private static Class<?> extractModelClass(Class<?> mapperClass, int index) {
-        Type[] types = mapperClass.getGenericInterfaces();
+    public static Class<?> getSuperclassGeneric(Class<?> clazz) {
+        return getSuperclassGeneric(clazz, 0);
+    }
+
+    /**
+     * 提取第二个泛型模型
+     *
+     * @param clazz
+     * @return
+     */
+    public static Class<?> getSuperclassSecondGeneric(Class<?> clazz) {
+        return getSuperclassGeneric(clazz, 1);
+    }
+
+    /**
+     * 提取接口泛型模型
+     *
+     * @param clazz
+     * @return
+     */
+    private static Class<?> getInterfaceGeneric(Class<?> clazz, int index) {
+        Type[] types = clazz.getGenericInterfaces();
         ParameterizedType target = null;
         for (Type type : types) {
             if (type instanceof ParameterizedType) {
@@ -61,6 +80,31 @@ public class GenericUtils {
                     }
                 }
                 break;
+            }
+        }
+        return target == null ? null : (Class<?>) target.getActualTypeArguments()[index];
+    }
+
+    /**
+     * 提取父类泛型模型
+     *
+     * @param clazz
+     * @return
+     */
+    private static Class<?> getSuperclassGeneric(Class<?> clazz, int index) {
+        Type type = clazz.getGenericSuperclass();
+
+        ParameterizedType target = null;
+        if (type instanceof ParameterizedType) {
+            Type[] typeArray = ((ParameterizedType) type).getActualTypeArguments();
+            if(ArrayUtils.isNotEmpty(typeArray)){
+                for (Type t:typeArray) {
+                    if(t instanceof TypeVariable || t instanceof WildcardType){
+                        target = null;
+                    }else {
+                        target = (ParameterizedType) type;
+                    }
+                }
             }
         }
         return target == null ? null : (Class<?>) target.getActualTypeArguments()[index];

@@ -28,6 +28,14 @@ public class DateUtil {
 	/**
 	 * @return 当前时间
 	 */
+	public static Date now() {
+		return new Date();
+	}
+
+
+	/**
+	 * @return 当前时间
+	 */
 	public static long timestamp() {
 		return date().getTime();
 	}

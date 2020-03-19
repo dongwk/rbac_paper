@@ -6,9 +6,8 @@ import com.app.service.service.UserService;
 import com.app.web.config.annotation.Authorization;
 import com.app.web.config.annotation.LoginedUser;
 import com.app.web.controller.manager.TokenManage;
-import com.app.web.mo.TokenModel;
-import com.app.web.vo.LoginVo;
 import com.app.web.mo.LoginedUserMo;
+import com.app.web.vo.LoginVo;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
@@ -42,9 +41,9 @@ public class TokenController {
 
         //生成一个token，保存用户登录状态
 //        TokenModel model = tokenManager.createToken(user.getId());
-        TokenModel model = new TokenModel(1,"lisi");
+//        TokenModel model = new TokenModel(1,"lisi");
 
-        return R.SUCCESS(LoginVo.builder().token(model.getToken()).build());
+        return null;
     }
 
     @DeleteMapping

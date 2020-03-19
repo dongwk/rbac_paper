@@ -64,6 +64,13 @@ class GlobalExceptionHandler {
         return mav;
     }
 
+    /**
+     * 统一验证框架异常处理
+     * @param req
+     * @param e
+     * @return
+     * @throws Exception
+     */
     @ResponseBody
     @ExceptionHandler(value = {BindException.class, MethodArgumentNotValidException.class})
     public R validateHandler(HttpServletRequest req, Exception e) throws Exception {
@@ -84,18 +91,29 @@ class GlobalExceptionHandler {
         }
     }
 
+    /**
+     * 自定义业务异常处理
+     * @param req
+     * @param e
+     * @return
+     * @throws Exception
+     */
     @ExceptionHandler(value = {BizException.class})
     public R validateHandler(HttpServletRequest req, BizException e) throws Exception {
         String property = null;
         String msg = null;
-        HttpStatus httpStatus = e.getHttpStatus();
+        HttpStatus httpStatus = HttpStatus.BAD_REQUEST;
 
         if (e.getProperties() != null) {
             msg = messageSourceHandler.getMessage(e.getProperties(), e.getArgs(), req);
             if (msg == null) msg = e.getProperties();
         }
 
-        return R.ERROR(msg);
+        if (e.getHttpStatus() != null) {
+            httpStatus = e.getHttpStatus();
+        }
+
+        return R.MODEL(httpStatus, msg);
     }
 
 

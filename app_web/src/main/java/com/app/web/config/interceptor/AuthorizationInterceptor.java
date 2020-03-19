@@ -6,7 +6,7 @@ import com.app.web.config.annotation.RequiredLogin;
 import com.app.web.controller.manager.TokenManage;
 import com.app.web.controller.exce.BizException;
 import com.app.web.mo.LoginedUserMo;
-import com.app.web.utils.HttpBizUtils;
+import com.app.web.utils.TokenUtils;
 import com.google.common.collect.Sets;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,11 +60,11 @@ public class AuthorizationInterceptor extends HandlerInterceptorAdapter {
         // 验证注明了 Authorization 权限验证
         if (target.getMethod().getAnnotation(Authorization.class) != null) {
 
-            // 截取 ? 之前的
+            // 截取参数 ? 之前的地址
             String uri = StringUtils.substringBefore(request.getRequestURI(), "?");
 
             // 从 header 中得到 token
-            String token = HttpBizUtils.getToken(request);
+            String token = TokenUtils.getToken(request);
             if (StringUtils.isBlank(token)) { // 登录信息没有传，请登录
                 throw new BizException(HttpStatus.UNAUTHORIZED, "auth.token.exipred");
             }

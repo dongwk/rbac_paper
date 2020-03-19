@@ -22,11 +22,13 @@ public class MemTokenManage implements TokenManage {
             .expireAfterWrite(10, TimeUnit.MINUTES)
             .build();
 
+    @Override
     public void add(String token, String val) {
         //存储到redis并设置过期时间
         tokens.put(token, val);
     }
 
+    @Override
     public String get(String token) {
         if (token == null || token.length() == 0) {
             return null;
@@ -35,6 +37,7 @@ public class MemTokenManage implements TokenManage {
 
     }
 
+    @Override
     public boolean exists(String token) {
         if (token == null) {
             return false;
@@ -42,7 +45,14 @@ public class MemTokenManage implements TokenManage {
         return get(token) != null;
     }
 
+    @Override
     public void del(String token) {
         tokens.invalidate(token);
+    }
+
+    @Override
+    public void refresh(String token) {
+        String val = get(token);
+        tokens.put(token, val);
     }
 }

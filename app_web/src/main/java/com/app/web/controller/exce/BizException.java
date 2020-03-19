@@ -1,8 +1,10 @@
 package com.app.web.controller.exce;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import org.springframework.http.HttpStatus;
 
+@NoArgsConstructor
 public class BizException extends RuntimeException {
 
     @Getter
@@ -11,10 +13,6 @@ public class BizException extends RuntimeException {
     private Object[] args;
     @Getter
     private HttpStatus httpStatus;
-
-    public BizException() {
-
-    }
 
     public BizException(String properties) {
         super(properties);
@@ -35,6 +33,13 @@ public class BizException extends RuntimeException {
         super(properties);
         this.httpStatus = httpStatus;
         this.properties = properties;
+    }
+
+    public BizException(HttpStatus httpStatus, String properties, Object... args) {
+        super(properties);
+        this.httpStatus = httpStatus;
+        this.properties = properties;
+        this.args = args;
     }
 
 }

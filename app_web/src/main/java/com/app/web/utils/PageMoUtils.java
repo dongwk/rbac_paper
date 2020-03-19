@@ -1,6 +1,6 @@
 package com.app.web.utils;
 
-import com.app.web.constant.Constants;
+import com.app.web.constant.WebConstants;
 import com.app.web.mo.PageMo;
 import com.baomidou.mybatisplus.plugins.Page;
 
@@ -21,7 +21,7 @@ public class PageMoUtils {
      */
     public static Page toMPPage(PageMo pageMo){
         if (pageMo == null || pageMo.getPage() == null || pageMo.getSize() == null)
-            return Constants.DEFAULT_MYBATISPLUS_PAGE;
+            return WebConstants.DEFAULT_MYBATISPLUS_PAGE;
 
         return new Page(pageMo.getPage() <= 1 ? 0:pageMo.getPage()-1*pageMo.getSize(), pageMo.getSize());
     }

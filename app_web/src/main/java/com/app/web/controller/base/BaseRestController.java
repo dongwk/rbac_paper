@@ -34,12 +34,12 @@ import java.util.List;
  * @date 2018/11/27 14:42
  */
 @Slf4j
-public class BaseRestController<S extends BaseSimpleService, T extends BaseModel> extends BaseController {
+public abstract class BaseRestController<S extends BaseSimpleService, T extends BaseModel> extends BaseController {
 
     @Autowired
     protected S baseService;
     /** 提取泛型类型 */
-    private final Class<T> tClass = (Class<T>) GenericUtils.extractSecondModelClass(getClass());
+    private final Class<T> tClass = (Class<T>) GenericUtils.getSuperclassGeneric(getClass());
 
     /** 默认页数 */
     protected static int DEFAULT_PAGE = 1;
@@ -53,78 +53,6 @@ public class BaseRestController<S extends BaseSimpleService, T extends BaseModel
     private static final String PAGE = "page";
     /** 条数字段 */
     private static final String PER_PAGE = "per_page";
-
-    /**
-     *  Get
-     *  get /user
-     */
-    @GetMapping
-    public R<?> get(){
-        Wrapper<User> wrapper = null;
-        if (StringUtils.isNotBlank(getFields())) {
-            wrapper = new EntityWrapper<>();
-            wrapper.setSqlSelect(RestUtils.filedsToCamel(getFields()));
-        }
-        Page page = buildPage();
-
-        List<T> list = null;
-        if (page != null){
-            Page<T> page1 = baseService.selectPage(page, wrapper);
-            return R.SUCCESS(RPUtils.parsePR(page1));
-        } else {
-            list = baseService.selectList(wrapper);
-            return R.SUCCESS(list);
-        }
-    }
-
-    /**
-     * Post
-     * post /user
-     */
-    @PostMapping
-    public R<?> post(@RequestBody T obj){
-        return R.SUCCESS(baseService.insert(obj));
-    }
-
-    @GetMapping(value = "/{id}")
-    public R<?> get(@PathVariable String id){
-        Wrapper<User> wrapper = new EntityWrapper<>();
-        if (StringUtils.isNotBlank(getFields())) wrapper.setSqlSelect(RestUtils.filedsToCamel(getFields()));
-        return R.SUCCESS(baseService.get(id));
-    }
-
-    @PutMapping(value = "/{id}")
-    public R<?> put(@PathVariable String id, @RequestBody T obj){
-        obj.setId(id != null ? Integer.parseInt(id):null);
-        obj.setUpdateTime(DateUtil.date());
-        return R.SUCCESS(baseService.updateAllColumnById(obj));
-    }
-
-    @PatchMapping(value = "/{id}")
-    public R<?> patch(@PathVariable String id, @RequestBody T obj){
-        obj.setId(id != null ? Integer.parseInt(id):null);
-        obj.setUpdateTime(DateUtil.date());
-        return R.SUCCESS(baseService.updateById(obj));
-    }
-
-    @DeleteMapping(value = "/{id}")
-    public R<?> delete(@PathVariable String id){
-        if (tClass == null) throw new RuntimeException("该类未声明实体类型 T");
-
-        T obj = null;
-        try {
-            obj = tClass.newInstance();
-        } catch (InstantiationException e) {
-            throw new RuntimeException(tClass.getName()+" 无默认的构造函数");
-        } catch (IllegalAccessException e) {
-            throw new RuntimeException("该类未声明实体类型 T");
-        }
-        obj.setId(id != null ? Integer.parseInt(id):null);
-        obj.setUpdateTime(DateUtil.date());
-        obj.setStatus(Boolean.FALSE);
-        return R.SUCCESS(baseService.updateById(obj));
-    }
-
 
     /**
      * 每页条数

@@ -7,7 +7,7 @@ import com.baomidou.mybatisplus.plugins.Page;
  * @author ScienJus
  * @date 2015/7/31.
  */
-public class Constants {
+public class WebConstants {
 
     // 存储当前登录用户id的字段名
     public static final String CURRENT_USER_ID = "CURRENT_USER_ID";
@@ -34,6 +34,6 @@ public class Constants {
     public static final int DEFAULT_PAGE_SIZE = 10;
 
     // 默认 mybatisplus 分页对象
-    public static final Page DEFAULT_MYBATISPLUS_PAGE = new Page(Constants.DEFAULT_PAGE_START, Constants.DEFAULT_PAGE_SIZE);
+    public static final Page DEFAULT_MYBATISPLUS_PAGE = new Page(WebConstants.DEFAULT_PAGE_START, WebConstants.DEFAULT_PAGE_SIZE);
 
 }

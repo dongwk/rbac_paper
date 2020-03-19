@@ -27,7 +27,7 @@ import java.util.Map;
  * @param <M>
  * @param <T>
  */
-public class BaseSimpleService<M extends BaseMapper<T>, T extends BaseModel> extends BaseService{
+public abstract class BaseSimpleService<M extends BaseMapper<T>, T extends BaseModel> extends BaseService{
 
     @Autowired
     protected M baseMapper;

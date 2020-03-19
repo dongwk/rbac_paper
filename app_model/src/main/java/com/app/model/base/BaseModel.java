@@ -3,10 +3,8 @@
  */
 package com.app.model.base;
 
-import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.annotations.TableLogic;
-import com.baomidou.mybatisplus.enums.FieldFill;
 import lombok.Data;
 
 import java.util.Date;
@@ -17,14 +15,21 @@ public abstract class BaseModel{
     @TableId
     private Integer id;
 
+    /**
+     * 逻辑删除字段配置
+     */
     @TableLogic
-    @TableField(fill = FieldFill.INSERT)
     private Boolean status;
 
-    @TableField(fill = FieldFill.INSERT)
+    /**
+     * 创建时间
+     */
     private Date createTime;
 
-    @TableField(fill = FieldFill.INSERT_UPDATE)
+    /**
+     * 更新时间
+     */
     private Date updateTime;
+
 
 }

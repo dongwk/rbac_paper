@@ -3,7 +3,7 @@ package com.app.web.config.resolvers;
 import com.app.common.util.JsonUtil;
 import com.app.web.config.annotation.LoginedUser;
 import com.app.web.controller.manager.TokenManage;
-import com.app.web.utils.HttpBizUtils;
+import com.app.web.utils.TokenUtils;
 import com.app.web.mo.LoginedUserMo;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
@@ -42,7 +42,7 @@ public class LoginedUserMethodArgumentResolver implements HandlerMethodArgumentR
     public Object resolveArgument(MethodParameter parameter, ModelAndViewContainer mavContainer, NativeWebRequest webRequest, WebDataBinderFactory binderFactory) throws Exception {
         HttpServletRequest request = webRequest.getNativeRequest(HttpServletRequest.class);
         // 取出鉴权时存入的登录用户 Id
-        String token = HttpBizUtils.getToken(request);
+        String token = TokenUtils.getToken(request);
         if (token != null) {
             String tokenVal = tokenManage.get(token);
             if (StringUtils.isNotBlank(tokenVal)) {

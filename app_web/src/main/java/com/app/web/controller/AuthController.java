@@ -10,10 +10,9 @@ import com.app.model.model.User;
 import com.app.service.service.AuthService;
 import com.app.service.service.UserService;
 import com.app.web.config.annotation.RequiredLogin;
-import com.app.web.config.annotation.Authorization;
 import com.app.web.config.annotation.LoginedUser;
+import com.app.web.constant.WebConstants;
 import com.app.web.controller.manager.TokenManage;
-import com.app.web.constant.Constants;
 import com.app.web.controller.base.BaseController;
 import com.app.web.controller.exce.BizException;
 import com.app.web.mo.LoginMo;
@@ -53,7 +52,8 @@ public class AuthController extends BaseController {
 
 	@PostConstruct
 	public void init() {
-		String token = "be331fe5-99e4-4299-9245-bbfb0eece667";
+		log.info("初始化测试用户");
+		String token = "fd953b76-7e1f-41f7-9f74-8256270e1cd7";
 		User u = authService.getByUsername("zhangsan");
 		cacheTokenInfo(token, u);
 	}
@@ -78,18 +78,22 @@ public class AuthController extends BaseController {
 		// 返回
 		return R.SUCCESS(ImmutableMap.of(
             "token", token,
-            "expire", Constants.TOKEN_EXPIRATION,
-            "ssl", Constants.SSL
+            "expire", WebConstants.TOKEN_EXPIRATION,
+            "ssl", WebConstants.SSL
 		));
 	}
 
 	@PostMapping("/logout")
 	@RequiredLogin
 	public R<?> logout(@LoginedUser LoginedUserMo loginedUser){
-
 	    tokenManage.del(loginedUser.getToken());
+		return R.SUCCESS();
+	}
 
-		// 返回
+	@PostMapping("/refresh")
+	@RequiredLogin
+	public R<?> refresh(@LoginedUser LoginedUserMo loginedUser){
+		tokenManage.refresh(loginedUser.getToken());
 		return R.SUCCESS();
 	}
 

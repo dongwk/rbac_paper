@@ -4,7 +4,7 @@ import com.app.web.config.annotation.Authorization;
 import com.app.web.config.annotation.RequiredLogin;
 import com.app.web.controller.exce.BizException;
 import com.app.web.controller.manager.TokenManage;
-import com.app.web.utils.HttpBizUtils;
+import com.app.web.utils.TokenUtils;
 import com.google.common.collect.Sets;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,12 +42,12 @@ public class RequiredLoginInterceptor extends HandlerInterceptorAdapter {
         if (target.getMethod().getAnnotation(RequiredLogin.class) != null || target.getMethod().getAnnotation(Authorization.class) != null) {
 
             // 从 header 中得到 token
-            String token = HttpBizUtils.getToken(request);
+            String token = TokenUtils.getToken(request);
 
             // 验证 token
             String val = tokenManage.get(token);
             if (StringUtils.isBlank(val)) { // 登录信息已过期或不存在，请重新登录
-                throw new BizException(HttpStatus.UNAUTHORIZED, "auth.token.exipred");
+                 throw new BizException(HttpStatus.UNAUTHORIZED, "auth.token.exipred");
             }
         }
         return true;

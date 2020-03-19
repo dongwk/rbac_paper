@@ -130,6 +130,8 @@ https://www.oschina.net/p/guns
 19、肯定是先异常后状态码，自己的理解 exception 之后才是 500
 20、TokenGenerate 是规划为创建不同 token 的方式，暂时不使用，暂时使用的工具类
 
+20191226 页面单独页面，angular结合
+还是先了解 angular 现有的项目吧
 
 
 
@@ -162,7 +164,6 @@ https://www.oschina.net/p/guns
 # 注解时间
 # spring boot 默认 json 相关配置
 # 默认编码 UTF-8 
-# rest 参照 https://github.com/ScienJus/spring-restful-authorization 
 # 代码中的作者 ScienJus，是参照他的
 # 接口超时参照 https://www.bbsmax.com/A/pRdB2yPdnx/
 # trance id 已去掉 接口超时参照里有 trace id，暂时没有微服务暂时没有 trace id，记录日志跟踪
@@ -170,5 +171,10 @@ https://www.oschina.net/p/guns
 # https://www.programcreek.com/java-api-examples/index.php?api=org.springframework.web.util.ContentCachingRequestWrapper
 # http://www.itgo.me/a/7708268096777122645/reading-httprequest-content-from-spring-exception-handler
 # 有办法动态实现动态字段么，filed 参数动态查询
-# rest token 参考 https://developers.arcgis.com/rest/users-groups-and-items/generate-token.htm
-http://www.ruanyifeng.com/blog/2014/05/restful_api.html rest 
+
+# rest 
+token 参考 https://developers.arcgis.com/rest/users-groups-and-items/generate-token.htm
+http://www.ruanyifeng.com/blog/2014/05/restful_api.html 
+rest 参照 https://github.com/ScienJus/spring-restful-authorization 
+
+# ui

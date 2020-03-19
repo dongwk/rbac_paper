@@ -32,4 +32,10 @@ public interface TokenManage {
      */
     void del(String token);
 
+    /**
+     * 刷新token
+     * @param token
+     */
+    void refresh(String token);
+
 }
