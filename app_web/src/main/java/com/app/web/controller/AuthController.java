@@ -70,6 +70,7 @@ public class AuthController extends BaseController {
 		// 生成token
 		String token = TokenUtils.generateToken();
 
+		// 缓存token和对应的用户
 		cacheTokenInfo(token, u);
 
 		// 发送登录成功消息

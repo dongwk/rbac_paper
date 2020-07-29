@@ -18,6 +18,7 @@ import org.springframework.web.method.support.ModelAndViewContainer;
 import javax.servlet.http.HttpServletRequest;
 
 /**
+ * 登录用户注入，Spring 方法注入参数使用
  * 增加方法注入，将含有CurrentUser注解的方法参数注入当前登录用户
  * @date 2015/7/31.
  */
@@ -31,8 +32,8 @@ public class LoginedUserMethodArgumentResolver implements HandlerMethodArgumentR
     @Override
     public boolean supportsParameter(MethodParameter parameter) {
         // 如果参数类型是 UserVo 并且有 CurrentUser 注解则支持
-        if (parameter.getParameterType ().isAssignableFrom (LoginedUserMo.class) &&
-                parameter.hasParameterAnnotation (LoginedUser.class)) {
+        if (parameter.getParameterType().isAssignableFrom(LoginedUserMo.class) &&
+                parameter.hasParameterAnnotation(LoginedUser.class)) {
             return true;
         }
         return false;

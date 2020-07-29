@@ -16,6 +16,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.messaging.converter.MappingJackson2MessageConverter;
 
+/**
+ * RabbiMQ 配置
+ */
 @Configuration
 public class AMQPConfig {
 
@@ -23,22 +26,22 @@ public class AMQPConfig {
     private RabbitMQProperties rabbitMQProperties;
 
     @Bean
-    Queue queue() {
+    public Queue queue() {
         return new Queue(rabbitMQProperties.getQueueName(), false);
     }
 
     @Bean
-    TopicExchange exchange() {
+    public TopicExchange exchange() {
         return new TopicExchange(rabbitMQProperties.getExchangeName());
     }
 
     @Bean
-    Binding binding(Queue queue, TopicExchange exchange) {
+    public Binding binding(Queue queue, TopicExchange exchange) {
         return BindingBuilder.bind(queue).to(exchange).with(rabbitMQProperties.getRoutingKey());
     }
 
     @Bean
-    SimpleMessageListenerContainer container(ConnectionFactory connectionFactory,
+    public SimpleMessageListenerContainer container(ConnectionFactory connectionFactory,
                                              MessageListenerAdapter listenerAdapter) {
         SimpleMessageListenerContainer container = new SimpleMessageListenerContainer();
         container.setConnectionFactory(connectionFactory);
@@ -65,7 +68,7 @@ public class AMQPConfig {
     }
 
     @Bean
-    MessageListenerAdapter listenerAdapter(RabbitMqListener listener) {
+    public MessageListenerAdapter listenerAdapter(RabbitMqListener listener) {
         return new MessageListenerAdapter(listener, "listen");
     }
 
