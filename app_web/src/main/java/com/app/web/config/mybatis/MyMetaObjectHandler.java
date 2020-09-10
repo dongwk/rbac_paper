@@ -1,12 +1,14 @@
 package com.app.web.config.mybatis;
 
-import com.baomidou.mybatisplus.mapper.MetaObjectHandler;
+import com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;
 import org.apache.ibatis.reflection.MetaObject;
+import org.springframework.stereotype.Component;
 
 import java.util.Date;
 
 /**  自定义填充公共 name 字段  */
-public class MyMetaObjectHandler extends MetaObjectHandler {
+@Component
+public class MyMetaObjectHandler implements MetaObjectHandler {
 
 
     /**

@@ -56,7 +56,7 @@ public class ExecutionTimeAspect {
             }
             return obj;
         } catch (Throwable e) {//处理你的异常
-            log.error("ExecutionTimeAspect service timeout {}", ExceptionUtils.getStackTrace(e));
+            log.error("ExecutionTimeAspect service timeout", e);
             throw e;
         }
     }

@@ -2,7 +2,7 @@ package com.app.web.config;
 
 import com.app.web.config.interceptor.AuthorizationInterceptor;
 import com.app.web.config.interceptor.RequiredLoginInterceptor;
-import com.app.web.config.resolvers.LoginedUserMethodArgumentResolver;
+import com.app.web.config.resolvers.LoginUserMethodArgumentResolver;
 import org.hibernate.validator.HibernateValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
@@ -17,7 +17,7 @@ import java.util.List;
 
 /**
  * 配置类，增加自定义拦截器和解析器
- * @see LoginedUserMethodArgumentResolver
+ * @see LoginUserMethodArgumentResolver
  * @see AuthorizationInterceptor
  * @author ScienJus
  * @date 2015/7/30.
@@ -41,7 +41,7 @@ public class MvcConfig implements WebMvcConfigurer {
      * 自定义登录用户参数
      */
     @Autowired
-    private LoginedUserMethodArgumentResolver loginedUserMethodArgumentResolver;
+    private LoginUserMethodArgumentResolver loginUserMethodArgumentResolver;
 
     /**
      * MessageSource
@@ -57,7 +57,7 @@ public class MvcConfig implements WebMvcConfigurer {
 
     @Override
     public void addArgumentResolvers(List<HandlerMethodArgumentResolver> argumentResolvers) {
-        argumentResolvers.add(loginedUserMethodArgumentResolver);
+        argumentResolvers.add(loginUserMethodArgumentResolver);
     }
 
     @Override

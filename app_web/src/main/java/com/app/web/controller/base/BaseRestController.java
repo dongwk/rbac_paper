@@ -1,23 +1,11 @@
 package com.app.web.controller.base;
 
 import com.app.common.util.ValidateUtil;
-import com.app.common.web.result.R;
-import com.app.model.base.BaseModel;
-import com.app.model.model.User;
-import com.app.service.base.BaseSimpleService;
-import com.app.common.util.date.DateUtil;
 import com.app.common.util.reflection.GenericUtils;
-import com.app.web.utils.RPUtils;
-import com.app.web.utils.RestUtils;
-import com.baomidou.mybatisplus.mapper.EntityWrapper;
-import com.baomidou.mybatisplus.mapper.Wrapper;
-import com.baomidou.mybatisplus.plugins.Page;
+import com.app.model.base.BaseModel;
+import com.app.service.base.BaseSimpleService;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 /**
  * 基本操作的服务类
@@ -96,22 +84,5 @@ public abstract class BaseRestController<S extends BaseSimpleService, T extends 
         return sort;
     }
 
-    /**
-     *
-     */
-    private Wrapper buildWrapper(){
-        Wrapper<User> wrapper = new EntityWrapper<>();
-        if (StringUtils.isNotBlank(getFields())) wrapper.setSqlSelect(RestUtils.filedsToCamel(getFields()));
-        if (StringUtils.isNotBlank(getSort())) wrapper.orderBy(RestUtils.sortToSql(getSort()));
-        return wrapper;
-    }
-    /**
-     *
-     */
-    private Page buildPage(){
-        Page page = null;
-        if (getPage() > 0 && getPerPage() > 0) page = new Page(getPage(), getPerPage()) ;
-        return page;
-    }
 
 }

@@ -19,7 +19,7 @@ import org.springframework.messaging.converter.MappingJackson2MessageConverter;
 /**
  * RabbiMQ 配置
  */
-@Configuration
+//@Configuration
 public class AMQPConfig {
 
     @Autowired

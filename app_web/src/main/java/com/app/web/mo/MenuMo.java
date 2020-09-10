@@ -11,4 +11,8 @@ public class MenuMo {
 
     private Integer parentId;
 
+    private String url;
+
+    private String icon;
+
 }

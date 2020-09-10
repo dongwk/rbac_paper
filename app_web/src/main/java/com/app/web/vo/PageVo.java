@@ -1,6 +1,6 @@
 package com.app.web.vo;
 
-import com.baomidou.mybatisplus.plugins.Page;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import lombok.Data;
 
 import java.util.List;
@@ -20,10 +20,10 @@ public class PageVo<T> {
 
     public static <M> PageVo<M> parseMybatisPlusPage(Page<M> page){
         PageVo<M> pageVo = new PageVo<>();
-        pageVo.setPage(page.getCurrent());
-        pageVo.setPerPage(page.getSize());
-        pageVo.setTotalPage(page.getPages());
-        pageVo.setTotalSize(page.getTotal());
+        pageVo.setPage((int) page.getCurrent());
+        pageVo.setPerPage((int)  page.getSize());
+        pageVo.setTotalPage((int)  page.getPages());
+        pageVo.setTotalSize((int)  page.getTotal());
         pageVo.setData(page.getRecords());
         return pageVo;
     }

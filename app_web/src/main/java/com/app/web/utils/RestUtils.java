@@ -1,6 +1,5 @@
 package com.app.web.utils;
 
-import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.google.common.base.CaseFormat;
 import org.apache.commons.lang3.StringUtils;
 

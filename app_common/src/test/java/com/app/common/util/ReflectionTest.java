@@ -1,16 +1,9 @@
 package com.app.common.util;
 
+import com.app.common.PageCount;
 import com.app.common.util.reflection.FieldUtils;
-import com.app.model.model.User;
-import com.app.service.service.UserService;
-import org.apache.commons.lang3.ArrayUtils;
 import org.junit.Assert;
 import org.junit.Test;
-
-import java.lang.reflect.ParameterizedType;
-import java.lang.reflect.Type;
-import java.lang.reflect.TypeVariable;
-import java.lang.reflect.WildcardType;
 
 /**
  * @author dongwk
@@ -26,7 +19,7 @@ public class ReflectionTest {
      */
     @Test
     public void testField(){
-        Assert.assertTrue(FieldUtils.isExist(User.class, "username"));
+        Assert.assertTrue(FieldUtils.isExist(PageCount.class, "username"));
     }
 
     /**

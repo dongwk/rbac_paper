@@ -19,7 +19,7 @@ public class MemTokenManage implements TokenManage {
 
     private Cache<String, String> tokens = CacheBuilder.newBuilder()
             .maximumSize(10000)
-            .expireAfterWrite(10, TimeUnit.MINUTES)
+            .expireAfterWrite(30, TimeUnit.DAYS)
             .build();
 
     @Override

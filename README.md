@@ -178,3 +178,7 @@ http://www.ruanyifeng.com/blog/2014/05/restful_api.html
 rest 参照 https://github.com/ScienJus/spring-restful-authorization 
 
 # ui
+
+# mvn 生成实体类：
+cmd 下进入 app_model 目录运行 mvn mybatis-generator:generate
+

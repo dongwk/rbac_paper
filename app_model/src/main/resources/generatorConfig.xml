@@ -1,42 +1,49 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
-  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+		"http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
 <generatorConfiguration>
+	<!--数据库驱动-->
+	<classPathEntry location="D:\Program Files\repository\mysql\mysql-connector-java\5.1.45\mysql-connector-java-5.1.45.jar"/>
 
-	<classPathEntry
-		location="D:\Program Files\repository\mysql\mysql-connector-java\5.1.25\mysql-connector-java-5.1.25.jar" />
-	<context id="MysqlTables" targetRuntime="MyBatis3">
-		<commentGenerator>
-			<property name="suppressAllComments" value="true" />
+	<context id="DB2Tables" targetRuntime="MyBatis3">
+
+		<property name="javaFileEncoding" value="UTF-8"/>
+
+
+		<!-- 自定义注释生成器 -->
+		<commentGenerator type="com.MySQLCommentGenerator">
+			<property name="author" value="wenkai.dong"/>
+			<property name="dateFormat" value="yyyy/MM/dd"/>
 		</commentGenerator>
 		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
-			connectionURL="jdbc:mysql://127.0.0.1:3306/rbac_paper"
+			connectionURL="jdbc:mysql://127.0.0.1:3306/rbac_paper?allowMultiQueries=true&amp;autoCommit=false&amp;useUnicode=true&amp;zeroDateTimeBehavior=convertToNull&amp;characterEncoding=UTF-8"
 			userId="root"
 			password="root">
+			<property name="useInformationSchema" value="true" />
 		</jdbcConnection>
 		<javaTypeResolver>
 			<property name="forceBigDecimals" value="false" />
 		</javaTypeResolver>
 		<javaModelGenerator targetPackage="com.app.model.model"
-			targetProject="src\main\java">
+			targetProject="./app_model/src/main/java">
 			<property name="enableSubPackages" value="true" />
 			<property name="trimStrings" value="true" />
 		</javaModelGenerator>
 		<sqlMapGenerator targetPackage="com.app.mapper.mapper"
-			targetProject="..\app_dao\src\main\resources">
+			targetProject="./app_dao/src/main/resources">
 			<property name="enableSubPackages" value="true" />
 		</sqlMapGenerator>
-		<javaClientGenerator type="XMLMAPPER"
-			targetPackage="com.app.mapper.mapper" targetProject="..\app_dao\src\main\java">
-			<property name="enableSubPackages" value="true" />
-		</javaClientGenerator>
+<!--		<javaClientGenerator type="XMLMAPPER"-->
+<!--			targetPackage="com.app.mapper.mapper" targetProject="./app_dao/src/main/java">-->
+<!--			<property name="enableSubPackages" value="true" />-->
+<!--		</javaClientGenerator>-->
 <!--		<table tableName="app_authority" domainObjectName="Authority" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"><generatedKey column="id" sqlStatement="MySql" identity="true" /></table>-->
 <!--		<table tableName="app_authority_element" domainObjectName="AuthorityElement" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"><generatedKey column="id" sqlStatement="MySql" identity="true" /></table>-->
 <!--		<table tableName="app_authority_function" domainObjectName="AuthorityFunction" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"><generatedKey column="id" sqlStatement="MySql" identity="true" /></table>-->
 <!--		<table tableName="app_authority_menu" domainObjectName="AuthorityMenu" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"><generatedKey column="id" sqlStatement="MySql" identity="true" /></table>-->
 <!--		<table tableName="app_element" domainObjectName="Element" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"><generatedKey column="id" sqlStatement="MySql" identity="true" /></table>-->
 <!--		<table tableName="app_function" domainObjectName="Function" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"><generatedKey column="id" sqlStatement="MySql" identity="true" /></table>-->
-<!--		<table tableName="app_menu" domainObjectName="Menu" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"><generatedKey column="id" sqlStatement="MySql" identity="true" /></table>-->
+		<table tableName="app_menu" domainObjectName="Menu222" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"><generatedKey column="id" sqlStatement="MySql" identity="true" /></table>
 <!--		<table tableName="app_role" domainObjectName="Role" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"><generatedKey column="id" sqlStatement="MySql" identity="true" /></table>-->
 <!--		<table tableName="app_role_authority" domainObjectName="RoleAuthority" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"><generatedKey column="id" sqlStatement="MySql" identity="true" /></table>-->
 <!--		<table tableName="app_user" domainObjectName="User" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"><generatedKey column="id" sqlStatement="MySql" identity="true" /></table>-->
@@ -44,11 +51,11 @@
 <!--		<table tableName="app_user_group_role" domainObjectName="UserGroupRole" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"><generatedKey column="id" sqlStatement="MySql" identity="true" /></table>-->
 <!--		<table tableName="app_user_group_user" domainObjectName="UserGroupUser" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"><generatedKey column="id" sqlStatement="MySql" identity="true" /></table>-->
 <!--		<table tableName="app_user_role" domainObjectName="UserRole" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"><generatedKey column="id" sqlStatement="MySql" identity="true" /></table>-->
-		<table tableName="app_role_function" domainObjectName="RoleFunction" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"><generatedKey column="id" sqlStatement="MySql" identity="true" /></table>
-		<table tableName="app_role_element" domainObjectName="RoleElement" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"><generatedKey column="id" sqlStatement="MySql" identity="true" /></table>
-		<table tableName="app_role_menu" domainObjectName="RoleMenu" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"><generatedKey column="id" sqlStatement="MySql" identity="true" /></table>
-		<table tableName="app_element_function" domainObjectName="ElementFunction" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"><generatedKey column="id" sqlStatement="MySql" identity="true" /></table>
-		<table tableName="app_menu_function" domainObjectName="MenuFunction" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"><generatedKey column="id" sqlStatement="MySql" identity="true" /></table>
+<!--		<table tableName="app_role_function" domainObjectName="RoleFunction" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"><generatedKey column="id" sqlStatement="MySql" identity="true" /></table>-->
+<!--		<table tableName="app_role_element" domainObjectName="RoleElement" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"><generatedKey column="id" sqlStatement="MySql" identity="true" /></table>-->
+<!--		<table tableName="app_role_menu" domainObjectName="RoleMenu" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"><generatedKey column="id" sqlStatement="MySql" identity="true" /></table>-->
+<!--		<table tableName="app_element_function" domainObjectName="ElementFunction" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"><generatedKey column="id" sqlStatement="MySql" identity="true" /></table>-->
+<!--		<table tableName="app_menu_function" domainObjectName="MenuFunction" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"><generatedKey column="id" sqlStatement="MySql" identity="true" /></table>-->
 
 	</context>
 </generatorConfiguration> 

@@ -2,14 +2,40 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.app.mapper.mapper.MenuMapper">
     <resultMap id="BaseResultMap" type="com.app.model.model.Menu">
-        <id column="id" property="id" jdbcType="INTEGER" />
-        <result column="name" property="name" jdbcType="VARCHAR" />
-        <result column="parent_id" property="parentId" jdbcType="INTEGER" />
-        <result column="status" property="status" jdbcType="TINYINT" />
-        <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
-        <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+      <id column="id" jdbcType="INTEGER" property="id" />
+      <result column="name" jdbcType="VARCHAR" property="name" />
+      <result column="parent_id" jdbcType="INTEGER" property="parentId" />
+      <result column="status" jdbcType="TINYINT" property="status" />
+      <result column="url" jdbcType="VARCHAR" property="url" />
+      <result column="icon" jdbcType="VARCHAR" property="icon" />
+      <result column="seq" jdbcType="INTEGER" property="seq" />
+      <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+      <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
     </resultMap>
     <sql id="Base_Column_List">
-        id, name, parent_id, status, create_time, update_time
+        id, name, parent_id, status, url, icon, seq, create_time, update_time
     </sql>
+    <sql id="Base_Column_List_Alias">
+      t.id, t.name, t.parent_id, t.status, t.url, t.icon, t.seq, t.create_time, t.update_time
+    </sql>
+    <select id="listByUserId" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List_Alias" />
+        from app_menu t
+        inner join app_role_menu rm on t.id = rm.menu_id
+        inner join app_user_role ur on rm.role_id = ur.role_id
+        where ur.user_id = #{userId}
+        and status = 1
+    </select>
+    <select id="listByRoleIds" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List_Alias" />
+        from app_menu t
+        inner join app_role_menu rm on t.id = rm.menu_id
+        where status = 1
+        and rm.role_id in
+        <foreach collection="roleIds" item="id" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </select>
 </mapper>

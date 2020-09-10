@@ -27,4 +27,12 @@ public class RP<T> {
         this.totalSize = totalSize;
         this.data = data;
     }
+
+    public RP(Long page, Long size, Long totalPage, Long totalSize, List<T> data) {
+        this.page = page != null ? page.intValue() : null;
+        this.size = size != null ? size.intValue() : null;
+        this.totalPage = totalPage != null ? totalPage.intValue() : null;
+        this.totalSize = totalSize != null ? totalSize.intValue() : null;
+        this.data = data;
+    }
 }

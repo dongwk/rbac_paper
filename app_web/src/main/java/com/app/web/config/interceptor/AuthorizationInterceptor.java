@@ -1,27 +1,20 @@
 package com.app.web.config.interceptor;
 
 import com.app.common.util.JsonUtil;
+import com.app.core.common.ThrowBiz;
 import com.app.web.config.annotation.Authorization;
-import com.app.web.config.annotation.RequiredLogin;
 import com.app.web.controller.manager.TokenManage;
-import com.app.web.controller.exce.BizException;
-import com.app.web.mo.LoginedUserMo;
+import com.app.web.mo.LoginUserMo;
 import com.app.web.utils.TokenUtils;
-import com.google.common.collect.Sets;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
-import org.springframework.util.AntPathMatcher;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
 import java.util.Set;
 
 @Component
@@ -38,7 +31,8 @@ public class AuthorizationInterceptor extends HandlerInterceptorAdapter {
     @Autowired
     private TokenManage tokenManage;
 
-    public boolean preHandle (HttpServletRequest request,
+    @Override
+    public boolean preHandle(HttpServletRequest request,
                               HttpServletResponse response, Object handler) throws Exception {
 
         // 如果不是映射到方法直接通过
@@ -66,18 +60,18 @@ public class AuthorizationInterceptor extends HandlerInterceptorAdapter {
             // 从 header 中得到 token
             String token = TokenUtils.getToken(request);
             if (StringUtils.isBlank(token)) { // 登录信息没有传，请登录
-                throw new BizException(HttpStatus.UNAUTHORIZED, "auth.token.exipred");
+                ThrowBiz.throwExce(HttpStatus.UNAUTHORIZED, "auth.token.exipred");
             }
 
             // 验证登录信息
             String val = tokenManage.get(token);
             if (StringUtils.isBlank(val)) { // 登录信息已过期或不存在，请重新登录
-                throw new BizException(HttpStatus.UNAUTHORIZED, "auth.token.exipred");
+                ThrowBiz.throwExce(HttpStatus.UNAUTHORIZED, "auth.token.exipred");
             }
 
-            LoginedUserMo loginedUserMo = JsonUtil.toBean(val, LoginedUserMo.class);
+            LoginUserMo loginUserMo = JsonUtil.toBean(val, LoginUserMo.class);
 
-            Set<String> funs = loginedUserMo.getFuns();
+            Set<String> funs = loginUserMo.getFuns();
 
             funs.contains(uri);
         }

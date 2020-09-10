@@ -4,9 +4,9 @@ import com.app.common.web.result.R;
 import com.app.model.model.User;
 import com.app.service.service.UserService;
 import com.app.web.config.annotation.Authorization;
-import com.app.web.config.annotation.LoginedUser;
+import com.app.web.config.annotation.LoginUser;
 import com.app.web.controller.manager.TokenManage;
-import com.app.web.mo.LoginedUserMo;
+import com.app.web.mo.LoginUserMo;
 import com.app.web.vo.LoginVo;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
@@ -52,7 +52,7 @@ public class TokenController {
     @ApiImplicitParams({
             @ApiImplicitParam(name = "authorization", value = "authorization", required = true, dataType = "string", paramType = "header"),
     })
-    public R logout(@LoginedUser LoginedUserMo userVo) {
+    public R logout(@LoginUser LoginUserMo userVo) {
 //        tokenManager.deleteToken();
         System.out.println(userVo);
         return R.SUCCESS();

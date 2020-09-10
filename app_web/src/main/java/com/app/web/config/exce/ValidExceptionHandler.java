@@ -1,23 +1,21 @@
 package com.app.web.config.exce;
 
 import com.app.common.web.result.R;
-import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.springframework.validation.BindException;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.MethodArgumentNotValidException;
-import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
 import org.springframework.web.util.ContentCachingRequestWrapper;
 
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletRequestWrapper;
 import javax.servlet.http.HttpServletRequest;
 
-class ValidExceptionHandler {
+/**
+ *
+ */
+public class ValidExceptionHandler {
 
     private ContentCachingRequestWrapper getUnderlyingCachingRequest(ServletRequest request) {
         if (ContentCachingRequestWrapper.class.isAssignableFrom(request.getClass())) {

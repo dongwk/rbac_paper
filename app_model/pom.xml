@@ -24,5 +24,11 @@
       <artifactId>mybatis-plus</artifactId>
     </dependency>
 
+    <dependency>
+      <groupId>org.mybatis.generator</groupId>
+      <artifactId>mybatis-generator-core</artifactId>
+      <version>1.4.0</version>
+      <scope>runtime</scope>
+    </dependency>
   </dependencies>
 </project>

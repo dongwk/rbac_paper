@@ -1,10 +1,10 @@
 package com.app.web.config.resolvers;
 
 import com.app.common.util.JsonUtil;
-import com.app.web.config.annotation.LoginedUser;
+import com.app.web.config.annotation.LoginUser;
 import com.app.web.controller.manager.TokenManage;
 import com.app.web.utils.TokenUtils;
-import com.app.web.mo.LoginedUserMo;
+import com.app.web.mo.LoginUserMo;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,11 +20,12 @@ import javax.servlet.http.HttpServletRequest;
 /**
  * 登录用户注入，Spring 方法注入参数使用
  * 增加方法注入，将含有CurrentUser注解的方法参数注入当前登录用户
- * @date 2015/7/31.
+ * @author dongwk
+ * @date 2015/7/31
  */
 @Component
 @Slf4j
-public class LoginedUserMethodArgumentResolver implements HandlerMethodArgumentResolver {
+public class LoginUserMethodArgumentResolver implements HandlerMethodArgumentResolver {
 
     @Autowired
     private TokenManage tokenManage;
@@ -32,8 +33,8 @@ public class LoginedUserMethodArgumentResolver implements HandlerMethodArgumentR
     @Override
     public boolean supportsParameter(MethodParameter parameter) {
         // 如果参数类型是 UserVo 并且有 CurrentUser 注解则支持
-        if (parameter.getParameterType().isAssignableFrom(LoginedUserMo.class) &&
-                parameter.hasParameterAnnotation(LoginedUser.class)) {
+        if (parameter.getParameterType().isAssignableFrom(LoginUserMo.class) &&
+                parameter.hasParameterAnnotation(LoginUser.class)) {
             return true;
         }
         return false;
@@ -47,7 +48,7 @@ public class LoginedUserMethodArgumentResolver implements HandlerMethodArgumentR
         if (token != null) {
             String tokenVal = tokenManage.get(token);
             if (StringUtils.isNotBlank(tokenVal)) {
-                return JsonUtil.toBean(tokenVal, LoginedUserMo.class);
+                return JsonUtil.toBean(tokenVal, LoginUserMo.class);
             }
 
         }

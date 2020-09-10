@@ -9,7 +9,7 @@ import java.util.Set;
  * @date 2018/11/9 17:01
  **/
 @Data
-public class LoginedUserMo {
+public class LoginUserMo {
 
     private Integer id;
     private String nickname;
@@ -17,10 +17,10 @@ public class LoginedUserMo {
     private String token;
     private Set<String> funs; // 权限
 
-    public LoginedUserMo() {
+    public LoginUserMo() {
     }
 
-    public LoginedUserMo(Integer id, String nickname, String username, String token, Set<String> funs) {
+    public LoginUserMo(Integer id, String nickname, String username, String token, Set<String> funs) {
         this.id = id;
         this.nickname = nickname;
         this.username = username;

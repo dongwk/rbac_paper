@@ -60,6 +60,11 @@ public class R<T> extends ResponseEntity<R.Model> {
 		return new R(new CountModel(httpStatus.value()+"", httpStatus.getReasonPhrase(), t, count), httpStatus);
 	}
 
+	public static <T> R<T> SUCCESS(T t, long count){
+		HttpStatus httpStatus = HttpStatus.OK;
+		return new R(new CountModel(httpStatus.value()+"", httpStatus.getReasonPhrase(), t, count), httpStatus);
+	}
+
 	public static <T> R<T> SUCCESS(T t, int page, int size, int totalPage, int totalSize){
 		HttpStatus httpStatus = HttpStatus.OK;
 		return new R(new PageModel(httpStatus.value()+"", httpStatus.getReasonPhrase(), t, page, size, totalPage, totalSize), httpStatus);
@@ -175,6 +180,11 @@ public class R<T> extends ResponseEntity<R.Model> {
 		public CountModel(String code, String msg, T data, Integer count) {
 			super(code, msg, data);
 			this.count = count;
+		}
+
+		public CountModel(String code, String msg, T data, Long count) {
+			super(code, msg, data);
+			this.count = count != null ? count.intValue() : null;
 		}
 
 		@Override
