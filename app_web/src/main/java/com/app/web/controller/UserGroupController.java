@@ -5,12 +5,13 @@ package com.app.web.controller;
 
 import com.app.common.constant.Constants;
 import com.app.common.web.result.R;
+import com.app.core.common.ThrowAssert;
 import com.app.core.common.ThrowBiz;
 import com.app.model.model.UserGroup;
 import com.app.service.service.UserGroupService;
 import com.app.web.config.annotation.Authorization;
 import com.app.web.controller.base.BaseController;
-import com.app.web.mo.PageMo;
+import com.app.web.mo.base.PageMo;
 import com.app.web.mo.UserGroupMo;
 import com.app.web.utils.MoToDoUtils;
 import com.app.web.utils.PageMoUtils;
@@ -36,9 +37,9 @@ public class UserGroupController extends BaseController{
 
     @Authorization
     @GetMapping
-    public R<?> list(@RequestBody PageMo pageMo){
+    public R<?> list(){
         UserGroup userGroup = new UserGroup();
-        IPage<UserGroup> page = userGroupService.listPageCount(PageMoUtils.toMPPage(pageMo), userGroup);
+        IPage<UserGroup> page = userGroupService.listPageCount(getPage(), userGroup);
         return R.SUCCESS(page.getRecords(), page.getTotal());
     }
 
@@ -52,11 +53,11 @@ public class UserGroupController extends BaseController{
     @PostMapping
     public R<?> add(@RequestBody UserGroupMo userGroupMo){
 
-        if (userGroupMo == null) ThrowBiz.throwExce(HttpStatus.BAD_REQUEST);
-        if (StringUtils.isBlank(userGroupMo.getName())) ThrowBiz.throwExce("userGroup.add.name-empty");
-        if (userGroupMo.getName().trim().length() > Constants.INT_16) ThrowBiz.throwExce("userGroup.add.name-max");
-        if (userGroupMo.getParentId() == null) ThrowBiz.throwExce("userGroup.upd.parentid-empty");
-        if (userGroupMo.getParentId() < Constants.INT_1 || userGroupMo.getParentId() > Constants.INT_1) ThrowBiz.throwExce("userGroup.add.name-max");
+        ThrowAssert.isNull(userGroupMo, HttpStatus.BAD_REQUEST);
+        ThrowAssert.isBlank(userGroupMo.getName(), "userGroup.add.name-empty");
+        ThrowAssert.isTrue(userGroupMo.getName().trim().length() > Constants.INT_16, "userGroup.add.name-max");
+        ThrowAssert.isNull(userGroupMo.getParentId(), "userGroup.upd.parentid-empty");
+        ThrowAssert.isTrue(userGroupMo.getParentId() < Constants.INT_1 || userGroupMo.getParentId() > Constants.INT_1, "userGroup.add.name-max");
         userGroupMo.setName(userGroupMo.getName().trim());
 
         UserGroup userGroup = MoToDoUtils.toAddDO(userGroupMo, UserGroup.class);
@@ -68,11 +69,11 @@ public class UserGroupController extends BaseController{
     @PutMapping
     public R<?> put(@RequestBody UserGroupMo userGroupMo){
 
-        if (userGroupMo == null) ThrowBiz.throwExce(HttpStatus.BAD_REQUEST);
-        if (StringUtils.isBlank(userGroupMo.getName())) ThrowBiz.throwExce("userGroup.add.name-empty");
-        if (userGroupMo.getName().trim().length() > Constants.INT_16) ThrowBiz.throwExce("userGroup.add.name-max");
-        if (userGroupMo.getParentId() == null) ThrowBiz.throwExce("userGroup.upd.parentid-empty");
-        if (userGroupMo.getParentId() < Constants.INT_1 || userGroupMo.getParentId() > Constants.INT_1) ThrowBiz.throwExce("userGroup.add.name-max");
+        ThrowAssert.isNull(userGroupMo, HttpStatus.BAD_REQUEST);
+        ThrowAssert.isBlank(userGroupMo.getName(), "userGroup.add.name-empty");
+        ThrowAssert.isTrue(userGroupMo.getName().trim().length() > Constants.INT_16, "userGroup.add.name-max");
+        ThrowAssert.isNull(userGroupMo.getParentId(), "userGroup.upd.parentid-empty");
+        ThrowAssert.isTrue(userGroupMo.getParentId() < Constants.INT_1 || userGroupMo.getParentId() > Constants.INT_1, "userGroup.add.name-max");
         userGroupMo.setName(userGroupMo.getName().trim());
 
         UserGroup userGroup = MoToDoUtils.toUpdDO(userGroupMo, UserGroup.class);
@@ -83,7 +84,7 @@ public class UserGroupController extends BaseController{
     @Authorization
     @DeleteMapping("/{id}")
     public R<?> delete(@PathVariable("id") Integer id){
-        if (id == null) ThrowBiz.throwExce(HttpStatus.BAD_REQUEST);
+        ThrowAssert.isNull(id == null, HttpStatus.BAD_REQUEST);
         return R.SUCCESS(userGroupService.removeById(id));
     }
 }

@@ -5,13 +5,14 @@ package com.app.web.controller;
 
 import com.app.common.constant.Constants;
 import com.app.common.web.result.R;
+import com.app.core.common.ThrowAssert;
 import com.app.core.common.ThrowBiz;
 import com.app.model.model.Function;
 import com.app.service.service.FunctionService;
 import com.app.web.config.annotation.Authorization;
 import com.app.web.controller.base.BaseController;
 import com.app.web.mo.FunctionMo;
-import com.app.web.mo.PageMo;
+import com.app.web.mo.base.PageMo;
 import com.app.web.utils.MoToDoUtils;
 import com.app.web.utils.PageMoUtils;
 import com.baomidou.mybatisplus.core.metadata.IPage;
@@ -36,9 +37,9 @@ public class FunctionController extends BaseController{
 
     @Authorization
     @GetMapping
-    public R<?> list(@RequestBody PageMo pageMo){
+    public R<?> list(){
         Function function = new Function();
-        IPage<Function> page = functionService.listPageCount(PageMoUtils.toMPPage(pageMo), function);
+        IPage<Function> page = functionService.listPageCount(getPage(), function);
         return R.SUCCESS(page.getRecords(), page.getTotal());
     }
 
@@ -52,13 +53,13 @@ public class FunctionController extends BaseController{
     @PostMapping
     public R<?> add(@RequestBody FunctionMo functionMo){
 
-        if (functionMo == null) ThrowBiz.throwExce(HttpStatus.BAD_REQUEST);
-        if (StringUtils.isBlank(functionMo.getName())) ThrowBiz.throwExce("function.add.name-empty");
-        if (functionMo.getName().trim().length() > Constants.INT_32) ThrowBiz.throwExce("function.add.name-max");
-        if (StringUtils.isBlank(functionMo.getCode())) ThrowBiz.throwExce("function.add.code-empty");
-        if (functionMo.getCode().trim().length() > Constants.INT_32) ThrowBiz.throwExce("function.add.code-max");
-        if (StringUtils.isBlank(functionMo.getUrl())) ThrowBiz.throwExce("function.add.url-empty");
-        if (functionMo.getUrl().trim().length() > Constants.INT_128) ThrowBiz.throwExce("function.add.url-max");
+        ThrowAssert.isNull(functionMo, HttpStatus.BAD_REQUEST);
+        ThrowAssert.isBlank(functionMo.getName(), "function.add.name-empty");
+        ThrowAssert.isTrue(functionMo.getName().trim().length() > Constants.INT_32, "function.add.name-max");
+        ThrowAssert.isBlank(functionMo.getCode(), "function.add.code-empty");
+        ThrowAssert.isTrue(functionMo.getCode().trim().length() > Constants.INT_32, "function.add.code-max");
+        ThrowAssert.isBlank(functionMo.getUrl(), "function.add.url-empty");
+        ThrowAssert.isTrue(functionMo.getUrl().trim().length() > Constants.INT_128, "function.add.url-max");
         functionMo.setName(functionMo.getName().trim());
         functionMo.setCode(functionMo.getCode().trim());
         functionMo.setUrl(functionMo.getUrl().trim());
@@ -73,13 +74,13 @@ public class FunctionController extends BaseController{
     @PutMapping
     public R<?> put(@RequestBody FunctionMo functionMo){
 
-        if (functionMo == null) ThrowBiz.throwExce(HttpStatus.BAD_REQUEST);
-        if (StringUtils.isBlank(functionMo.getName())) ThrowBiz.throwExce("function.add.name-empty");
-        if (functionMo.getName().trim().length() > Constants.INT_32) ThrowBiz.throwExce("function.add.name-max");
-        if (StringUtils.isBlank(functionMo.getCode())) ThrowBiz.throwExce("function.add.code-empty");
-        if (functionMo.getCode().trim().length() > Constants.INT_32) ThrowBiz.throwExce("function.add.code-max");
-        if (StringUtils.isBlank(functionMo.getUrl())) ThrowBiz.throwExce("function.add.url-empty");
-        if (functionMo.getUrl().trim().length() > Constants.INT_128) ThrowBiz.throwExce("function.add.url-max");
+        ThrowAssert.isNull(functionMo == null, HttpStatus.BAD_REQUEST);
+        ThrowAssert.isBlank(functionMo.getName(), "function.add.name-empty");
+        ThrowAssert.isTrue(functionMo.getName().trim().length() > Constants.INT_32, "function.add.name-max");
+        ThrowAssert.isBlank(functionMo.getCode(), "function.add.code-empty");
+        ThrowAssert.isTrue(functionMo.getCode().trim().length() > Constants.INT_32, "function.add.code-max");
+        ThrowAssert.isBlank(functionMo.getUrl(), "function.add.url-empty");
+        ThrowAssert.isTrue(functionMo.getUrl().trim().length() > Constants.INT_128, "function.add.url-max");
         functionMo.setName(functionMo.getName().trim());
         functionMo.setCode(functionMo.getCode().trim());
         functionMo.setUrl(functionMo.getUrl().trim());
@@ -92,7 +93,7 @@ public class FunctionController extends BaseController{
     @Authorization
     @DeleteMapping("/{id}")
     public R<?> delete(@PathVariable("id") Integer id){
-        if (id == null) ThrowBiz.throwExce(HttpStatus.BAD_REQUEST);
+        ThrowAssert.isNull(id, HttpStatus.BAD_REQUEST);
         return R.SUCCESS(functionService.removeById(id));
     }
 }

@@ -9,6 +9,7 @@ public class Constants {
     public static final byte BYTE_1 = 1;
     public static final byte BYTE_2 = 2;
 
+    public static final int INT_0 = 0;
     public static final int INT_1 = 1;
     public static final int INT_2 = 2;
     public static final int INT_4 = 4;

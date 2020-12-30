@@ -1,5 +1,7 @@
 package com.app.web.controller.base;
 
+import com.app.web.utils.RequestUtils;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.servlet.http.HttpServletRequest;
@@ -17,10 +19,13 @@ public abstract class CustomContext {
     @Autowired
     protected HttpSession session;
 
-//    protected HttpServletRequest getRequest(){
-//        HttpServletRequest request = ((ServletRequestAttributes) (RequestContextHolder.currentRequestAttributes())).getRequest();
-//        return request;
-//    }
+    /**
+     * 分页请求头处理
+     * @return
+     */
+    protected Page getPage(){
+        return RequestUtils.getPage(request);
+    }
 //
 //    protected HttpServletResponse getResponse(){
 //        HttpServletResponse resp = ((ServletWebRequest)RequestContextHolder.getRequestAttributes()).getResponse();

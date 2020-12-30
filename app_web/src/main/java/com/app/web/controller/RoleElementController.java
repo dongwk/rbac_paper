@@ -5,12 +5,13 @@ package com.app.web.controller;
 
 import com.app.common.constant.Constants;
 import com.app.common.web.result.R;
+import com.app.core.common.ThrowAssert;
 import com.app.core.common.ThrowBiz;
 import com.app.model.model.RoleElement;
 import com.app.service.service.RoleElementService;
 import com.app.web.config.annotation.Authorization;
 import com.app.web.controller.base.BaseController;
-import com.app.web.mo.PageMo;
+import com.app.web.mo.base.PageMo;
 import com.app.web.mo.RoleElementMo;
 import com.app.web.utils.MoToDoUtils;
 import com.app.web.utils.PageMoUtils;
@@ -35,9 +36,9 @@ public class RoleElementController extends BaseController{
 
     @Authorization
     @GetMapping
-    public R<?> list(@RequestBody PageMo pageMo){
+    public R<?> list(){
         RoleElement roleElement = new RoleElement();
-        IPage<RoleElement> page = roleElementService.listPageCount(PageMoUtils.toMPPage(pageMo), roleElement);
+        IPage<RoleElement> page = roleElementService.listPageCount(getPage(), roleElement);
         return R.SUCCESS(page.getRecords(), page.getTotal());
     }
 
@@ -51,11 +52,11 @@ public class RoleElementController extends BaseController{
     @PostMapping
     public R<?> add(@RequestBody RoleElementMo roleElementMo){
 
-        if (roleElementMo == null) ThrowBiz.throwExce(HttpStatus.BAD_REQUEST);
-        if (roleElementMo.getRoleId() == null) ThrowBiz.throwExce("roleElement.add.roleId-empty");
-        if (roleElementMo.getRoleId() < Constants.INT_1 || roleElementMo.getRoleId() > Integer.MAX_VALUE) ThrowBiz.throwExce("roleElement.add.roleId-range");
-        if (roleElementMo.getElementId() == null) ThrowBiz.throwExce("roleElement.add.elementId-empty");
-        if (roleElementMo.getElementId() < Constants.INT_1 || roleElementMo.getElementId() > Integer.MAX_VALUE) ThrowBiz.throwExce("roleElement.add.elementId-range");
+        ThrowAssert.isNull(roleElementMo, HttpStatus.BAD_REQUEST);
+        ThrowAssert.isNull(roleElementMo.getRoleId(), "roleElement.add.roleId-empty");
+        ThrowAssert.isTrue(roleElementMo.getRoleId() < Constants.INT_1 || roleElementMo.getRoleId() > Integer.MAX_VALUE, "roleElement.add.roleId-range");
+        ThrowAssert.isNull(roleElementMo.getElementId(), "roleElement.add.elementId-empty");
+        ThrowAssert.isTrue(roleElementMo.getElementId() < Constants.INT_1 || roleElementMo.getElementId() > Integer.MAX_VALUE, "roleElement.add.elementId-range");
 
 
         RoleElement roleElement = MoToDoUtils.toAddDO(roleElementMo, RoleElement.class);
@@ -67,11 +68,11 @@ public class RoleElementController extends BaseController{
     @PutMapping
     public R<?> put(@RequestBody RoleElementMo roleElementMo){
 
-        if (roleElementMo == null) ThrowBiz.throwExce(HttpStatus.BAD_REQUEST);
-        if (roleElementMo.getRoleId() == null) ThrowBiz.throwExce("roleElement.add.roleId-empty");
-        if (roleElementMo.getRoleId() < Constants.INT_1 || roleElementMo.getRoleId() > Integer.MAX_VALUE) ThrowBiz.throwExce("roleElement.add.roleId-range");
-        if (roleElementMo.getElementId() == null) ThrowBiz.throwExce("roleElement.add.elementId-empty");
-        if (roleElementMo.getElementId() < Constants.INT_1 || roleElementMo.getElementId() > Integer.MAX_VALUE) ThrowBiz.throwExce("roleElement.add.elementId-range");
+        ThrowAssert.isNull(roleElementMo, HttpStatus.BAD_REQUEST);
+        ThrowAssert.isNull(roleElementMo.getRoleId(), "roleElement.add.roleId-empty");
+        ThrowAssert.isTrue(roleElementMo.getRoleId() < Constants.INT_1 || roleElementMo.getRoleId() > Integer.MAX_VALUE, "roleElement.add.roleId-range");
+        ThrowAssert.isNull(roleElementMo.getElementId(), "roleElement.add.elementId-empty");
+        ThrowAssert.isTrue(roleElementMo.getElementId() < Constants.INT_1 || roleElementMo.getElementId() > Integer.MAX_VALUE, "roleElement.add.elementId-range");
 
 
         RoleElement roleElement = MoToDoUtils.toUpdDO(roleElementMo, RoleElement.class);
@@ -82,7 +83,7 @@ public class RoleElementController extends BaseController{
     @Authorization
     @DeleteMapping("/{id}")
     public R<?> delete(@PathVariable("id") Integer id){
-        if (id == null) ThrowBiz.throwExce(HttpStatus.BAD_REQUEST);
+        ThrowAssert.isNull(id, HttpStatus.BAD_REQUEST);
         return R.SUCCESS(roleElementService.removeById(id));
     }
 }

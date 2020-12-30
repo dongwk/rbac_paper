@@ -5,12 +5,13 @@ package com.app.web.controller;
 
 import com.app.common.constant.Constants;
 import com.app.common.web.result.R;
+import com.app.core.common.ThrowAssert;
 import com.app.core.common.ThrowBiz;
 import com.app.model.model.UserRole;
 import com.app.service.service.UserRoleService;
 import com.app.web.config.annotation.Authorization;
 import com.app.web.controller.base.BaseController;
-import com.app.web.mo.PageMo;
+import com.app.web.mo.base.PageMo;
 import com.app.web.mo.UserRoleMo;
 import com.app.web.utils.MoToDoUtils;
 import com.app.web.utils.PageMoUtils;
@@ -35,9 +36,9 @@ public class UserRoleController extends BaseController{
 
     @Authorization
     @GetMapping
-    public R<?> list(@RequestBody PageMo pageMo){
+    public R<?> list(){
         UserRole userRole = new UserRole();
-        IPage<UserRole> page = userRoleService.listPageCount(PageMoUtils.toMPPage(pageMo), userRole);
+        IPage<UserRole> page = userRoleService.listPageCount(getPage(), userRole);
         return R.SUCCESS(page.getRecords(), page.getTotal());
     }
 
@@ -51,11 +52,11 @@ public class UserRoleController extends BaseController{
     @PostMapping
     public R<?> add(@RequestBody UserRoleMo userRoleMo){
 
-        if (userRoleMo == null) ThrowBiz.throwExce(HttpStatus.BAD_REQUEST);
-        if (userRoleMo.getUserId() == null) ThrowBiz.throwExce("userRole.add.userId-empty");
-        if (userRoleMo.getUserId() < Constants.INT_1 || userRoleMo.getUserId() > Integer.MAX_VALUE) ThrowBiz.throwExce("userRole.add.userId-range");
-        if (userRoleMo.getRoleId() == null) ThrowBiz.throwExce("userRole.add.roleId-empty");
-        if (userRoleMo.getRoleId() < Constants.INT_1 || userRoleMo.getRoleId() > Integer.MAX_VALUE) ThrowBiz.throwExce("userRole.add.roleId-range");
+        ThrowAssert.isNull(userRoleMo, HttpStatus.BAD_REQUEST);
+        ThrowAssert.isNull(userRoleMo.getUserId(), "userRole.add.userId-empty");
+        ThrowAssert.isTrue(userRoleMo.getUserId() < Constants.INT_1 || userRoleMo.getUserId() > Integer.MAX_VALUE, "userRole.add.userId-range");
+        ThrowAssert.isNull(userRoleMo.getRoleId(), "userRole.add.roleId-empty");
+        ThrowAssert.isTrue(userRoleMo.getRoleId() < Constants.INT_1 || userRoleMo.getRoleId() > Integer.MAX_VALUE, "userRole.add.roleId-range");
 
         UserRole userRole = MoToDoUtils.toAddDO(userRoleMo, UserRole.class);
         userRoleService.save(userRole);
@@ -66,11 +67,11 @@ public class UserRoleController extends BaseController{
     @PutMapping
     public R<?> put(@RequestBody UserRoleMo userRoleMo){
 
-        if (userRoleMo == null) ThrowBiz.throwExce(HttpStatus.BAD_REQUEST);
-        if (userRoleMo.getUserId() == null) ThrowBiz.throwExce("userRole.add.userId-empty");
-        if (userRoleMo.getUserId() < Constants.INT_1 || userRoleMo.getUserId() > Integer.MAX_VALUE) ThrowBiz.throwExce("userRole.add.userId-range");
-        if (userRoleMo.getRoleId() == null) ThrowBiz.throwExce("userRole.add.roleId-empty");
-        if (userRoleMo.getRoleId() < Constants.INT_1 || userRoleMo.getRoleId() > Integer.MAX_VALUE) ThrowBiz.throwExce("userRole.add.roleId-range");
+        ThrowAssert.isNull(userRoleMo, HttpStatus.BAD_REQUEST);
+        ThrowAssert.isNull(userRoleMo.getUserId(), "userRole.add.userId-empty");
+        ThrowAssert.isTrue(userRoleMo.getUserId() < Constants.INT_1 || userRoleMo.getUserId() > Integer.MAX_VALUE, "userRole.add.userId-range");
+        ThrowAssert.isNull(userRoleMo.getRoleId(), "userRole.add.roleId-empty");
+        ThrowAssert.isTrue(userRoleMo.getRoleId() < Constants.INT_1 || userRoleMo.getRoleId() > Integer.MAX_VALUE, "userRole.add.roleId-range");
 
         UserRole userRole = MoToDoUtils.toUpdDO(userRoleMo, UserRole.class);
         userRoleService.updateById(userRole);
@@ -80,7 +81,7 @@ public class UserRoleController extends BaseController{
     @Authorization
     @DeleteMapping("/{id}")
     public R<?> delete(@PathVariable("id") Integer id){
-        if (id == null) ThrowBiz.throwExce(HttpStatus.BAD_REQUEST);
+        ThrowAssert.isNull(id, HttpStatus.BAD_REQUEST);
         return R.SUCCESS(userRoleService.removeById(id));
     }
 }

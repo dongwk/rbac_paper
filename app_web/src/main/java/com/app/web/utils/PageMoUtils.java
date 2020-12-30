@@ -1,7 +1,7 @@
 package com.app.web.utils;
 
 import com.app.web.constant.WebConstants;
-import com.app.web.mo.PageMo;
+import com.app.web.mo.base.PageMo;
 import com.baomidou.mybatisplus.core.metadata.OrderItem;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.apache.commons.lang3.StringUtils;

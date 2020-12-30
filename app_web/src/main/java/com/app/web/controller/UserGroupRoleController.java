@@ -5,12 +5,13 @@ package com.app.web.controller;
 
 import com.app.common.constant.Constants;
 import com.app.common.web.result.R;
+import com.app.core.common.ThrowAssert;
 import com.app.core.common.ThrowBiz;
 import com.app.model.model.UserGroupRole;
 import com.app.service.service.UserGroupRoleService;
 import com.app.web.config.annotation.Authorization;
 import com.app.web.controller.base.BaseController;
-import com.app.web.mo.PageMo;
+import com.app.web.mo.base.PageMo;
 import com.app.web.mo.UserGroupRoleMo;
 import com.app.web.utils.MoToDoUtils;
 import com.app.web.utils.PageMoUtils;
@@ -35,9 +36,9 @@ public class UserGroupRoleController extends BaseController{
 
     @Authorization
     @GetMapping
-    public R<?> list(@RequestBody PageMo pageMo){
+    public R<?> list(){
         UserGroupRole userGroupRole = new UserGroupRole();
-        IPage<UserGroupRole> page = userGroupRoleService.listPageCount(PageMoUtils.toMPPage(pageMo), userGroupRole);
+        IPage<UserGroupRole> page = userGroupRoleService.listPageCount(getPage(), userGroupRole);
         return R.SUCCESS(page.getRecords(), page.getTotal());
     }
 
@@ -51,11 +52,11 @@ public class UserGroupRoleController extends BaseController{
     @PostMapping
     public R<?> add(@RequestBody UserGroupRoleMo userGroupRoleMo){
 
-        if (userGroupRoleMo == null) ThrowBiz.throwExce(HttpStatus.BAD_REQUEST);
-        if (userGroupRoleMo.getUserGroupId() == null) ThrowBiz.throwExce("userGroupRole.add.userGroupId-empty");
-        if (userGroupRoleMo.getUserGroupId() < Constants.INT_1 || userGroupRoleMo.getUserGroupId() > Integer.MAX_VALUE) ThrowBiz.throwExce("userGroupRole.add.userGroupId-range");
-        if (userGroupRoleMo.getRoleId() == null) ThrowBiz.throwExce("userGroupRole.add.roleId-empty");
-        if (userGroupRoleMo.getRoleId() < Constants.INT_1 || userGroupRoleMo.getRoleId() > Integer.MAX_VALUE) ThrowBiz.throwExce("userGroupRole.add.roleId-range");
+        ThrowAssert.isNull(userGroupRoleMo, HttpStatus.BAD_REQUEST);
+        ThrowAssert.isNull(userGroupRoleMo.getUserGroupId(), "userGroupRole.add.userGroupId-empty");
+        ThrowAssert.isTrue(userGroupRoleMo.getUserGroupId() < Constants.INT_1 || userGroupRoleMo.getUserGroupId() > Integer.MAX_VALUE, "userGroupRole.add.userGroupId-range");
+        ThrowAssert.isNull(userGroupRoleMo.getRoleId(), "userGroupRole.add.roleId-empty");
+        ThrowAssert.isTrue(userGroupRoleMo.getRoleId() < Constants.INT_1 || userGroupRoleMo.getRoleId() > Integer.MAX_VALUE, "userGroupRole.add.roleId-range");
 
         UserGroupRole userGroupRole = MoToDoUtils.toAddDO(userGroupRoleMo, UserGroupRole.class);
         userGroupRoleService.save(userGroupRole);
@@ -66,11 +67,11 @@ public class UserGroupRoleController extends BaseController{
     @PutMapping
     public R<?> put(@RequestBody UserGroupRoleMo userGroupRoleMo){
 
-        if (userGroupRoleMo == null) ThrowBiz.throwExce(HttpStatus.BAD_REQUEST);
-        if (userGroupRoleMo.getUserGroupId() == null) ThrowBiz.throwExce("userGroupRole.add.userGroupId-empty");
-        if (userGroupRoleMo.getUserGroupId() < Constants.INT_1 || userGroupRoleMo.getUserGroupId() > Integer.MAX_VALUE) ThrowBiz.throwExce("userGroupRole.add.userGroupId-range");
-        if (userGroupRoleMo.getRoleId() == null) ThrowBiz.throwExce("userGroupRole.add.roleId-empty");
-        if (userGroupRoleMo.getRoleId() < Constants.INT_1 || userGroupRoleMo.getRoleId() > Integer.MAX_VALUE) ThrowBiz.throwExce("userGroupRole.add.roleId-range");
+        ThrowAssert.isNull(userGroupRoleMo, HttpStatus.BAD_REQUEST);
+        ThrowAssert.isNull(userGroupRoleMo.getUserGroupId(), "userGroupRole.add.userGroupId-empty");
+        ThrowAssert.isTrue(userGroupRoleMo.getUserGroupId() < Constants.INT_1 || userGroupRoleMo.getUserGroupId() > Integer.MAX_VALUE, "userGroupRole.add.userGroupId-range");
+        ThrowAssert.isNull(userGroupRoleMo.getRoleId(), "userGroupRole.add.roleId-empty");
+        ThrowAssert.isTrue(userGroupRoleMo.getRoleId() < Constants.INT_1 || userGroupRoleMo.getRoleId() > Integer.MAX_VALUE, "userGroupRole.add.roleId-range");
 
         UserGroupRole userGroupRole = MoToDoUtils.toUpdDO(userGroupRoleMo, UserGroupRole.class);
         userGroupRoleService.updateById(userGroupRole);
@@ -80,7 +81,7 @@ public class UserGroupRoleController extends BaseController{
     @Authorization
     @DeleteMapping("/{id}")
     public R<?> delete(@PathVariable("id") Integer id){
-        if (id == null) ThrowBiz.throwExce(HttpStatus.BAD_REQUEST);
+        ThrowAssert.isNull(id, HttpStatus.BAD_REQUEST);
         return R.SUCCESS(userGroupRoleService.removeById(id));
     }
 }

@@ -53,16 +53,6 @@ public abstract class BaseRestController<S extends BaseSimpleService, T extends 
     }
 
     /**
-     * 页数
-     * @author dongwk
-     * @date 2018/12/5
-     */
-    protected int getPage(){
-        String page = request.getParameter(PAGE);
-        return ValidateUtil.isInteger(page) ?  Integer.parseInt(page) : 0;
-    }
-
-    /**
      * 显示字段
      * @author dongwk
      * @date 2018/12/5

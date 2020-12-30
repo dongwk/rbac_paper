@@ -4,6 +4,7 @@
     <resultMap id="BaseResultMap" type="com.app.model.model.Menu">
       <id column="id" jdbcType="INTEGER" property="id" />
       <result column="name" jdbcType="VARCHAR" property="name" />
+      <result column="code" jdbcType="VARCHAR" property="code" />
       <result column="parent_id" jdbcType="INTEGER" property="parentId" />
       <result column="status" jdbcType="TINYINT" property="status" />
       <result column="url" jdbcType="VARCHAR" property="url" />
@@ -13,10 +14,10 @@
       <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
     </resultMap>
     <sql id="Base_Column_List">
-        id, name, parent_id, status, url, icon, seq, create_time, update_time
+      id, name, code, parent_id, status, url, icon, seq, create_time, update_time
     </sql>
     <sql id="Base_Column_List_Alias">
-      t.id, t.name, t.parent_id, t.status, t.url, t.icon, t.seq, t.create_time, t.update_time
+      t.id, t.name, t.code, t.parent_id, t.status, t.url, t.icon, t.seq, t.create_time, t.update_time
     </sql>
     <select id="listByUserId" resultMap="BaseResultMap">
         select

@@ -9,6 +9,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * 功能基础类
@@ -39,7 +40,7 @@ public abstract class BaseSimpleService<M extends BaseMapper<T>, T extends BaseM
         return super.page(page, wrapper);
     }
 
-    public IPage<T> listPageCount(Page<T> page, T t) {
+    public IPage<T>  listPageCount(Page<T> page, T t) {
         Wrapper<T> wrapper = new QueryWrapper<T>(t);
         return super.page(page, wrapper);
     }
@@ -48,5 +49,16 @@ public abstract class BaseSimpleService<M extends BaseMapper<T>, T extends BaseM
         QueryWrapper<T> wrapper = new QueryWrapper<T>(t);
         wrapper.orderBy(Boolean.TRUE, isAsc, columns);
         return super.page(page, wrapper);
+    }
+
+    public List<T> list(T t) {
+        QueryWrapper<T> wrapper = new QueryWrapper<T>(t);
+        return super.list(wrapper);
+    }
+
+    public List<T> list(T t, boolean isAsc, String... columns) {
+        QueryWrapper<T> wrapper = new QueryWrapper<T>(t);
+        wrapper.orderBy(Boolean.TRUE, isAsc, columns);
+        return super.list(wrapper);
     }
 }

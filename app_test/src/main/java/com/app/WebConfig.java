@@ -24,6 +24,7 @@ public class WebConfig implements WebMvcConfigurer {
      * Validation message i18n
      * @return Validator
      */
+    @Override
     @Bean
     public Validator getValidator() {
         LocalValidatorFactoryBean validator = new LocalValidatorFactoryBean();
@@ -34,7 +35,7 @@ public class WebConfig implements WebMvcConfigurer {
 
     @Override
     public void configureContentNegotiation(ContentNegotiationConfigurer configurer) {
-        configurer.defaultContentType(MediaType.APPLICATION_JSON_UTF8);
+        configurer.defaultContentType(MediaType.APPLICATION_JSON);
     }
 
 }

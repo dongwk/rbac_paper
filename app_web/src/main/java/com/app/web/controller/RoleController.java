@@ -4,27 +4,22 @@
 package com.app.web.controller;
 
 import com.app.common.web.result.R;
+import com.app.core.common.ThrowAssert;
 import com.app.core.common.ThrowBiz;
 import com.app.model.model.Role;
 import com.app.service.service.RoleService;
 import com.app.web.config.annotation.Authorization;
 import com.app.web.controller.base.BaseController;
-import com.app.web.mo.PageMo;
 import com.app.web.mo.RoleMo;
+import com.app.web.mo.RoleQueryMo;
+import com.app.web.mo.base.PageMo;
 import com.app.web.utils.MoToDoUtils;
 import com.app.web.utils.PageMoUtils;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/role")
@@ -35,9 +30,9 @@ public class RoleController extends BaseController {
 
     @Authorization
     @GetMapping
-    public R<?> list(@RequestBody PageMo pageMo){
+    public R<?> list(){
         Role role = new Role();
-        IPage<Role> page = roleService.listPageCount(PageMoUtils.toMPPage(pageMo), role);
+        IPage<Role> page = roleService.listPageCount(getPage(), role);
         return R.SUCCESS(page.getRecords(), page.getTotal());
     }
 
@@ -51,9 +46,9 @@ public class RoleController extends BaseController {
     @PostMapping
     public R<?> add(@RequestBody RoleMo roleMo){
 
-        if (roleMo == null) ThrowBiz.throwExce(HttpStatus.BAD_REQUEST);
-        if (StringUtils.isBlank(roleMo.getName())) ThrowBiz.throwExce("role.add.name-empty");
-        if (roleMo.getName().trim().length() > 16) ThrowBiz.throwExce("role.add.name-max");
+        ThrowAssert.isNull(roleMo, HttpStatus.BAD_REQUEST);
+        ThrowAssert.isBlank(roleMo.getName(), "role.add.name-empty");
+        ThrowAssert.isTrue(roleMo.getName().trim().length() > 16, "role.add.name-max");
         roleMo.setName(roleMo.getName().trim());
 
         Role role = MoToDoUtils.toAddDO(roleMo, Role.class);
@@ -66,10 +61,10 @@ public class RoleController extends BaseController {
     @PutMapping(value = "/{id}")
     public R<?> put(@RequestBody RoleMo roleMo){
 
-        if (roleMo == null) ThrowBiz.throwExce(HttpStatus.BAD_REQUEST);
-        if (roleMo.getId() == null || roleMo.getId() < 1) ThrowBiz.throwExce("role.upd.id-empty");
-        if (StringUtils.isBlank(roleMo.getName())) ThrowBiz.throwExce("role.add.name-empty");
-        if (roleMo.getName().trim().length() > 16) ThrowBiz.throwExce("role.add.name-max");
+        ThrowAssert.isNull(roleMo, HttpStatus.BAD_REQUEST);
+        ThrowAssert.isTrue(roleMo.getId() == null || roleMo.getId() < 1, "role.upd.id-empty");
+        ThrowAssert.isBlank(roleMo.getName(), "role.add.name-empty");
+        ThrowAssert.isTrue(roleMo.getName().trim().length() > 16, "role.add.name-max");
         roleMo.setName(roleMo.getName().trim());
 
         Role role = MoToDoUtils.toUpdDO(roleMo, Role.class);
@@ -80,7 +75,15 @@ public class RoleController extends BaseController {
     @Authorization
     @DeleteMapping("/{id}")
     public R<?> delete(@PathVariable("id") Integer id){
-        if (id == null) ThrowBiz.throwExce(HttpStatus.BAD_REQUEST);
+        ThrowAssert.isNull(id, HttpStatus.BAD_REQUEST);
         return R.SUCCESS(roleService.removeById(id));
+    }
+
+    @Authorization
+    @PostMapping("/query")
+    public R<?> query(@RequestBody RoleQueryMo roleQueryMo){
+        Role role = new Role();
+        IPage<Role> page = roleService.listPageCount(getPage(), role);
+        return R.SUCCESS(page.getRecords(), page.getTotal());
     }
 }
