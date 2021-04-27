@@ -1,6 +1,6 @@
 package com.app.manage.web.controller.base;
 
-import com.app.common.web.result.R;
+import com.app.manage.web.common.R;
 import org.springframework.web.bind.annotation.*;
 
 public class RestSupportController extends BaseController {

@@ -28,8 +28,8 @@ public class MoToDoUtils {
             obj = clazz.newInstance();
             BeanUtils.copyProperties(obj, orig);
             Date date = DateUtil.now();
-            obj.setCreateTime(date);
-            obj.setUpdateTime(date);
+            obj.setCreateDate(date);
+            obj.setUpdateDate(date);
             obj.setStatus(true);
         } catch (InstantiationException e) {
             throw new RuntimeException(clazz.getCanonicalName() + " 无默认的构造函数");
@@ -56,7 +56,7 @@ public class MoToDoUtils {
             obj = clazz.newInstance();
             BeanUtils.copyProperties(obj, orig);
             Date date = DateUtil.now();
-            obj.setUpdateTime(date);
+            obj.setUpdateDate(date);
         } catch (InstantiationException e) {
             throw new RuntimeException(clazz.getCanonicalName() + " 无默认的构造函数");
         } catch (IllegalAccessException e) {

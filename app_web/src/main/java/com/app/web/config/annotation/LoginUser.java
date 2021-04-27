@@ -1,6 +1,6 @@
 package com.app.web.config.annotation;
 
-import com.app.web.mo.LoginUserMo;
+import com.app.web.po.LoginUserPo;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -12,7 +12,7 @@ import java.lang.annotation.Target;
  * @author dongwk
  * @see com.app.web.config.interceptor.AuthorizationInterceptor
  * @see com.app.web.config.resolvers.LoginUserMethodArgumentResolver
- * @see LoginUserMo
+ * @see LoginUserPo
  */
 @Target({ElementType.PARAMETER, ElementType.ANNOTATION_TYPE})
 @Retention(RetentionPolicy.RUNTIME)

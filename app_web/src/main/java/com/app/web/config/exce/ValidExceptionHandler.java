@@ -1,6 +1,6 @@
 package com.app.web.config.exce;
 
-import com.app.common.web.result.R;
+import com.app.web.common.R;
 import org.springframework.validation.BindException;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -45,7 +45,7 @@ public class ValidExceptionHandler {
         }else {
             msg = "系统繁忙，请稍后重试...";
         }
-        return R.ERROR(msg);
+        return R.FAIL(msg);
     }
 
 }

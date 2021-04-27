@@ -5,6 +5,7 @@ import com.app.web.config.annotation.Authorization;
 import com.app.web.config.annotation.RequiredLogin;
 import com.app.web.controller.manager.TokenManage;
 import com.app.web.utils.TokenUtils;
+import com.app.core.enums.MessagesPropertiesEnum;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -41,7 +42,7 @@ public class RequiredLoginInterceptor extends HandlerInterceptorAdapter {
             // 验证 token
             String val = tokenManage.get(token);
             if (StringUtils.isBlank(val)) { // 登录信息已过期或不存在，请重新登录
-                 ThrowBiz.throwExce(HttpStatus.UNAUTHORIZED, "auth.token.exipred");
+                 ThrowBiz.throwExce(HttpStatus.UNAUTHORIZED, MessagesPropertiesEnum.AUTH_TOKEN_EXIPRED);
             }
         }
         return true;

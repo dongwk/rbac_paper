@@ -2,17 +2,25 @@ package com.app.model.model;
 
 import com.app.model.base.BaseModel;
 import com.baomidou.mybatisplus.annotation.TableName;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.experimental.Accessors;
 
 /**
- * 20191121 暂时废弃吧不知道怎么用
+ * 权限表与页面元素关联表
  */
-@Deprecated
-@TableName("app_authority_element")
+@TableName("t_authority_element")
+@Accessors(chain = true)
 @Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class AuthorityElement extends BaseModel {
+    // 权限表id
     private Integer authorityId;
 
+    // 页面元素表id
     private Integer elementId;
-
 }

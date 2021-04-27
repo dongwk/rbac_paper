@@ -1,18 +1,17 @@
-/**
- * 
- */
 package com.app.service.service;
 
-import com.app.mapper.mapper.AuthorityElementMapper;
-import com.app.model.model.AuthorityElement;
-import com.app.service.base.BaseSimpleService;
+import com.app.mapper.mapper.AuthorityFunctionMapper;
+import com.app.model.model.AuthorityFunction;
+import com.app.service.base.BaseMapperService;
 import org.springframework.stereotype.Service;
 
 /**
- * 20191121 暂时废弃
+ *
+ * @author dongwk
+ * @date 2021-03-17
+ * @version 1.0
  */
-@Deprecated
 @Service
-public class AuthorityFunctionService extends BaseSimpleService<AuthorityElementMapper, AuthorityElement> {
+public class AuthorityFunctionService extends BaseMapperService<AuthorityFunctionMapper, AuthorityFunction> {
 
 }

@@ -34,7 +34,8 @@ public class Test {
 //
 //        System.out.println(map);
 
-        System.out.println(ValidateUtil.isChinese("啊"));
+//        System.out.println(ValidateUtil.isChinese("啊"));
+        System.out.println(ValidateUtil.isRightfulString("A1-_#"));
     }
 
 }

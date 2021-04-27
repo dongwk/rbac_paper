@@ -1,7 +1,7 @@
 package com.app.web.utils;
 
 import com.app.web.constant.WebConstants;
-import com.app.web.mo.base.PageMo;
+import com.app.web.po.base.PagePo;
 import com.baomidou.mybatisplus.core.metadata.OrderItem;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.apache.commons.lang3.StringUtils;
@@ -19,18 +19,18 @@ import java.util.Arrays;
 public class PageMoUtils {
 
     /**
-     * 将前台接收的 pageMo 规范转换成 mybatisplus 所需要的对象，用于查询使用
-     * @param pageMo
+     * 将前台接收的 pagePo 规范转换成 mybatisplus 所需要的对象，用于查询使用
+     * @param pagePo
      * @return
      */
-    public static Page toMPPage(PageMo pageMo){
-        if (pageMo == null || pageMo.getPage() == null || pageMo.getSize() == null ) return WebConstants.defaultPage();
+    public static Page toMPPage(PagePo pagePo){
+        if (pagePo == null || pagePo.getPage() == null || pagePo.getSize() == null ) return WebConstants.defaultPage();
 
-        return new Page(pageMo.getPage() <= 1 ? 0 : (pageMo.getPage()-1)*pageMo.getSize(), pageMo.getSize() < 1 ? WebConstants.DEFAULT_PAGE_SIZE : pageMo.getSize());
+        return new Page(pagePo.getPage() <= 1 ? 0 : (pagePo.getPage()-1)* pagePo.getSize(), pagePo.getSize() < 1 ? WebConstants.DEFAULT_PAGE_SIZE : pagePo.getSize());
     }
 
-    public static Page toMPPage(PageMo pageMo, String orderFiled){
-        Page page = toMPPage(pageMo);
+    public static Page toMPPage(PagePo pagePo, String orderFiled){
+        Page page = toMPPage(pagePo);
         if (StringUtils.isNotBlank(orderFiled)) {
             Arrays.stream(orderFiled.split(",")).forEach(e -> {
                 String[] kv = e.split(" ");

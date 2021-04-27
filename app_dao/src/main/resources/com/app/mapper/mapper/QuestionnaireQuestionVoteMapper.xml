@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.app.mapper.mapper.QuestionnaireQuestionVoteMapper">
+  <resultMap id="BaseResultMap" type="com.app.model.model.QuestionnaireQuestionVote">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="questionnaire_id" jdbcType="INTEGER" property="questionnaireId" />
+    <result column="questionnaire_q_id" jdbcType="INTEGER" property="questionnaireQId" />
+    <result column="questionnaire_q_vote_title" jdbcType="VARCHAR" property="questionnaireQVoteTitle" />
+    <result column="seq" jdbcType="DECIMAL" property="seq" />
+    <result column="status" jdbcType="BIT" property="status" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="update_date" jdbcType="TIMESTAMP" property="updateDate" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, questionnaire_id, questionnaire_q_id, questionnaire_q_vote_title, seq, status, 
+    create_date, update_date
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_questionnaire_question_vote
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_questionnaire_question_vote
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.app.model.model.QuestionnaireQuestionVote">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      select SEQ_ARTICLE.NEXTVAL from dual
+    </selectKey>
+    insert into t_questionnaire_question_vote (questionnaire_id, questionnaire_q_id, 
+      questionnaire_q_vote_title, seq, status, 
+      create_date, update_date)
+    values (#{questionnaireId,jdbcType=INTEGER}, #{questionnaireQId,jdbcType=INTEGER}, 
+      #{questionnaireQVoteTitle,jdbcType=VARCHAR}, #{seq,jdbcType=DECIMAL}, #{status,jdbcType=BIT}, 
+      #{createDate,jdbcType=TIMESTAMP}, #{updateDate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.app.model.model.QuestionnaireQuestionVote">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      select SEQ_ARTICLE.NEXTVAL from dual
+    </selectKey>
+    insert into t_questionnaire_question_vote
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="questionnaireId != null">
+        questionnaire_id,
+      </if>
+      <if test="questionnaireQId != null">
+        questionnaire_q_id,
+      </if>
+      <if test="questionnaireQVoteTitle != null">
+        questionnaire_q_vote_title,
+      </if>
+      <if test="seq != null">
+        seq,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="createDate != null">
+        create_date,
+      </if>
+      <if test="updateDate != null">
+        update_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="questionnaireId != null">
+        #{questionnaireId,jdbcType=INTEGER},
+      </if>
+      <if test="questionnaireQId != null">
+        #{questionnaireQId,jdbcType=INTEGER},
+      </if>
+      <if test="questionnaireQVoteTitle != null">
+        #{questionnaireQVoteTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="seq != null">
+        #{seq,jdbcType=DECIMAL},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=BIT},
+      </if>
+      <if test="createDate != null">
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateDate != null">
+        #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.app.model.model.QuestionnaireQuestionVote">
+    update t_questionnaire_question_vote
+    <set>
+      <if test="questionnaireId != null">
+        questionnaire_id = #{questionnaireId,jdbcType=INTEGER},
+      </if>
+      <if test="questionnaireQId != null">
+        questionnaire_q_id = #{questionnaireQId,jdbcType=INTEGER},
+      </if>
+      <if test="questionnaireQVoteTitle != null">
+        questionnaire_q_vote_title = #{questionnaireQVoteTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="seq != null">
+        seq = #{seq,jdbcType=DECIMAL},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=BIT},
+      </if>
+      <if test="createDate != null">
+        create_date = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateDate != null">
+        update_date = #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.app.model.model.QuestionnaireQuestionVote">
+    update t_questionnaire_question_vote
+    set questionnaire_id = #{questionnaireId,jdbcType=INTEGER},
+      questionnaire_q_id = #{questionnaireQId,jdbcType=INTEGER},
+      questionnaire_q_vote_title = #{questionnaireQVoteTitle,jdbcType=VARCHAR},
+      seq = #{seq,jdbcType=DECIMAL},
+      status = #{status,jdbcType=BIT},
+      create_date = #{createDate,jdbcType=TIMESTAMP},
+      update_date = #{updateDate,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

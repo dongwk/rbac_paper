@@ -2,16 +2,25 @@ package com.app.model.model;
 
 import com.app.model.base.BaseModel;
 import com.baomidou.mybatisplus.annotation.TableName;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.experimental.Accessors;
 
 /**
- * 20191121 暂时废弃吧不知道怎么用
+ * 权限与功能操作关联表
  */
-@Deprecated
-@TableName("app_authority_function")
+@TableName("t_authority_function")
+@Accessors(chain = true)
 @Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class AuthorityFunction extends BaseModel {
+    // 权限表id
     private Integer authorityId;
 
+    // 功能操作表id
     private Integer functionId;
 }

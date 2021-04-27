@@ -1,6 +1,7 @@
 package com.app.common.web.result;
 
 import lombok.Data;
+import lombok.ToString;
 
 import java.util.List;
 
@@ -10,6 +11,7 @@ import java.util.List;
  * @date 2018/12/6
  */
 @Data
+@ToString
 public class RP<T> {
     private Integer page;
     private Integer size;

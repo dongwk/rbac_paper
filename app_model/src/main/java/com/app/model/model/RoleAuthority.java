@@ -2,17 +2,25 @@ package com.app.model.model;
 
 import com.app.model.base.BaseModel;
 import com.baomidou.mybatisplus.annotation.TableName;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.experimental.Accessors;
 
 /**
- * 20191121 暂时废弃吧不知道怎么用
+ * 
  */
-@Deprecated
-@TableName("app_role_authority")
+@TableName("t_role_authority")
+@Accessors(chain = true)
 @Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class RoleAuthority extends BaseModel {
+    // 角色id
     private Integer roleId;
 
+    // 权限id
     private Integer authorityId;
-
 }

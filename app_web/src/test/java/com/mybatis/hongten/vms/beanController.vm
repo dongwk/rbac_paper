@@ -1,0 +1,83 @@
+package $!{bean.beanControllerUrl};
+
+import com.app.common.web.result.R;
+import com.app.core.common.ThrowAssert;
+import com.app.model.model.$!{bean.name};
+import com.app.service.service.$!{bean.name}Service;
+import com.app.web.config.annotation.Authorization;
+import com.app.web.config.annotation.LoginUser;
+import com.app.web.controller.base.BaseRestController;
+import com.app.web.po.LoginUserPo;
+import com.app.web.po.general.$!{bean.name}Po;
+import com.app.web.utils.PoToDoUtils;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
+
+
+#set($AttrBeanName=${bean.name.substring(0,1).toLowerCase()}+${bean.name.substring(1)})
+
+/**
+*
+* @author $!{annotation.authorName}
+* @date 2021-03-17
+* @version $!{annotation.version}
+*/
+@RestController
+@RequestMapping("/$!{AttrBeanName}")
+public class $!{bean.name}Controller extends BaseRestController<$!{bean.name}Service, $!{bean.name}> {
+
+    @Autowired
+    private $!{bean.name}Service $!{AttrBeanName}Service;
+
+    @Authorization
+    @GetMapping
+    public R<?> list(){
+        $!{bean.name} $!{AttrBeanName} = new $!{bean.name}();
+        IPage<$!{bean.name}> page = $!{AttrBeanName}Service.listPage(getPage(), $!{AttrBeanName});
+        return R.SUCCESS(page);
+    }
+
+    @Authorization
+    @GetMapping("/{id}")
+    public R<?> get(@PathVariable("id") Integer id){
+        return R.SUCCESS($!{AttrBeanName}Service.get(id));
+    }
+
+    @Authorization
+    @PostMapping
+    public R<?> add(@RequestBody $!{bean.name}Po $!{AttrBeanName}Po){
+        ThrowAssert.isNull($!{AttrBeanName}Po, HttpStatus.BAD_REQUEST);
+
+        $!{bean.name} $!{AttrBeanName} = PoToDoUtils.toAddDO($!{AttrBeanName}Po, $!{bean.name}.class);
+        $!{AttrBeanName}Service.save($!{AttrBeanName});
+        return R.SUCCESS();
+    }
+
+    @Authorization
+    @PutMapping
+    public R<?> put(@RequestBody $!{bean.name}Po $!{AttrBeanName}Po){
+        ThrowAssert.isNull($!{AttrBeanName}Po, HttpStatus.BAD_REQUEST);
+
+        $!{bean.name} $!{AttrBeanName} = PoToDoUtils.toUpdDO($!{AttrBeanName}Po, $!{bean.name}.class);
+        $!{AttrBeanName}Service.updateById($!{AttrBeanName});
+        return R.SUCCESS();
+    }
+
+    @Authorization
+    @DeleteMapping("/{id}")
+    public R<?> delete(@PathVariable("id") Integer id){
+        ThrowAssert.isNull(id, HttpStatus.BAD_REQUEST);
+
+        return R.SUCCESS($!{AttrBeanName}Service.removeById(id));
+    }
+
+    @Authorization
+    @GetMapping("/query")
+    public R<?> query(@LoginUser LoginUserPo loginUserPo, @RequestBody $!{bean.name}Po $!{AttrBeanName}Po){
+        $!{bean.name} $!{AttrBeanName} = PoToDoUtils.toAddDO($!{AttrBeanName}Po, $!{bean.name}.class);
+        IPage<$!{bean.name}> page = $!{AttrBeanName}Service.listPage(getPage(), $!{AttrBeanName});
+        return R.SUCCESS(page);
+    }
+}

@@ -1,6 +1,5 @@
 package com.app.web.controller.common;
 
-import com.app.web.controller.base.CustomContext;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.springframework.beans.factory.annotation.Autowired;

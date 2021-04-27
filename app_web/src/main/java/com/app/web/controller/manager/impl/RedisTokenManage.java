@@ -7,7 +7,7 @@ import org.springframework.data.redis.serializer.JdkSerializationRedisSerializer
 /**
  * 通过Redis存储和验证token的实现类
  * @see TokenManage
- * @author ScienJus
+ * @author wangtao
  * @date 2015/7/31.
  */
 public class RedisTokenManage implements TokenManage {

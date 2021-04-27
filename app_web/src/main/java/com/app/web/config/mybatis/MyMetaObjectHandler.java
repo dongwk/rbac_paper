@@ -21,16 +21,16 @@ public class MyMetaObjectHandler implements MetaObjectHandler {
     @Override
     public void insertFill(MetaObject metaObject) {
         Object status = getFieldValByName("status", metaObject);
-        Object createTime = getFieldValByName("createTime", metaObject);
-        Object updateTime = getFieldValByName("updateTime", metaObject);
+        Object createDate = getFieldValByName("createDate", metaObject);
+        Object updateDate = getFieldValByName("updateDate", metaObject);
         if (status == null) {
             setFieldValByName("status", true, metaObject);
         }
-        if (createTime == null) {
-            setFieldValByName("createTime", new Date(), metaObject);
+        if (createDate == null) {
+            setFieldValByName("createDate", new Date(), metaObject);
         }
-        if (updateTime == null) {
-            setFieldValByName("updateTime", new Date(), metaObject);
+        if (updateDate == null) {
+            setFieldValByName("updateDate", new Date(), metaObject);
         }
     }
 
@@ -45,9 +45,9 @@ public class MyMetaObjectHandler implements MetaObjectHandler {
      */
     @Override
     public void updateFill(MetaObject metaObject) {
-        Object updateTime = getFieldValByName("updateTime", metaObject);
-        if (updateTime == null) {
-            setFieldValByName("updateTime", new Date(), metaObject);
+        Object updateDate = getFieldValByName("updateDate", metaObject);
+        if (updateDate == null) {
+            setFieldValByName("updateDate", new Date(), metaObject);
         }
     }
 }

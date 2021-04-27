@@ -4,8 +4,11 @@ import com.app.mapper.base.BaseMapper;
 import com.app.model.model.AuthorityFunction;
 
 /**
- * 20191121 暂时废弃吧不知道怎么用
+ *
+ * @author dongwk
+ * @date 2021-03-17
+ * @version 1.0
  */
-@Deprecated
 public interface AuthorityFunctionMapper extends BaseMapper<AuthorityFunction> {
+
 }

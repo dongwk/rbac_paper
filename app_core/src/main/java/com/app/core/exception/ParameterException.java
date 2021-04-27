@@ -1,7 +1,7 @@
 package com.app.core.exception;
 
 /**
- * 设计为参数错误异常
+ * 参数错误异常
  * @author Administrator
  *
  */

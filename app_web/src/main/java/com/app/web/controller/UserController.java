@@ -42,7 +42,7 @@ public class UserController extends BaseRestController<UserService, User> {
     @PatchMapping(value = "/{id}")
     public R<Boolean> patch(@PathVariable String id, @RequestBody User obj){
         obj.setId(id != null ? Integer.parseInt(id):null);
-        obj.setUpdateTime(DateUtil.date());
+        obj.setUpdateDate(DateUtil.date());
         return R.SUCCESS(baseService.updateById(obj));
     }
 

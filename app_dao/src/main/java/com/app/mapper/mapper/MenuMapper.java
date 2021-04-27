@@ -8,5 +8,7 @@ import java.util.List;
 public interface MenuMapper extends BaseMapper<Menu> {
     List<Menu> listByUserId(Integer userId);
 
+    List<Menu> listMenuByUserId(Integer userId);
+
     List<Menu> listByRoleIds(List<Integer> roleIds);
 }

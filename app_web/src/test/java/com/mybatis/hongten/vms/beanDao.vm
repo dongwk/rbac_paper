@@ -1,0 +1,14 @@
+package $!{bean.beanDaoUrl};
+
+import com.app.mapper.base.BaseMapper;
+import $!{bean.beanUrl};
+
+/**
+ *
+ * @author $!{annotation.authorName}
+ * @date 2021-03-17
+ * @version $!{annotation.version}
+ */
+public interface $!{bean.name}Mapper extends BaseMapper<$!{bean.name}> {
+
+}

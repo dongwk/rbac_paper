@@ -3,7 +3,7 @@ package com.app.web.controller.base;
 import com.app.common.util.ValidateUtil;
 import com.app.common.util.reflection.GenericUtils;
 import com.app.model.base.BaseModel;
-import com.app.service.base.BaseSimpleService;
+import com.app.service.base.BaseMapperService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -22,7 +22,7 @@ import org.springframework.beans.factory.annotation.Autowired;
  * @date 2018/11/27 14:42
  */
 @Slf4j
-public abstract class BaseRestController<S extends BaseSimpleService, T extends BaseModel> extends BaseController {
+public abstract class BaseRestController<S extends BaseMapperService, T extends BaseModel> extends BaseController {
 
     @Autowired
     protected S baseService;

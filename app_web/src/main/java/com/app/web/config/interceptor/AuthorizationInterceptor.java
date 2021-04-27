@@ -4,8 +4,9 @@ import com.app.common.util.JsonUtil;
 import com.app.core.common.ThrowBiz;
 import com.app.web.config.annotation.Authorization;
 import com.app.web.controller.manager.TokenManage;
-import com.app.web.mo.LoginUserMo;
+import com.app.web.po.LoginUserPo;
 import com.app.web.utils.TokenUtils;
+import com.app.core.enums.MessagesPropertiesEnum;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -60,18 +61,18 @@ public class AuthorizationInterceptor extends HandlerInterceptorAdapter {
             // 从 header 中得到 token
             String token = TokenUtils.getToken(request);
             if (StringUtils.isBlank(token)) { // 登录信息没有传，请登录
-                ThrowBiz.throwExce(HttpStatus.UNAUTHORIZED, "auth.token.exipred");
+                ThrowBiz.throwExce(HttpStatus.UNAUTHORIZED, MessagesPropertiesEnum.AUTH_TOKEN_EXIPRED);
             }
 
             // 验证登录信息
             String val = tokenManage.get(token);
             if (StringUtils.isBlank(val)) { // 登录信息已过期或不存在，请重新登录
-                ThrowBiz.throwExce(HttpStatus.UNAUTHORIZED, "auth.token.exipred");
+                ThrowBiz.throwExce(HttpStatus.UNAUTHORIZED, MessagesPropertiesEnum.AUTH_TOKEN_EXIPRED);
             }
 
-            LoginUserMo loginUserMo = JsonUtil.toBean(val, LoginUserMo.class);
+            LoginUserPo loginUserPo = JsonUtil.toBean(val, LoginUserPo.class);
 
-            Set<String> funs = loginUserMo.getFuns();
+            Set<String> funs = loginUserPo.getFuns();
 
             funs.contains(uri);
         }

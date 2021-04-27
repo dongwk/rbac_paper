@@ -17,5 +17,5 @@ import java.lang.annotation.Target;
 public @interface Authorization{
 
     // 路径地址
-    String value() default  "";
+    String value() default "";
 }

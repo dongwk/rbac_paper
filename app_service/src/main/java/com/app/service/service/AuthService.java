@@ -1,12 +1,10 @@
 package com.app.service.service;
 
 import com.app.mapper.mapper.UserMapper;
-import com.app.model.model.ElementFunction;
 import com.app.model.model.Function;
-import com.app.model.model.MenuFunction;
 import com.app.model.model.User;
 import com.app.service.ao.GenerateTokenAo;
-import com.app.service.base.BaseSimpleService;
+import com.app.service.base.BaseMapperService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,7 +12,7 @@ import java.util.List;
 import java.util.Set;
 
 @Service
-public class AuthService extends BaseSimpleService<UserMapper, User> {
+public class AuthService extends BaseMapperService<UserMapper, User> {
 
     @Autowired
     private FunctionService functionService;

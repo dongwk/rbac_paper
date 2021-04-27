@@ -4,7 +4,7 @@ import com.app.common.util.JsonUtil;
 import com.app.web.config.annotation.LoginUser;
 import com.app.web.controller.manager.TokenManage;
 import com.app.web.utils.TokenUtils;
-import com.app.web.mo.LoginUserMo;
+import com.app.web.po.LoginUserPo;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +33,7 @@ public class LoginUserMethodArgumentResolver implements HandlerMethodArgumentRes
     @Override
     public boolean supportsParameter(MethodParameter parameter) {
         // 如果参数类型是 UserVo 并且有 CurrentUser 注解则支持
-        if (parameter.getParameterType().isAssignableFrom(LoginUserMo.class) &&
+        if (parameter.getParameterType().isAssignableFrom(LoginUserPo.class) &&
                 parameter.hasParameterAnnotation(LoginUser.class)) {
             return true;
         }
@@ -48,7 +48,7 @@ public class LoginUserMethodArgumentResolver implements HandlerMethodArgumentRes
         if (token != null) {
             String tokenVal = tokenManage.get(token);
             if (StringUtils.isNotBlank(tokenVal)) {
-                return JsonUtil.toBean(tokenVal, LoginUserMo.class);
+                return JsonUtil.toBean(tokenVal, LoginUserPo.class);
             }
 
         }

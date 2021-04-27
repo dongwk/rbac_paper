@@ -1,42 +1,121 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.app.mapper.mapper.ElementFunctionMapper" >
-  <resultMap id="BaseResultMap" type="com.app.model.model.ElementFunction" >
-    <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="element_id" property="elementId" jdbcType="INTEGER" />
-    <result column="function_id" property="functionId" jdbcType="INTEGER" />
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.app.mapper.mapper.ElementFunctionMapper">
+  <resultMap id="BaseResultMap" type="com.app.model.model.ElementFunction">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="element_id" jdbcType="INTEGER" property="elementId" />
+    <result column="function_id" jdbcType="INTEGER" property="functionId" />
+    <result column="status" jdbcType="BIT" property="status" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="update_date" jdbcType="TIMESTAMP" property="updateDate" />
   </resultMap>
-  <sql id="Base_Column_List" >
-    id, element_id, function_id
+  <sql id="Base_Column_List">
+    id, element_id, function_id, status, create_date, update_date
   </sql>
-  <resultMap id="FunctionResultMap" type="com.app.model.model.Function">
-    <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="name" property="name" jdbcType="VARCHAR" />
-    <result column="code" property="code" jdbcType="VARCHAR" />
-    <result column="url" property="url" jdbcType="VARCHAR" />
-    <result column="status" property="status" jdbcType="BIT" />
-    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
-    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
-  </resultMap>
-  <sql id="Function_Column_List">
-        f.id, f.name, f.code, f.url, f.status, f.create_time, f.update_time
-  </sql>
-
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_element_function
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_element_function
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.app.model.model.ElementFunction">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      select SEQ_ARTICLE.NEXTVAL from dual
+    </selectKey>
+    insert into t_element_function (element_id, function_id, status, 
+      create_date, update_date)
+    values (#{elementId,jdbcType=INTEGER}, #{functionId,jdbcType=INTEGER}, #{status,jdbcType=BIT}, 
+      #{createDate,jdbcType=TIMESTAMP}, #{updateDate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.app.model.model.ElementFunction">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      select SEQ_ARTICLE.NEXTVAL from dual
+    </selectKey>
+    insert into t_element_function
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="elementId != null">
+        element_id,
+      </if>
+      <if test="functionId != null">
+        function_id,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="createDate != null">
+        create_date,
+      </if>
+      <if test="updateDate != null">
+        update_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="elementId != null">
+        #{elementId,jdbcType=INTEGER},
+      </if>
+      <if test="functionId != null">
+        #{functionId,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=BIT},
+      </if>
+      <if test="createDate != null">
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateDate != null">
+        #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.app.model.model.ElementFunction">
+    update t_element_function
+    <set>
+      <if test="elementId != null">
+        element_id = #{elementId,jdbcType=INTEGER},
+      </if>
+      <if test="functionId != null">
+        function_id = #{functionId,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=BIT},
+      </if>
+      <if test="createDate != null">
+        create_date = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateDate != null">
+        update_date = #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.app.model.model.ElementFunction">
+    update t_element_function
+    set element_id = #{elementId,jdbcType=INTEGER},
+      function_id = #{functionId,jdbcType=INTEGER},
+      status = #{status,jdbcType=BIT},
+      create_date = #{createDate,jdbcType=TIMESTAMP},
+      update_date = #{updateDate,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
   <select id="listFuncByRoleIds" resultMap="FunctionResultMap">
     select
     <include refid="Function_Column_List" />
-    from app_function f
-    INNER JOIN app_element_function ef ON ef.function_id=f.id
-    INNER JOIN app_role_element re ON re.element_id=ef.element_id
+    from t_function f
+    INNER JOIN t_element_function ef ON ef.function_id=f.id
+    INNER JOIN t_role_element re ON re.element_id=ef.element_id
     where re.role_id in <foreach collection="roleIds" item="roleId" separator="," open="(" close=")"> #{roleId} </foreach>
   </select>
 
   <select id="listFuncUrlByRoleIds" resultType="java.lang.String">
     select
     f.url
-    from app_function f
-    INNER JOIN app_element_function ef ON ef.function_id=f.id
-    INNER JOIN app_role_element re ON re.element_id=ef.element_id
+    from t_function f
+    INNER JOIN t_element_function ef ON ef.function_id=f.id
+    INNER JOIN t_role_element re ON re.element_id=ef.element_id
     where re.role_id in <foreach collection="roleIds" item="roleId" separator="," open="(" close=")"> #{roleId} </foreach>
   </select>
 </mapper>

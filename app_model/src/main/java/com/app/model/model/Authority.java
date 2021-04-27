@@ -1,20 +1,23 @@
 package com.app.model.model;
 
 import com.app.model.base.BaseModel;
-import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
-
-import java.util.Date;
+import lombok.NoArgsConstructor;
+import lombok.experimental.Accessors;
 
 /**
- * 20191121 暂时废弃吧不知道怎么用
+ * 权限表
  */
-@Deprecated
-@TableName("app_authority")
+@TableName("t_authority")
+@Accessors(chain = true)
 @Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Authority extends BaseModel {
-
+    // 权限类型
     private String type;
-
 }

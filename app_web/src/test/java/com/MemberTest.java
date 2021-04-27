@@ -1,7 +1,6 @@
 package com;
 
 import com.app.Application;
-import com.app.model.model.User;
 import com.app.service.service.UserService;
 import org.junit.Test;
 import org.junit.runner.RunWith;

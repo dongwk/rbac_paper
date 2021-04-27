@@ -1,0 +1,17 @@
+package $!{bean.beanServiceImplUrl};
+
+import $!{bean.beanDaoUrl}.$!{bean.name}Mapper;
+import $!{bean.beanUrl};
+import com.app.service.base.BaseMapperService;
+import org.springframework.stereotype.Service;
+
+/**
+ *
+ * @author $!{annotation.authorName}
+ * @date 2021-03-17
+ * @version $!{annotation.version}
+ */
+@Service
+public class $!{bean.name}Service extends BaseMapperService<$!{bean.name}Mapper, $!{bean.name}> {
+
+}

@@ -1,12 +1,104 @@
-<?xml version="1.0" encoding="UTF-8" ?><!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-    "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.app.mapper.mapper.AuthorityElementMapper">
-    <resultMap id="BaseResultMap" type="com.app.model.model.AuthorityElement">
-        <id column="id" property="id" jdbcType="INTEGER" />
-        <result column="authority_id" property="authorityId" jdbcType="INTEGER" />
-        <result column="element" property="element" jdbcType="INTEGER" />
-    </resultMap>
-    <sql id="Base_Column_List">
-        id, authority_id, element
-    </sql>
+  <resultMap id="BaseResultMap" type="com.app.model.model.AuthorityElement">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="authority_id" jdbcType="INTEGER" property="authorityId" />
+    <result column="element_id" jdbcType="INTEGER" property="elementId" />
+    <result column="status" jdbcType="BIT" property="status" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="update_date" jdbcType="TIMESTAMP" property="updateDate" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, authority_id, element_id, status, create_date, update_date
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_authority_element
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_authority_element
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.app.model.model.AuthorityElement">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      select SEQ_ARTICLE.NEXTVAL from dual
+    </selectKey>
+    insert into t_authority_element (authority_id, element_id, status, 
+      create_date, update_date)
+    values (#{authorityId,jdbcType=INTEGER}, #{elementId,jdbcType=INTEGER}, #{status,jdbcType=BIT}, 
+      #{createDate,jdbcType=TIMESTAMP}, #{updateDate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.app.model.model.AuthorityElement">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      select SEQ_ARTICLE.NEXTVAL from dual
+    </selectKey>
+    insert into t_authority_element
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="authorityId != null">
+        authority_id,
+      </if>
+      <if test="elementId != null">
+        element_id,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="createDate != null">
+        create_date,
+      </if>
+      <if test="updateDate != null">
+        update_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="authorityId != null">
+        #{authorityId,jdbcType=INTEGER},
+      </if>
+      <if test="elementId != null">
+        #{elementId,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=BIT},
+      </if>
+      <if test="createDate != null">
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateDate != null">
+        #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.app.model.model.AuthorityElement">
+    update t_authority_element
+    <set>
+      <if test="authorityId != null">
+        authority_id = #{authorityId,jdbcType=INTEGER},
+      </if>
+      <if test="elementId != null">
+        element_id = #{elementId,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=BIT},
+      </if>
+      <if test="createDate != null">
+        create_date = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateDate != null">
+        update_date = #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.app.model.model.AuthorityElement">
+    update t_authority_element
+    set authority_id = #{authorityId,jdbcType=INTEGER},
+      element_id = #{elementId,jdbcType=INTEGER},
+      status = #{status,jdbcType=BIT},
+      create_date = #{createDate,jdbcType=TIMESTAMP},
+      update_date = #{updateDate,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
 </mapper>

@@ -4,7 +4,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 
 /**
  * 常量
- * @author ScienJus
+ * @author dongwk
  * @date 2015/7/31.
  */
 public class WebConstants {
@@ -24,7 +24,7 @@ public class WebConstants {
     public static final int TOKEN_EXPIRATION = 60;
 
     /**
-     * auth 返回SSL TODO 暂时未用
+     * auth 返回SSL
      */
     public static final boolean SSL = false;
 
@@ -43,4 +43,8 @@ public class WebConstants {
     public static final Page defaultPage() {
         return new Page(WebConstants.DEFAULT_PAGE_START, WebConstants.DEFAULT_PAGE_SIZE);
     }
+
+    public static final String DEFAULT_PAGE_NAME_ATTR = "DEFAULT_PAGE_NAME_ATTR";
+
+    public static final String IMG_SERVER_KEY = "IMG_SERVER_KEY";
 }

@@ -9,7 +9,7 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import com.app.common.util.date.DateParseUtil;
+import com.app.common.util.date.DateParseUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.math.NumberUtils;
 import org.apache.commons.lang3.time.DateUtils;
@@ -567,6 +567,6 @@ public class Idcard {
 		String bday = idCard.substring(12, 14); // 取日期
 		birthday = byear + "-" + bmonth + "-" + bday;
 		
-		return DateParseUtil.parseYYYYMMDD(birthday);
+		return DateParseUtils.parseYYYYMMDD(birthday);
 	}
 }

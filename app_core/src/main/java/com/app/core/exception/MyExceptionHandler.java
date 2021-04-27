@@ -10,7 +10,7 @@ import org.springframework.web.servlet.HandlerExceptionResolver;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
- * 设计用于根据不同的异常类型返回不同的页面
+ * 用于根据不同的异常类型返回不同的页面
  * mvc 的公共异常处理类
  * @author Administrator
  *

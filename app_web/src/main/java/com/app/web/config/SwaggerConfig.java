@@ -13,7 +13,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 /**
  * swagger-ui的配置
  *
- * @author ScienJus
+ * @author wangtao
  * @date 2015/7/10.
  */
 @Configuration
@@ -38,11 +38,11 @@ public class SwaggerConfig {
     }
 
     private ApiInfo testApiInfo() {
-        return new ApiInfoBuilder().title("Electronic Health Record(EHR) Platform API")
-                .description("EHR Platform's REST API, all the applications could access the Object model data via JSON.")
+        return new ApiInfoBuilder().title("API")
+                .description("Platform's REST API, all the applications could access the Object model data via JSON.")
                 .version("1.0")
                 .termsOfServiceUrl("NO terms of service")
-                .contact(new Contact("小单", "http://blog.csdn.net/catoop", "365384722@qq.com"))
+                .contact(new Contact("王涛", "", "wangtao1621@163.com"))
                 .build();
     }
 }

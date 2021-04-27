@@ -35,7 +35,7 @@ public class ExecutionTimeAspect {
 
     @Pointcut("execution(* com.app.service..*.*(..))")
     public void serviceLog(){}
-    @Pointcut("execution(* com.app.mapper..*.*(..))")
+    @Pointcut("execution(* com.app.dao..*.*(..))")
     public void mapperLog(){}
 
     @Around(value = "serviceLog()", argNames = "pjp")
@@ -79,7 +79,7 @@ public class ExecutionTimeAspect {
             }
             return obj;
         } catch (Exception e) {
-            log.error("ExecutionTimeAspect mapper timeout {}", ExceptionUtils.getStackTrace(e));
+            log.error("ExecutionTimeAspect com.app.dao timeout {}", ExceptionUtils.getStackTrace(e));
             throw e;
         }
     }

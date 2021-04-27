@@ -1,5 +1,6 @@
 package com.app.core.exception;
 
+import com.app.core.enums.MessagesPropertiesEnum;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -16,25 +17,44 @@ public class HttpBizException extends BizException {
     private HttpStatus httpStatus;
 
 
-    public HttpBizException(String properties) {
-        super(properties);
+
+    public HttpBizException(String msg) {
+        super(msg);
     }
 
-    public HttpBizException(String properties, Object... args) {
-        super(properties, args);
+    public HttpBizException(String msg, Object... args) {
+        super(msg, args);
+    }
+
+    public HttpBizException(MessagesPropertiesEnum propertiesEnum) {
+        super(propertiesEnum);
+    }
+
+    public HttpBizException(MessagesPropertiesEnum propertiesEnum, Object... args) {
+        super(propertiesEnum, args);
     }
 
     public HttpBizException(HttpStatus httpStatus) {
         this.httpStatus = httpStatus;
     }
 
-    public HttpBizException(HttpStatus httpStatus, String properties) {
-        super(properties);
+    public HttpBizException(HttpStatus httpStatus, String msg) {
+        super(msg);
         this.httpStatus = httpStatus;
     }
 
-    public HttpBizException(HttpStatus httpStatus, String properties, Object... args) {
-        super(properties, args);
+    public HttpBizException(HttpStatus httpStatus, String msg, Object... args) {
+        super(msg, args);
+        this.httpStatus = httpStatus;
+    }
+
+    public HttpBizException(HttpStatus httpStatus, MessagesPropertiesEnum propertiesEnum) {
+        super(propertiesEnum);
+        this.httpStatus = httpStatus;
+    }
+
+    public HttpBizException(HttpStatus httpStatus, MessagesPropertiesEnum propertiesEnum, Object... args) {
+        super(propertiesEnum, args);
         this.httpStatus = httpStatus;
     }
 

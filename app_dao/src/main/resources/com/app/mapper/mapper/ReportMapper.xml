@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.app.mapper.mapper.ReportMapper">
+  <resultMap id="BaseResultMap" type="com.app.model.model.Report">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="article_id" jdbcType="INTEGER" property="articleId" />
+    <result column="comment_id" jdbcType="INTEGER" property="commentId" />
+    <result column="reported_business_user_id" jdbcType="INTEGER" property="reportedBusinessUserId" />
+    <result column="reported_business_user_nickname" jdbcType="VARCHAR" property="reportedBusinessUserNickname" />
+    <result column="reported_comment_content" jdbcType="VARCHAR" property="reportedCommentContent" />
+    <result column="reporter_business_user_id" jdbcType="INTEGER" property="reporterBusinessUserId" />
+    <result column="reporter_business_user_nickname" jdbcType="VARCHAR" property="reporterBusinessUserNickname" />
+    <result column="message" jdbcType="VARCHAR" property="message" />
+    <result column="type" jdbcType="BIT" property="type" />
+    <result column="status" jdbcType="BIT" property="status" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="update_date" jdbcType="TIMESTAMP" property="updateDate" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, article_id, comment_id, reported_business_user_id, reported_business_user_nickname, 
+    reported_comment_content, reporter_business_user_id, reporter_business_user_nickname, 
+    message, type, status, create_date, update_date
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_report
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_report
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.app.model.model.Report">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      select SEQ_ARTICLE.NEXTVAL from dual
+    </selectKey>
+    insert into t_report (article_id, comment_id, reported_business_user_id, 
+      reported_business_user_nickname, reported_comment_content, 
+      reporter_business_user_id, reporter_business_user_nickname, 
+      message, type, status, create_date, 
+      update_date)
+    values (#{articleId,jdbcType=INTEGER}, #{commentId,jdbcType=INTEGER}, #{reportedBusinessUserId,jdbcType=INTEGER}, 
+      #{reportedBusinessUserNickname,jdbcType=VARCHAR}, #{reportedCommentContent,jdbcType=VARCHAR}, 
+      #{reporterBusinessUserId,jdbcType=INTEGER}, #{reporterBusinessUserNickname,jdbcType=VARCHAR}, 
+      #{message,jdbcType=VARCHAR}, #{type,jdbcType=BIT}, #{status,jdbcType=BIT}, #{createDate,jdbcType=TIMESTAMP}, 
+      #{updateDate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.app.model.model.Report">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      select SEQ_ARTICLE.NEXTVAL from dual
+    </selectKey>
+    insert into t_report
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="articleId != null">
+        article_id,
+      </if>
+      <if test="commentId != null">
+        comment_id,
+      </if>
+      <if test="reportedBusinessUserId != null">
+        reported_business_user_id,
+      </if>
+      <if test="reportedBusinessUserNickname != null">
+        reported_business_user_nickname,
+      </if>
+      <if test="reportedCommentContent != null">
+        reported_comment_content,
+      </if>
+      <if test="reporterBusinessUserId != null">
+        reporter_business_user_id,
+      </if>
+      <if test="reporterBusinessUserNickname != null">
+        reporter_business_user_nickname,
+      </if>
+      <if test="message != null">
+        message,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="createDate != null">
+        create_date,
+      </if>
+      <if test="updateDate != null">
+        update_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="articleId != null">
+        #{articleId,jdbcType=INTEGER},
+      </if>
+      <if test="commentId != null">
+        #{commentId,jdbcType=INTEGER},
+      </if>
+      <if test="reportedBusinessUserId != null">
+        #{reportedBusinessUserId,jdbcType=INTEGER},
+      </if>
+      <if test="reportedBusinessUserNickname != null">
+        #{reportedBusinessUserNickname,jdbcType=VARCHAR},
+      </if>
+      <if test="reportedCommentContent != null">
+        #{reportedCommentContent,jdbcType=VARCHAR},
+      </if>
+      <if test="reporterBusinessUserId != null">
+        #{reporterBusinessUserId,jdbcType=INTEGER},
+      </if>
+      <if test="reporterBusinessUserNickname != null">
+        #{reporterBusinessUserNickname,jdbcType=VARCHAR},
+      </if>
+      <if test="message != null">
+        #{message,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=BIT},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=BIT},
+      </if>
+      <if test="createDate != null">
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateDate != null">
+        #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.app.model.model.Report">
+    update t_report
+    <set>
+      <if test="articleId != null">
+        article_id = #{articleId,jdbcType=INTEGER},
+      </if>
+      <if test="commentId != null">
+        comment_id = #{commentId,jdbcType=INTEGER},
+      </if>
+      <if test="reportedBusinessUserId != null">
+        reported_business_user_id = #{reportedBusinessUserId,jdbcType=INTEGER},
+      </if>
+      <if test="reportedBusinessUserNickname != null">
+        reported_business_user_nickname = #{reportedBusinessUserNickname,jdbcType=VARCHAR},
+      </if>
+      <if test="reportedCommentContent != null">
+        reported_comment_content = #{reportedCommentContent,jdbcType=VARCHAR},
+      </if>
+      <if test="reporterBusinessUserId != null">
+        reporter_business_user_id = #{reporterBusinessUserId,jdbcType=INTEGER},
+      </if>
+      <if test="reporterBusinessUserNickname != null">
+        reporter_business_user_nickname = #{reporterBusinessUserNickname,jdbcType=VARCHAR},
+      </if>
+      <if test="message != null">
+        message = #{message,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=BIT},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=BIT},
+      </if>
+      <if test="createDate != null">
+        create_date = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateDate != null">
+        update_date = #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.app.model.model.Report">
+    update t_report
+    set article_id = #{articleId,jdbcType=INTEGER},
+      comment_id = #{commentId,jdbcType=INTEGER},
+      reported_business_user_id = #{reportedBusinessUserId,jdbcType=INTEGER},
+      reported_business_user_nickname = #{reportedBusinessUserNickname,jdbcType=VARCHAR},
+      reported_comment_content = #{reportedCommentContent,jdbcType=VARCHAR},
+      reporter_business_user_id = #{reporterBusinessUserId,jdbcType=INTEGER},
+      reporter_business_user_nickname = #{reporterBusinessUserNickname,jdbcType=VARCHAR},
+      message = #{message,jdbcType=VARCHAR},
+      type = #{type,jdbcType=BIT},
+      status = #{status,jdbcType=BIT},
+      create_date = #{createDate,jdbcType=TIMESTAMP},
+      update_date = #{updateDate,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

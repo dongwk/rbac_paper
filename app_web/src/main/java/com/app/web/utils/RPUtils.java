@@ -1,7 +1,7 @@
 package com.app.web.utils;
 
-import com.app.common.web.result.RP;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.app.web.common.RP;
+import com.baomidou.mybatisplus.core.metadata.IPage;
 
 import java.util.List;
 
@@ -11,7 +11,7 @@ import java.util.List;
  */
 public class RPUtils {
 
-    public static <T> RP<T> parsePR(Page<T> page){
+    public static <T> RP<T> parsePR(IPage<T> page){
         return new RP<T>(page.getCurrent(), page.getSize(), page.getPages(), page.getTotal(), page.getRecords());
     }
 

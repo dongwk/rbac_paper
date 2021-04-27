@@ -24,7 +24,8 @@ public abstract class CustomContext {
      * @return
      */
     protected Page getPage(){
-        return RequestUtils.getPage(request);
+//        return RequestUtils.getPage(request);
+        return null;
     }
 //
 //    protected HttpServletResponse getResponse(){

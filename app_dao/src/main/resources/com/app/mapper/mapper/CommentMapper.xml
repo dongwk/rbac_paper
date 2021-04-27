@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.app.mapper.mapper.CommentMapper">
+  <resultMap id="BaseResultMap" type="com.app.model.model.Comment">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="content" jdbcType="VARCHAR" property="content" />
+    <result column="is_show" jdbcType="BIT" property="isShow" />
+    <result column="first_comment_id" jdbcType="INTEGER" property="firstCommentId" />
+    <result column="reply_comment_id" jdbcType="INTEGER" property="replyCommentId" />
+    <result column="is_manager" jdbcType="BIT" property="isManager" />
+    <result column="article_id" jdbcType="INTEGER" property="articleId" />
+    <result column="business_user_id" jdbcType="INTEGER" property="businessUserId" />
+    <result column="business_user_nickname" jdbcType="VARCHAR" property="businessUserNickname" />
+    <result column="favor_num" jdbcType="INTEGER" property="favorNum" />
+    <result column="status" jdbcType="BIT" property="status" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="update_date" jdbcType="TIMESTAMP" property="updateDate" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, content, is_show, first_comment_id, reply_comment_id, is_manager, article_id, 
+    business_user_id, business_user_nickname, favor_num, status, create_date, update_date
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_comment
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_comment
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.app.model.model.Comment">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      select SEQ_ARTICLE.NEXTVAL from dual
+    </selectKey>
+    insert into t_comment (content, is_show, first_comment_id, 
+      reply_comment_id, is_manager, article_id, 
+      business_user_id, business_user_nickname, favor_num, 
+      status, create_date, update_date
+      )
+    values (#{content,jdbcType=VARCHAR}, #{isShow,jdbcType=BIT}, #{firstCommentId,jdbcType=INTEGER}, 
+      #{replyCommentId,jdbcType=INTEGER}, #{isManager,jdbcType=BIT}, #{articleId,jdbcType=INTEGER}, 
+      #{businessUserId,jdbcType=INTEGER}, #{businessUserNickname,jdbcType=VARCHAR}, #{favorNum,jdbcType=INTEGER}, 
+      #{status,jdbcType=BIT}, #{createDate,jdbcType=TIMESTAMP}, #{updateDate,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.app.model.model.Comment">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      select SEQ_ARTICLE.NEXTVAL from dual
+    </selectKey>
+    insert into t_comment
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="content != null">
+        content,
+      </if>
+      <if test="isShow != null">
+        is_show,
+      </if>
+      <if test="firstCommentId != null">
+        first_comment_id,
+      </if>
+      <if test="replyCommentId != null">
+        reply_comment_id,
+      </if>
+      <if test="isManager != null">
+        is_manager,
+      </if>
+      <if test="articleId != null">
+        article_id,
+      </if>
+      <if test="businessUserId != null">
+        business_user_id,
+      </if>
+      <if test="businessUserNickname != null">
+        business_user_nickname,
+      </if>
+      <if test="favorNum != null">
+        favor_num,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="createDate != null">
+        create_date,
+      </if>
+      <if test="updateDate != null">
+        update_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="content != null">
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="isShow != null">
+        #{isShow,jdbcType=BIT},
+      </if>
+      <if test="firstCommentId != null">
+        #{firstCommentId,jdbcType=INTEGER},
+      </if>
+      <if test="replyCommentId != null">
+        #{replyCommentId,jdbcType=INTEGER},
+      </if>
+      <if test="isManager != null">
+        #{isManager,jdbcType=BIT},
+      </if>
+      <if test="articleId != null">
+        #{articleId,jdbcType=INTEGER},
+      </if>
+      <if test="businessUserId != null">
+        #{businessUserId,jdbcType=INTEGER},
+      </if>
+      <if test="businessUserNickname != null">
+        #{businessUserNickname,jdbcType=VARCHAR},
+      </if>
+      <if test="favorNum != null">
+        #{favorNum,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=BIT},
+      </if>
+      <if test="createDate != null">
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateDate != null">
+        #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.app.model.model.Comment">
+    update t_comment
+    <set>
+      <if test="content != null">
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="isShow != null">
+        is_show = #{isShow,jdbcType=BIT},
+      </if>
+      <if test="firstCommentId != null">
+        first_comment_id = #{firstCommentId,jdbcType=INTEGER},
+      </if>
+      <if test="replyCommentId != null">
+        reply_comment_id = #{replyCommentId,jdbcType=INTEGER},
+      </if>
+      <if test="isManager != null">
+        is_manager = #{isManager,jdbcType=BIT},
+      </if>
+      <if test="articleId != null">
+        article_id = #{articleId,jdbcType=INTEGER},
+      </if>
+      <if test="businessUserId != null">
+        business_user_id = #{businessUserId,jdbcType=INTEGER},
+      </if>
+      <if test="businessUserNickname != null">
+        business_user_nickname = #{businessUserNickname,jdbcType=VARCHAR},
+      </if>
+      <if test="favorNum != null">
+        favor_num = #{favorNum,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=BIT},
+      </if>
+      <if test="createDate != null">
+        create_date = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateDate != null">
+        update_date = #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.app.model.model.Comment">
+    update t_comment
+    set content = #{content,jdbcType=VARCHAR},
+      is_show = #{isShow,jdbcType=BIT},
+      first_comment_id = #{firstCommentId,jdbcType=INTEGER},
+      reply_comment_id = #{replyCommentId,jdbcType=INTEGER},
+      is_manager = #{isManager,jdbcType=BIT},
+      article_id = #{articleId,jdbcType=INTEGER},
+      business_user_id = #{businessUserId,jdbcType=INTEGER},
+      business_user_nickname = #{businessUserNickname,jdbcType=VARCHAR},
+      favor_num = #{favorNum,jdbcType=INTEGER},
+      status = #{status,jdbcType=BIT},
+      create_date = #{createDate,jdbcType=TIMESTAMP},
+      update_date = #{updateDate,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <select id="listByArticleId" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from t_comment c
+    <where>
+      and c.is_show = 1
+      and c.status = 1
+      and c.article_id = #{articleId,jdbcType=NUMERIC}
+    </where>
+    order by c.id
+  </select>
+  <select id="listNoReplyByArticleId" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from t_comment c
+    <where>
+      and c.is_show = 1
+      and c.status = 1
+      and c.reply_comment_id is null
+      and c.article_id = #{articleId,jdbcType=NUMERIC}
+    </where>
+    order by c.id
+  </select>
+  <select id="listUnderFirstByCommentIds" resultMap="BaseResultMap">
+    select *
+    from (
+    select <include refid="Base_Column_List" />, row_number() over(partition by c.first_comment_id order by c.id asc) rn
+    from t_comment c
+    where c.revert_comment_id=1
+    <where>
+      and c.is_show = 1
+      and c.status = 1
+      and c.article_id = #{articleId,jdbcType=NUMERIC}
+      and c.first_comment_id in
+      <foreach collection="commentIds" item="v" open="(" separator="," close=")">
+        #{v}
+      </foreach>
+    </where>
+    )
+    where  rn &lt;= #{num,jdbcType=NUMERIC}
+  </select>
+</mapper>
